@@ -1,0 +1,2748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health and Rights Rwanda – HRI | Dignity. Equality. Freedom.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&family=DM+Serif+Display:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ===================== CSS VARIABLES ===================== */
+        :root {
+            --red: #E40303;
+            --orange: #FF8C00;
+            --yellow: #FFED00;
+            --green: #008026;
+            --blue: #004CFF;
+            --purple: #750787;
+            --teal: var(--blue);
+            --teal-dark: #0033A0;
+            --teal-mid: #3366CC;
+            --coral: var(--orange);
+            --coral-dark: #CC6600;
+            --sand: #FFF8DC;
+            --mint: var(--green);
+            --mint-dark: #006600;
+            --body: #1E1E2A;
+            --bg: #FFFFFF;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-200: #e8e8e8;
+            --gray-400: #a0a0a0;
+            --gray-600: #6b6b7b;
+            --shadow-sm: 0 2px 8px rgba(0, 76, 255, 0.08);
+            --shadow-md: 0 8px 32px rgba(0, 76, 255, 0.12);
+            --shadow-lg: 0 20px 60px rgba(0, 76, 255, 0.18);
+            --radius: 16px;
+            --radius-sm: 8px;
+        /* ===================== ANIMATIONS ===================== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { opacity: 1; transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes rotateIn {
+            from { opacity: 0; transform: rotate(-10deg) scale(0.9); }
+            to { opacity: 1; transform: rotate(0deg) scale(1); }
+        }
+        @keyframes flipIn {
+            from { opacity: 0; transform: rotateY(-90deg); }
+            to { opacity: 1; transform: rotateY(0deg); }
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 8px 30px rgba(0, 76, 255, 0.5); }
+            50% { box-shadow: 0 8px 50px rgba(0, 76, 255, 0.7); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* ===================== RESET & BASE ===================== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--body);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        img {
+            max-width: 100%;
+            display: block
+        }
+
+        ul {
+            list-style: none
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.2;
+            font-weight: 700
+        }
+
+        /* ===================== SKIP LINK ===================== */
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            left: 1rem;
+            background: var(--teal);
+            color: #fff;
+            padding: .5rem 1rem;
+            border-radius: var(--radius-sm);
+            z-index: 9999;
+            transition: top .2s
+        }
+
+        .skip-link:focus {
+            top: 1rem
+        }
+
+        /* ===================== TYPOGRAPHY ===================== */
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--coral);
+            margin-bottom: .75rem;
+            display: block
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 1rem
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            line-height: 1.7
+        }
+
+        /* ===================== LAYOUT ===================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem
+        }
+
+        section {
+            padding: 5rem 0
+        }
+
+        /* ===================== BUTTONS ===================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .85rem 1.75rem;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: .95rem;
+            min-height: 48px;
+            transition: var(--transition);
+            text-align: center;
+            cursor: pointer
+        }
+
+        .btn-primary {
+            background: var(--coral);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(255, 140, 0, 0.35)
+        }
+
+        .btn-primary:hover {
+            background: var(--coral-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 140, 0, 0.4)
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--teal);
+            border: 2px solid var(--teal)
+        }
+
+        .btn-outline:hover {
+            background: var(--teal);
+            color: #fff;
+            transform: translateY(-2px)
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.7)
+        }
+
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff
+        }
+
+        .btn-sm {
+            padding: .6rem 1.25rem;
+            font-size: .875rem;
+            min-height: 40px
+        }
+
+        /* ===================== FLOATING HELP BUTTON ===================== */
+        .floating-help {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            background: var(--coral);
+            color: #fff;
+            padding: .85rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: .9rem;
+            box-shadow: 0 8px 30px rgba(0, 76, 255, 0.5);
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            transition: var(--transition);
+            animation: pulse 2.5s infinite
+        }
+
+        .floating-help:hover {
+            background: var(--coral-dark);
+            transform: translateY(-3px);
+            animation: none
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 8px 30px rgba(0, 76, 255, 0.5)
+            }
+
+            50% {
+                box-shadow: 0 8px 50px rgba(0, 76, 255, 0.7)
+            }
+        }
+
+        /* ===================== NAVIGATION ===================== */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            background: var(--teal);
+            box-shadow: var(--shadow-md)
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            gap: 1rem
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            flex-shrink: 0
+        }
+
+        .nav-logo-mark {
+            width: 40px;
+            height: 40px;
+            background: var(--coral);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .nav-logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.1rem;
+            line-height: 1.1
+        }
+
+        .nav-logo-text span {
+            display: block;
+            font-size: .65rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: .05em
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: .1rem;
+            flex-wrap: nowrap
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: .8rem;
+            font-weight: 500;
+            padding: .4rem .55rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            white-space: nowrap
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.12)
+        }
+
+        .nav-cta {
+            background: var(--coral);
+            color: #fff !important;
+            padding: .45rem .9rem !important;
+            border-radius: 50px !important;
+            font-weight: 600 !important
+        }
+
+        .nav-cta:hover {
+            background: var(--coral-dark) !important
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: .5rem;
+            cursor: pointer;
+            aria-label: "Open menu"
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2.5px;
+            background: #fff;
+            border-radius: 2px;
+            transition: var(--transition)
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px)
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px)
+        }
+
+        /* ===================== HERO ===================== */
+        #home {
+            background: var(--sand);
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-wave {
+            position: absolute;
+            inset: 0;
+            pointer-events: none
+        }
+
+        .hero-wave svg {
+            width: 100%;
+            height: 100%;
+            opacity: 0.15
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            min-height: calc(100vh - 70px);
+            padding: 5rem 0
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: rgba(10, 76, 92, 0.1);
+            color: var(--teal);
+            border-radius: 50px;
+            padding: .4rem 1rem;
+            font-size: .8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(10, 76, 92, 0.2)
+        }
+
+        .hero-badge i {
+            color: var(--coral)
+        }
+
+        .hero-h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            color: var(--teal);
+            line-height: 1.1;
+            margin-bottom: 1.25rem
+        }
+
+        .hero-h1 em {
+            font-style: normal;
+            color: var(--coral);
+            font-family: 'DM Serif Display', serif
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            max-width: 520px;
+            margin-bottom: 2.25rem;
+            line-height: 1.7
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap
+        }
+
+        .hero-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem
+        }
+
+        .hero-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition)
+        }
+
+        .hero-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg)
+        }
+
+        .hero-card-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--mint);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: .75rem
+        }
+
+        .hero-card h3 {
+            font-size: 1rem;
+            color: var(--teal);
+            margin-bottom: .35rem
+        }
+
+        .hero-card p {
+            font-size: .875rem;
+            color: var(--gray-600)
+        }
+
+        .hero-trust {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray-200)
+        }
+
+        .hero-trust-avatars {
+            display: flex
+        }
+
+        .avatar-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            background: var(--mint)
+        }
+
+        .avatar-circle:not(:first-child) {
+            margin-left: -10px
+        }
+
+        .hero-trust-text {
+            font-size: .85rem;
+            color: var(--gray-600)
+        }
+
+        .hero-trust-text strong {
+            color: var(--teal);
+            display: block
+        }
+
+        /* ===================== STATS / COUNTER ===================== */
+        #impact-snap {
+            background: var(--mint);
+            padding: 4rem 0;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem 1rem
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--teal);
+            display: block;
+            line-height: 1
+        }
+
+        .stat-suffix {
+            color: var(--coral)
+        }
+
+        .stat-label {
+            font-size: .9rem;
+            color: var(--gray-600);
+            margin-top: .5rem;
+            font-weight: 500
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: .75rem;
+            display: block
+        }
+
+        /* ===================== ABOUT ===================== */
+        #about {
+            background: var(--bg);
+            animation: slideInRight 1s ease-out;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start
+        }
+
+        .about-visual {
+            position: relative
+        }
+
+        .about-img-main {
+            width: 100%;
+            border-radius: var(--radius);
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-mid) 100%);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.3)
+        }
+
+        .about-badge-float {
+            position: absolute;
+            bottom: -1.5rem;
+            right: -1.5rem;
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 1.25rem 1.5rem;
+            box-shadow: var(--shadow-lg);
+            min-width: 170px
+        }
+
+        .about-badge-float .num {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--coral)
+        }
+
+        .about-badge-float p {
+            font-size: .8rem;
+            color: var(--gray-600);
+            margin-top: .25rem
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.75rem
+        }
+
+        .mv-card {
+            background: var(--sand);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            border-left: 3px solid var(--coral)
+        }
+
+        .mv-card h4 {
+            font-size: .9rem;
+            color: var(--teal);
+            margin-bottom: .35rem;
+            font-weight: 600
+        }
+
+        .mv-card p {
+            font-size: .85rem;
+            color: var(--gray-600)
+        }
+
+        .values-list {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap
+        }
+
+        .value-chip {
+            background: var(--mint);
+            color: var(--teal);
+            padding: .4rem .9rem;
+            border-radius: 50px;
+            font-size: .8rem;
+            font-weight: 600
+        }
+
+        /* ===================== WHAT WE DO ===================== */
+        #what-we-do {
+            background: var(--teal);
+            overflow: hidden;
+            position: relative;
+            animation: zoomIn 1s ease-out;
+        }
+
+        #what-we-do::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%
+        }
+
+        #what-we-do .section-title {
+            color: #fff
+        }
+
+        #what-we-do .section-label {
+            color: var(--mint)
+        }
+
+        #what-we-do .section-subtitle {
+            color: rgba(255, 255, 255, 0.7)
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.1), transparent);
+            opacity: 0;
+            transition: var(--transition)
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
+            border-color: rgba(255, 140, 0, 0.4)
+        }
+
+        .service-card:hover::before {
+            opacity: 1
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--coral);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 1.5rem
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            color: #fff;
+            margin-bottom: .75rem
+        }
+
+        .service-card p {
+            font-size: .9rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            color: var(--coral);
+            font-size: .85rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: var(--transition)
+        }
+
+        .service-link:hover {
+            gap: .75rem
+        }
+
+        /* ===================== IMPACT & STORIES ===================== */
+        #impact {
+            background: var(--bg);
+            animation: bounceIn 1s ease-out;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start
+        }
+
+        .metrics-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem
+        }
+
+        .metric-item {}
+
+        .metric-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: .5rem
+        }
+
+        .metric-label span:first-child {
+            font-size: .9rem;
+            font-weight: 500;
+            color: var(--body)
+        }
+
+        .metric-label span:last-child {
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--teal)
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: var(--gray-200);
+            border-radius: 50px;
+            overflow: hidden
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 50px;
+            background: linear-gradient(90deg, var(--teal), var(--coral));
+            width: 0;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1)
+        }
+
+        .stories-col {}
+
+        .story-card {
+            background: var(--sand);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative
+        }
+
+        .story-card::before {
+            content: '\201C';
+            font-family: 'DM Serif Display', serif;
+            font-size: 5rem;
+            color: var(--coral);
+            opacity: 0.3;
+            position: absolute;
+            top: .5rem;
+            left: 1.25rem;
+            line-height: 1
+        }
+
+        .story-text {
+            font-size: 1.05rem;
+            color: var(--body);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 1.25rem;
+            padding-top: 2rem
+        }
+
+        .story-author {
+            display: flex;
+            align-items: center;
+            gap.75rem;
+            gap: .75rem
+        }
+
+        .story-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--mint);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0
+        }
+
+        .story-name {
+            font-weight: 600;
+            font-size: .9rem;
+            color: var(--teal)
+        }
+
+        .story-meta {
+            font-size: .8rem;
+            color: var(--gray-400)
+        }
+
+        .impact-dl {
+            margin-top: 2rem;
+            text-align: center
+        }
+
+        /* ===================== EVENTS ===================== */
+        #events {
+            background: var(--sand);
+            animation: rotateIn 1s ease-out;
+        }
+
+        .events-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: gap
+        }
+
+        .events-carousel {
+            position: relative
+        }
+
+        .events-track {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            transition: var(--transition)
+        }
+
+        .event-card {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition)
+        }
+
+        .event-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md)
+        }
+
+        .event-header {
+            background: var(--teal);
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start
+        }
+
+        .event-date-badge {
+            background: var(--coral);
+            color: #fff;
+            border-radius: var(--radius-sm);
+            padding: .5rem .75rem;
+            text-align: center;
+            min-width: 55px;
+            flex-shrink: 0
+        }
+
+        .event-date-badge .day {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            line-height: 1
+        }
+
+        .event-date-badge .month {
+            font-size: .65rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase
+        }
+
+        .event-title {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: .35rem
+        }
+
+        .event-location {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: .85rem;
+            display: flex;
+            align-items: center;
+            gap: .35rem
+        }
+
+        .event-body {
+            padding: 1.25rem
+        }
+
+        .event-body p {
+            font-size: .875rem;
+            color: var(--gray-600);
+            margin-bottom: 1rem
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: .75rem;
+            margin-top: 1.5rem
+        }
+
+        .carousel-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--teal);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: .9rem
+        }
+
+        .carousel-btn:hover {
+            background: var(--coral)
+        }
+
+        .past-events-title {
+            margin-top: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            color: var(--teal)
+        }
+
+        .past-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem
+        }
+
+        .past-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative
+        }
+
+        .past-img {
+            height: 200px;
+            background: linear-gradient(135deg, var(--teal-dark), var(--teal-mid));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.3)
+        }
+
+        .past-caption {
+            background: #fff;
+            padding: .85rem 1rem
+        }
+
+        .past-caption p {
+            font-size: .8rem;
+            color: var(--gray-600)
+        }
+
+        .past-caption strong {
+            display: block;
+            font-size: .875rem;
+            color: var(--teal);
+            margin-bottom: .2rem
+        }
+
+        /* ===================== GET HELP ===================== */
+        #get-help {
+            background: var(--teal);
+            position: relative;
+            overflow: hidden;
+            animation: flipIn 1s ease-out;
+        }
+
+        #get-help::before {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%
+        }
+
+        #get-help .section-title {
+            color: #fff
+        }
+
+        #get-help .section-label {
+            color: var(--coral)
+        }
+
+        .help-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            align-items: start;
+            position: relative;
+            z-index: 2
+        }
+
+        .help-info {}
+
+        .help-info .section-subtitle {
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 2rem
+        }
+
+        .helpline-badge {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem
+        }
+
+        .helpline-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--coral);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #fff;
+            flex-shrink: 0
+        }
+
+        .helpline-badge h4 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: .2rem
+        }
+
+        .helpline-badge p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: .875rem
+        }
+
+        .privacy-note {
+            display: flex;
+            align-items: flex-start;
+            gap: .6rem;
+            padding: 1rem;
+            background: rgba(216, 240, 232, 0.1);
+            border-radius: var(--radius-sm);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: .85rem
+        }
+
+        .privacy-note i {
+            color: var(--mint);
+            margin-top: .1rem;
+            flex-shrink: 0
+        }
+
+        .download-links {
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+            margin-top: 1.5rem
+        }
+
+        .dl-link {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            color: var(--mint);
+            font-size: .875rem;
+            font-weight: 500;
+            transition: var(--transition)
+        }
+
+        .dl-link:hover {
+            color: #fff;
+            gap: .9rem
+        }
+
+        .help-form-wrap {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg)
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem
+        }
+
+        .form-group label {
+            display: block;
+            font-size: .875rem;
+            font-weight: 600;
+            color: var(--body);
+            margin-bottom: .4rem
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: .75rem 1rem;
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: .9rem;
+            color: var(--body);
+            transition: var(--transition);
+            background: #fff
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px rgba(10, 76, 92, 0.1)
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px
+        }
+
+        .form-error {
+            color: #e53e3e;
+            font-size: .8rem;
+            margin-top: .3rem;
+            display: none
+        }
+
+        .form-success {
+            background: var(--mint);
+            color: var(--teal);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            text-align: center;
+            display: none;
+            margin-top: .75rem
+        }
+
+        /* ===================== JOIN / SUPPORT ===================== */
+        #join {
+            background: var(--bg);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .join-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2.5rem
+        }
+
+        .join-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 1.5px solid var(--gray-200);
+            transition: var(--transition);
+            text-align: center
+        }
+
+        .join-card:hover {
+            border-color: var(--coral);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md)
+        }
+
+        .join-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--mint);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 1.25rem
+        }
+
+        .join-card h3 {
+            font-size: 1.1rem;
+            color: var(--teal);
+            margin-bottom: .6rem
+        }
+
+        .join-card p {
+            font-size: .875rem;
+            color: var(--gray-600);
+            margin-bottom: 1.25rem
+        }
+
+        .donate-options {
+            display: flex;
+            gap: .75rem;
+            justify-content: center;
+            margin-bottom: .75rem;
+            flex-wrap: wrap
+        }
+
+        .donate-opt {
+            padding: .5rem 1rem;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 50px;
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--body);
+            cursor: pointer;
+            transition: var(--transition)
+        }
+
+        .donate-opt.active,
+        .donate-opt:hover {
+            border-color: var(--teal);
+            background: var(--teal);
+            color: #fff
+        }
+
+        .payment-icons {
+            display: flex;
+            gap: .5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap
+        }
+
+        .payment-badge {
+            background: var(--gray-100);
+            padding: .35rem .75rem;
+            border-radius: var(--radius-sm);
+            font-size: .75rem;
+            font-weight: 600;
+            color: var(--gray-600)
+        }
+
+        /* ===================== PARTNERS ===================== */
+        #partners {
+            background: var(--mint);
+            overflow: hidden;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .partners-strip-wrap {
+            overflow: hidden;
+            margin-top: 2.5rem
+        }
+
+        .partners-strip {
+            display: flex;
+            gap: 2rem;
+            animation: scroll-logos 22s linear infinite;
+            width: max-content
+        }
+
+        .partners-strip:hover {
+            animation-play-state: paused
+        }
+
+        .partner-logo {
+            min-width: 140px;
+            height: 70px;
+            background: #fff;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1.5px solid var(--gray-200);
+            padding: 1rem;
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--gray-400);
+            text-align: center;
+            flex-shrink: 0
+        }
+
+        @keyframes scroll-logos {
+            0% {
+                transform: translateX(0)
+            }
+
+            100% {
+                transform: translateX(-50%)
+            }
+        }
+
+        .partners-note {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: .9rem;
+            color: var(--gray-600)
+        }
+
+        /* ===================== RESOURCES ===================== */
+        #resources {
+            background: var(--bg);
+            animation: slideInRight 1s ease-out;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem
+        }
+
+        .resource-card {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1.5px solid var(--gray-200);
+            transition: var(--transition)
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--teal)
+        }
+
+        .resource-img {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem
+        }
+
+        .resource-body {
+            padding: 1.5rem
+        }
+
+        .resource-tag {
+            display: inline-block;
+            background: var(--mint);
+            color: var(--teal);
+            font-size: .7rem;
+            font-weight: 700;
+            padding: .25rem .65rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            margin-bottom: .75rem
+        }
+
+        .resource-body h3 {
+            font-size: 1rem;
+            color: var(--teal);
+            margin-bottom: .5rem;
+            font-weight: 600
+        }
+
+        .resource-body p {
+            font-size: .85rem;
+            color: var(--gray-600);
+            margin-bottom: 1rem
+        }
+
+        .resource-link {
+            color: var(--coral);
+            font-size: .85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            transition: var(--transition)
+        }
+
+        .resource-link:hover {
+            gap: .6rem
+        }
+
+        /* ===================== CONTACT ===================== */
+        #contact {
+            background: var(--teal);
+            animation: zoomIn 1s ease-out;
+        }
+
+        #contact .section-title {
+            color: #fff
+        }
+
+        #contact .section-label {
+            color: var(--coral)
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 3rem;
+            align-items: start
+        }
+
+        .contact-info {}
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start
+        }
+
+        .contact-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1rem;
+            flex-shrink: 0
+        }
+
+        .contact-item h4 {
+            color: #fff;
+            font-size: .9rem;
+            font-weight: 600;
+            margin-bottom: .2rem
+        }
+
+        .contact-item p,
+        .contact-item a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: .875rem
+        }
+
+        .contact-item a:hover {
+            color: #fff
+        }
+
+        .map-placeholder {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius);
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1.5rem;
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.3);
+            flex-direction: column;
+            gap: .5rem
+        }
+
+        .map-placeholder p {
+            font-size: .85rem;
+            color: rgba(255, 255, 255, 0.4)
+        }
+
+        .social-links {
+            display: flex;
+            gap: .75rem;
+            margin-top: 1.5rem
+        }
+
+        .social-link {
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: var(--transition)
+        }
+
+        .social-link:hover {
+            background: var(--coral);
+            transform: translateY(-2px)
+        }
+
+        .contact-form-wrap {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 2rem
+        }
+
+        .contact-form-wrap h3 {
+            font-size: 1.15rem;
+            color: var(--teal);
+            margin-bottom: 1.5rem
+        }
+
+        /* ===================== FOOTER ===================== */
+        footer {
+            background: var(--teal-dark);
+            padding: 3.5rem 0 1.5rem;
+            color: rgba(255, 255, 255, 0.7)
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem
+        }
+
+        .footer-brand p {
+            font-size: .875rem;
+            margin-top: .75rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.6)
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: .9rem;
+            font-weight: 600;
+            margin-bottom: 1rem
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem
+        }
+
+        .footer-links a {
+            font-size: .85rem;
+            color: rgba(255, 255, 255, 0.6);
+            transition: var(--transition)
+        }
+
+        .footer-links a:hover {
+            color: #fff
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: .5rem;
+            margin-top: .75rem
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: .65rem 1rem;
+            border-radius: var(--radius-sm);
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: .85rem
+        }
+
+        .newsletter-form input:focus {
+            outline: 2px solid var(--coral)
+        }
+
+        .newsletter-form button {
+            background: var(--coral);
+            color: #fff;
+            padding: .65rem 1rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: .85rem;
+            white-space: nowrap;
+            transition: var(--transition)
+        }
+
+        .newsletter-form button:hover {
+            background: var(--coral-dark)
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: .75rem;
+            font-size: .8rem
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5)
+        }
+
+        .footer-bottom a:hover {
+            color: #fff
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media(max-width:1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                min-height: auto;
+                padding: 3rem 0
+            }
+
+            .hero-sub,
+            .hero-actions {
+                margin-left: auto;
+                margin-right: auto
+            }
+
+            .hero-actions {
+                justify-content: center
+            }
+
+            .hero-visual {
+                display: grid;
+                grid-template-columns: 1fr 1fr
+            }
+
+            .hero-trust {
+                justify-content: center
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr
+            }
+
+            .about-visual {
+                display: none
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr
+            }
+
+            .help-grid {
+                grid-template-columns: 1fr
+            }
+
+            .join-grid {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media(max-width:768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--teal);
+                flex-direction: column;
+                padding: 1rem 1.5rem;
+                gap: .25rem;
+                box-shadow: var(--shadow-md)
+            }
+
+            .nav-links.open {
+                display: flex
+            }
+
+            .nav-links a {
+                padding: .7rem;
+                border-radius: var(--radius-sm)
+            }
+
+            .hamburger {
+                display: flex
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr
+            }
+
+            .events-track {
+                grid-template-columns: 1fr
+            }
+
+            .past-gallery {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .join-grid {
+                grid-template-columns: 1fr
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center
+            }
+
+            section {
+                padding: 3.5rem 0
+            }
+
+            .mv-grid {
+                grid-template-columns: 1fr
+            }
+
+            .hero-visual {
+                display: none
+            }
+
+            .donate-options {
+                flex-wrap: wrap
+            }
+        }
+
+        @media(max-width:480px) {
+            .past-gallery {
+                grid-template-columns: 1fr
+            }
+
+            .floating-help span.hide-sm {
+                display: none
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Skip Link -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Floating Help Button -->
+    <a href="#get-help" class="floating-help" aria-label="Get help now">
+        <i class="fas fa-heart"></i>
+        <span class="hide-sm">Get Help Now</span>
+    </a>
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="container nav-inner">
+            <a href="#home" class="nav-logo" aria-label="HRI Rwanda home">
+                <div class="nav-logo-mark">HRI</div>
+                <div class="nav-logo-text">
+                    Health &amp; Rights Rwanda organisation
+                    <span>Dignity · Equality · Freedom</span>
+                </div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#what-we-do">What We Do</a>
+                <a href="#impact">Impact</a>
+                <a href="#events">Events</a>
+                <a href="#get-help">Get Help</a>
+                <a href="#join">Join</a>
+                <a href="#partners">Partners</a>
+                <a href="#resources">Resources</a>
+                <a href="#contact">Contact</a>
+                <a href="#get-help" class="nav-cta">🔒 Confidential Help</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===================== MAIN ===================== -->
+    <main id="main">
+
+        <!-- 1. HERO -->
+        <section id="home">
+            <svg class="hero-wave" viewBox="0 0 1440 600" fill="none" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true">
+                <circle cx="200" cy="100" r="300" fill="#0A4C5C" />
+                <circle cx="1300" cy="500" r="250" fill="#F16A4B" />
+                <circle cx="800" cy="300" r="200" fill="#0A4C5C" />
+            </svg>
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="hero-badge"><i class="fas fa-map-marker-alt"></i> Based in Kigali, Rwanda</span>
+                    <h1 class="hero-h1">Stand for <em>Rights, Dignity,</em> and Equality for All</h1>
+                    <p class="hero-sub">Health and Rights Rwanda – empowering adults to understand and claim their
+                        rights, free from stigma and discrimination. We stand with every community member facing human
+                        rights violations.</p>
+                    <div class="hero-actions">
+                        <a href="#get-help" class="btn btn-primary"><i class="fas fa-hands-helping"></i> Get Support</a>
+                        <a href="#join" class="btn btn-outline">Join Our Community</a>
+                    </div>
+                    <div class="hero-trust">
+                        <div class="hero-trust-avatars">
+                            <div class="avatar-circle" aria-hidden="true">🧑</div>
+                            <div class="avatar-circle" aria-hidden="true">👩</div>
+                            <div class="avatar-circle" aria-hidden="true">🧒</div>
+                            <div class="avatar-circle" aria-hidden="true">👨</div>
+                        </div>
+                        <div class="hero-trust-text">
+                            <strong>500+ community members</strong>
+                            supported across Rwanda
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="hero-card">
+                        <div class="hero-card-icon">⚖️</div>
+                        <h3>Rights Awareness</h3>
+                        <p>Legal literacy workshops for adults across Rwanda's communities</p>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-card-icon">🛡️</div>
+                        <h3>Safe &amp; Confidential</h3>
+                        <p>Your privacy is our priority — stigma-free support always</p>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-card-icon">🤝</div>
+                        <h3>Community-Led</h3>
+                        <p>Advocacy driven by and for the people we serve</p>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-card-icon">🌍</div>
+                        <h3>Policy Impact</h3>
+                        <p>Engaging local authorities to create lasting change</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. IMPACT SNAPSHOT -->
+        <section id="impact-snap" aria-label="Impact statistics">
+            <div class="container">
+                <div style="text-align:center;margin-bottom:1rem">
+                    <span class="section-label">Our Reach</span>
+                    <h2 class="section-title" style="color:var(--teal)">Real Impact, Real People</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-icon" aria-hidden="true">🧑‍🤝‍🧑</span>
+                        <span class="stat-number" data-target="500" data-suffix="+">0</span>
+                        <p class="stat-label">People Helped in Rwanda</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon" aria-hidden="true">🏛️</span>
+                        <span class="stat-number" data-target="150+">0</span>
+                        <p class="stat-label">Policy Dialogues Held</p>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-icon" aria-hidden="true">📅</span>
+                        <span class="stat-number" data-target="2000+">0</span>
+                        <p class="stat-label">Community Events Organised</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ABOUT -->
+        <section id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-visual" aria-hidden="true">
+                        <div class="about-img-main">🌿</div>
+                        <div class="about-badge-float">
+                            <div class="num">2019</div>
+                            <p>Founded in Rwanda</p>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="section-label">Who We Are</span>
+                        <h2 class="section-title">About HRI Rwanda</h2>
+                        <p style="color:var(--gray-600);margin-bottom:1.5rem;line-height:1.7">Health and Rights Rwanda
+                            (HRI) is a grassroots civil society organisation founded in Rwanda with a bold mission: to
+                            ensure every adult — regardless of sexual orientation, gender identity, or background —
+                            lives free from stigma, discrimination, and human rights violations.</p>
+                        <p style="color:var(--gray-600);margin-bottom:1.75rem;line-height:1.7">We were born from the
+                            community, shaped by lived experience, and driven by an unwavering belief that dignity and
+                            equality are not privileges — they are rights.</p>
+                        <div class="mv-grid">
+                            <div class="mv-card">
+                                <h4>🎯 Our Mission</h4>
+                                <p>To stand with every community member facing human rights violations or mistreatment,
+                                    with a focus on sexual orientation and stigma reduction.</p>
+                            </div>
+                            <div class="mv-card">
+                                <h4>🔭 Our Vision</h4>
+                                <p>A Rwanda where every adult lives with dignity, equality, and freedom — recognised and
+                                    protected.</p>
+                            </div>
+                        </div>
+                        <p style="font-size:.85rem;font-weight:600;color:var(--teal);margin-bottom:.75rem">Core Values
+                        </p>
+                        <div class="values-list">
+                            <span class="value-chip">⚖️ Equality</span>
+                            <span class="value-chip">💚 Stigma-free Support</span>
+                            <span class="value-chip">🤲 Community-led Advocacy</span>
+                            <span class="value-chip">🔒 Confidentiality</span>
+                            <span class="value-chip">🌍 Inclusivity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. WHAT WE DO -->
+        <section id="what-we-do">
+            <div class="container">
+                <span class="section-label">Our Work</span>
+                <h2 class="section-title">What We Do</h2>
+                <p class="section-subtitle">From legal literacy to safe spaces, HRI offers holistic support for those
+                    whose rights have been denied or undermined.</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-gavel" aria-hidden="true"></i></div>
+                        <h3>Rights Awareness</h3>
+                        <p>We conduct workshops and legal literacy sessions for adults across Rwanda — helping people
+                            understand their rights, know the law, and speak up against violations. Special focus is
+                            given to communities facing stigma based on sexual orientation.</p>
+                        <a href="#" class="service-link" aria-label="Learn more about Rights Awareness">Learn more <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-hands-holding-heart" aria-hidden="true"></i></div>
+                        <h3>Support Services</h3>
+                        <p>Our support team offers counselling, safe spaces, and referral pathways for individuals who
+                            have experienced human rights violations, discrimination, or stigma. All services are
+                            confidential and stigma-free.</p>
+                        <a href="#get-help" class="service-link" aria-label="Learn more about Support Services">Get
+                            support <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-bullhorn" aria-hidden="true"></i></div>
+                        <h3>Advocacy &amp; Policy</h3>
+                        <p>We run anti-stigma campaigns and engage directly with local authorities and policymakers to
+                            advance protections for all community members. Through evidence-based dialogue, we push for
+                            systemic change in Rwanda.</p>
+                        <a href="#" class="service-link" aria-label="Learn more about Advocacy and Policy">Learn more <i
+                                class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. IMPACT & STORIES -->
+        <section id="impact">
+            <div class="container">
+                <span class="section-label">Impact &amp; Stories</span>
+                <h2 class="section-title">Evidence-Based Change</h2>
+                <div class="impact-grid">
+                    <div>
+                        <p style="color:var(--gray-600);margin-bottom:2rem;line-height:1.7">Our programmes deliver
+                            measurable outcomes. Here's what the data shows about the people we support across Rwanda.
+                        </p>
+                        <div class="metrics-stack">
+                            <div class="metric-item">
+                                <div class="metric-label"><span>Felt able to claim rights after
+                                        workshop</span><span>84%</span></div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="84"></div>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label"><span>Reported reduced experience of
+                                        stigma</span><span>76%</span></div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="76"></div>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label"><span>Successfully referred to legal
+                                        support</span><span>91%</span></div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="91"></div>
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label"><span>Would recommend HRI to others</span><span>97%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="97"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="impact-dl">
+                            <a href="#" class="btn btn-primary" style="margin-top:1.5rem"><i
+                                    class="fas fa-file-pdf"></i> Download Impact Report (PDF)</a>
+                        </div>
+                    </div>
+                    <div class="stories-col">
+                        <div class="story-card">
+                            <p class="story-text">"HRI gave me back my voice. After facing discrimination because of my
+                                sexual orientation, I didn't know where to turn. Their team listened without judgment
+                                and helped me understand my rights. I finally felt seen."</p>
+                            <div class="story-author">
+                                <div class="story-avatar" aria-hidden="true">🧑</div>
+                                <div>
+                                    <p class="story-name">A.K. (name withheld for privacy)</p>
+                                    <p class="story-meta">Workshop participant — Kigali, Rwanda</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="story-card">
+                            <p class="story-text">"I was afraid to speak up about what happened to me. HRI's support
+                                services changed that. They walked with me through the whole process — from counselling
+                                to connecting me with legal help. I am no longer alone."</p>
+                            <div class="story-author">
+                                <div class="story-avatar" aria-hidden="true">👩</div>
+                                <div>
+                                    <p class="story-name">M.U. (name withheld for privacy)</p>
+                                    <p class="story-meta">Support services recipient — Northern Province, Rwanda</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. EVENTS -->
+        <section id="events">
+            <div class="container">
+                <div class="events-section-header">
+                    <div>
+                        <span class="section-label">Events</span>
+                        <h2 class="section-title">Upcoming &amp; Past Events</h2>
+                    </div>
+                </div>
+                <div class="events-carousel">
+                    <div class="events-track" id="eventsTrack"></div>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" id="prevBtn" aria-label="Previous events"><i
+                                class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn" id="nextBtn" aria-label="Next events"><i
+                                class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <h3 class="past-events-title"><i class="fas fa-images"
+                        style="color:var(--coral);margin-right:.5rem"></i> Past Events Gallery</h3>
+                <div class="past-gallery">
+                    <div class="past-item">
+                        <div class="past-img" role="img" aria-label="March for Equality event photo placeholder">🏳️‍🌈
+                        </div>
+                        <div class="past-caption">
+                            <strong>March for Equality</strong>
+                            <p>Kigali, Rwanda — March 2025. Over 200 participants marched for human rights and dignity.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="past-item">
+                        <div class="past-img" role="img" aria-label="Policy Dialogue event photo placeholder">🏛️</div>
+                        <div class="past-caption">
+                            <strong>Policy Dialogue with Local Authorities</strong>
+                            <p>Kigali, Rwanda — November 2024. HRI engaged government officials on anti-stigma policy.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="past-item">
+                        <div class="past-img" role="img" aria-label="Community Rights Workshop photo placeholder">📚
+                        </div>
+                        <div class="past-caption">
+                            <strong>Community Rights Workshop</strong>
+                            <p>Eastern Province — July 2024. Legal literacy training reached 80+ participants.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. GET HELP -->
+        <section id="get-help">
+            <div class="container">
+                <span class="section-label">Confidential Support</span>
+                <h2 class="section-title">Get Help — You Are Not Alone</h2>
+                <div class="help-grid">
+                    <div class="help-info">
+                        <p class="section-subtitle" style="color:rgba(255,255,255,0.75);margin-bottom:1.75rem">If you
+                            are facing discrimination, stigma, or a human rights violation in Rwanda, HRI is here. All
+                            contact is strictly confidential.</p>
+                        <div class="helpline-badge">
+                            <div class="helpline-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div>
+                                <h4>Helpline (Call / WhatsApp)</h4>
+                                <p><strong style="color:#fff;font-size:1.1rem">+250 788 123 456</strong></p>
+                            </div>
+                        </div>
+                        <div class="helpline-badge">
+                            <div class="helpline-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h4>Email Us</h4>
+                                <p>help@hrirwanda.org</p>
+                            </div>
+                        </div>
+                        <div class="privacy-note">
+                            <i class="fas fa-lock"></i>
+                            <span><strong>Your privacy is protected.</strong> All information you share with HRI is
+                                strictly confidential. We will never share your details without your explicit
+                                consent.</span>
+                        </div>
+                        <div class="download-links">
+                            <p
+                                style="color:rgba(255,255,255,0.6);font-size:.85rem;margin-bottom:.25rem;font-weight:600">
+                                Know Your Rights — Download (Free)</p>
+                            <a href="#" class="dl-link"><i class="fas fa-file-pdf"></i> Uburenganzira bwawe
+                                (Kinyarwanda)</a>
+                            <a href="#" class="dl-link"><i class="fas fa-file-pdf"></i> Know Your Rights (English)</a>
+                            <a href="#" class="dl-link"><i class="fas fa-file-pdf"></i> Connaissez vos droits
+                                (Français)</a>
+                        </div>
+                    </div>
+                    <div class="help-form-wrap">
+                        <h3 style="color:var(--teal);margin-bottom:1.25rem">Send a Confidential Message</h3>
+                        <form id="helpForm" novalidate>
+                            <div class="form-group">
+                                <label for="helpName">Your Name <span
+                                        style="color:var(--gray-400);font-weight:400">(optional)</span></label>
+                                <input type="text" id="helpName" placeholder="You may remain anonymous">
+                            </div>
+                            <div class="form-group">
+                                <label for="helpContact">Preferred Contact Method</label>
+                                <select id="helpContact">
+                                    <option value="">Select…</option>
+                                    <option>Phone / WhatsApp</option>
+                                    <option>Email</option>
+                                    <option>In-person meeting</option>
+                                    <option>No follow-up needed</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="helpEmail">Email Address <span
+                                        style="color:var(--gray-400);font-weight:400">(if email
+                                        preferred)</span></label>
+                                <input type="email" id="helpEmail" placeholder="your@email.com">
+                                <p class="form-error" id="helpEmailError">Please enter a valid email address.</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="helpMsg">Your Message <span style="color:var(--coral)">*</span></label>
+                                <textarea id="helpMsg"
+                                    placeholder="Tell us what you're facing — we're here to listen…"></textarea>
+                                <p class="form-error" id="helpMsgError">Please write a short message so we can help.</p>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center"><i
+                                    class="fas fa-paper-plane"></i> Send Confidential Message</button>
+                            <div class="form-success" id="helpSuccess">✅ Your message has been received. We'll be in
+                                touch confidentially.</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. JOIN / SUPPORT -->
+        <section id="join">
+            <div class="container">
+                <div style="text-align:center">
+                    <span class="section-label">Get Involved</span>
+                    <h2 class="section-title">Join the Movement</h2>
+                    <p class="section-subtitle" style="margin:0 auto 0">Whether you volunteer, donate, or advocate —
+                        your contribution creates a more equal Rwanda.</p>
+                </div>
+                <div class="join-grid">
+                    <div class="join-card">
+                        <div class="join-icon">🙋</div>
+                        <h3>Volunteer with HRI</h3>
+                        <p>Share your skills and time to support our workshops, events, and community outreach across
+                            Rwanda.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Apply to Volunteer</a>
+                    </div>
+                    <div class="join-card">
+                        <div class="join-icon">💛</div>
+                        <h3>Donate</h3>
+                        <div class="donate-options">
+                            <button class="donate-opt active" onclick="selectDonate(this,'one-time')">One-time</button>
+                            <button class="donate-opt" onclick="selectDonate(this,'monthly')">Monthly</button>
+                        </div>
+                        <div class="payment-icons">
+                            <span class="payment-badge">📱 Mobile Money</span>
+                            <span class="payment-badge">💳 Card</span>
+                        </div>
+                        <a href="#" class="btn btn-primary btn-sm">Donate Now</a>
+                    </div>
+                    <div class="join-card">
+                        <div class="join-icon">🎓</div>
+                        <h3>Become a Community Advocate</h3>
+                        <p>Join our advocate training programme and learn how to champion human rights in your own
+                            community.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Sign Up for Training</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. PARTNERS -->
+        <section id="partners">
+            <div class="container">
+                <div style="text-align:center">
+                    <span class="section-label">Partners &amp; Supporters</span>
+                    <h2 class="section-title">Standing Together</h2>
+                    <p class="section-subtitle" style="margin:0 auto 2rem">Supported by local civil society
+                        organisations, international funders, and government allies committed to dignity and equality.
+                    </p>
+                </div>
+                <div class="partners-strip-wrap" aria-label="Partners and sponsors logo strip">
+                    <div class="partners-strip" id="partnersStrip">
+                        <div class="partner-logo">🌍 Global Rights Fund</div>
+                        <div class="partner-logo">🏛️ Rwanda Civil Society Platform</div>
+                        <div class="partner-logo">🤝 East Africa Rights Network</div>
+                        <div class="partner-logo">💼 International Dignity Fund</div>
+                        <div class="partner-logo">🎗️ Equality Alliance</div>
+                        <div class="partner-logo">🌱 Community Health Partners</div>
+                        <div class="partner-logo">📋 Policy Justice Rwanda</div>
+                        <div class="partner-logo">🔬 Research for Rights</div>
+                        <!-- duplicated for seamless loop -->
+                        <div class="partner-logo">🌍 Global Rights Fund</div>
+                        <div class="partner-logo">🏛️ Rwanda Civil Society Platform</div>
+                        <div class="partner-logo">🤝 East Africa Rights Network</div>
+                        <div class="partner-logo">💼 International Dignity Fund</div>
+                        <div class="partner-logo">🎗️ Equality Alliance</div>
+                        <div class="partner-logo">🌱 Community Health Partners</div>
+                        <div class="partner-logo">📋 Policy Justice Rwanda</div>
+                        <div class="partner-logo">🔬 Research for Rights</div>
+                    </div>
+                </div>
+                <p class="partners-note">Supported by local CSOs, international funders, and government allies. <a
+                        href="#contact" style="color:var(--teal);font-weight:600">Become a partner →</a></p>
+            </div>
+        </section>
+
+        <!-- 10. RESOURCES -->
+        <section id="resources">
+            <div class="container">
+                <span class="section-label">Resources &amp; Blog</span>
+                <h2 class="section-title">Learn &amp; Advocate</h2>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-img" style="background:var(--mint)" role="img"
+                            aria-label="Legal rights article">⚖️</div>
+                        <div class="resource-body">
+                            <span class="resource-tag">Legal Rights</span>
+                            <h3>Understanding Your Rights in Rwanda</h3>
+                            <p>A clear guide to Rwanda's legal framework and what protections exist for all citizens,
+                                including those facing discrimination based on sexual orientation.</p>
+                            <a href="#" class="resource-link">Read more <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-img" style="background:var(--sand)" role="img" aria-label="Stigma article">
+                            💚</div>
+                        <div class="resource-body">
+                            <span class="resource-tag">Mental Health</span>
+                            <h3>Overcoming Stigma: A Community Guide</h3>
+                            <p>Practical advice and community wisdom for those dealing with stigma in Rwanda — from
+                                mental health tips to connecting with peer support networks.</p>
+                            <a href="#" class="resource-link">Read more <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-img" style="background:#f0e8f8" role="img"
+                            aria-label="Law and identity article">🏳️‍🌈</div>
+                        <div class="resource-body">
+                            <span class="resource-tag">Policy</span>
+                            <h3>Sexual Orientation &amp; the Law</h3>
+                            <p>An analysis of how current law affects LGBTQ+ individuals in Rwanda, and what HRI is
+                                doing to advocate for greater recognition and protection.</p>
+                            <a href="#" class="resource-link">Read more <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. CONTACT -->
+        <section id="contact">
+            <div class="container">
+                <span class="section-label">Get In Touch</span>
+                <h2 class="section-title">Contact HRI Rwanda</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h4>Address</h4>
+                                <p>Nyamirambo, Cyivugiza<br>Kigali, Rwanda</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:hrirwanda@gmail.com">hrirwanda@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <h4>Phone / WhatsApp</h4>
+                                <a href="tel:+250784082845">+250 784 082 845</a>
+                            </div>
+                        </div>
+                        <div class="map-placeholder" role="img"
+                            aria-label="Map placeholder showing Kigali, Rwanda location">
+                            🗺️
+                            <p>Kigali, Rwanda</p>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form-wrap">
+                        <h3>Send Us a Message</h3>
+                        <form id="contactForm" novalidate>
+                            <div class="form-group">
+                                <label for="contactName">Full Name <span style="color:var(--coral)">*</span></label>
+                                <input type="text" id="contactName" placeholder="Your name">
+                                <p class="form-error" id="contactNameError">Please enter your name.</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Email Address <span
+                                        style="color:var(--coral)">*</span></label>
+                                <input type="email" id="contactEmail" placeholder="your@email.com">
+                                <p class="form-error" id="contactEmailError">Please enter a valid email address.</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactMsg">Message <span style="color:var(--coral)">*</span></label>
+                                <textarea id="contactMsg" placeholder="How can we help?"></textarea>
+                                <p class="form-error" id="contactMsgError">Please write a message.</p>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center"><i
+                                    class="fas fa-paper-plane"></i> Send Message</button>
+                            <div class="form-success" id="contactSuccess">✅ Message sent! We'll get back to you soon.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo" style="margin-bottom:.75rem">
+                        <div class="nav-logo-mark">HRI</div>
+                        <div class="nav-logo-text">
+                            Health &amp; Rights Rwanda
+                            <span>Dignity · Equality · Freedom</span>
+                        </div>
+                    </div>
+                    <p>A Rwandan civil society organisation advocating for human rights, sexual orientation equality,
+                        and stigma reduction — empowering communities across Rwanda.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#home">Home</a>
+                        <a href="#about">About Us</a>
+                        <a href="#what-we-do">What We Do</a>
+                        <a href="#impact">Impact</a>
+                        <a href="#events">Events</a>
+                        <a href="#resources">Resources</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <div class="footer-links">
+                        <a href="#get-help">Get Help (Confidential)</a>
+                        <a href="#join">Volunteer</a>
+                        <a href="#join">Donate</a>
+                        <a href="#partners">Partners</a>
+                        <a href="#contact">Contact</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Stay Connected</h4>
+                    <p style="font-size:.85rem;margin-bottom:.5rem">Get updates on events and advocacy from HRI Rwanda.
+                    </p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="your@email.com" aria-label="Email address for newsletter">
+                        <button type="button">Subscribe</button>
+                    </div>
+                    <div class="social-links" style="margin-top:1rem">
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Health and Rights Rwanda (HRI). All rights reserved.</p>
+                <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Safeguarding Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================== JAVASCRIPT ===================== -->
+    <script>
+        // ===== HAMBURGER MENU =====
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            const open = navLinks.classList.toggle('open');
+            hamburger.classList.toggle('open', open);
+            hamburger.setAttribute('aria-expanded', open);
+        });
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // ===== COUNTER ANIMATION =====
+        const counters = document.querySelectorAll('.stat-number');
+        let counted = false;
+        function animateCounters() {
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                const suffix = counter.dataset.suffix || '';
+                let current = 0;
+                const increment = target / 60;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current) + suffix;
+                }, 25);
+            });
+        }
+        const snapSection = document.getElementById('impact-snap');
+        const snapObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !counted) {
+                counted = true;
+                animateCounters();
+            }
+        }, { threshold: 0.3 });
+        snapObserver.observe(snapSection);
+
+        // ===== PROGRESS BARS =====
+        const bars = document.querySelectorAll('.progress-fill');
+        const barObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    bar.style.width = bar.dataset.width + '%';
+                    barObserver.unobserve(bar);
+                }
+            });
+        }, { threshold: 0.5 });
+        bars.forEach(b => barObserver.observe(b));
+
+        // ===== EVENTS CAROUSEL =====
+        const eventsData = [
+            {
+                day: '18', month: 'Jul', title: 'Rights Awareness Workshop',
+                location: 'Kigali Community Centre, Rwanda',
+                desc: 'A half-day legal literacy workshop for adults. Learn how to identify and report human rights violations.',
+                rsvp: true
+            },
+            {
+                day: '02', month: 'Aug', title: 'Anti-Stigma Campaign Launch',
+                location: 'Musanze District, Rwanda',
+                desc: 'Join HRI as we launch our new anti-stigma campaign targeting communities across the Northern Province.',
+                rsvp: true
+            },
+            {
+                day: '15', month: 'Sep', title: 'Policy Dialogue Forum',
+                location: 'Kigali Serena Conference Centre',
+                desc: 'HRI convenes civil society, government officials, and community leaders for structured policy dialogue on equality.',
+                rsvp: true
+            },
+            {
+                day: '01', month: 'Nov', title: 'Community Advocate Training',
+                location: 'Southern Province, Rwanda',
+                desc: 'Become a certified HRI Community Advocate. 2-day residential training covering rights, counselling, and reporting.',
+                rsvp: true
+            }
+        ];
+        let eventIndex = 0;
+        const track = document.getElementById('eventsTrack');
+        function renderEvents() {
+            const mobile = window.innerWidth < 768;
+            const show = mobile ? 1 : 2;
+            track.innerHTML = '';
+            for (let i = 0; i < show; i++) {
+                const e = eventsData[(eventIndex + i) % eventsData.length];
+                track.innerHTML += `
+      <div class="event-card">
+        <div class="event-header">
+          <div class="event-date-badge"><div class="day">${e.day}</div><div class="month">${e.month}</div></div>
+          <div>
+            <p class="event-title">${e.title}</p>
+            <p class="event-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> ${e.location}</p>
+          </div>
+        </div>
+        <div class="event-body">
+          <p>${e.desc}</p>
+          <a href="#" class="btn btn-outline btn-sm">RSVP Now</a>
+        </div>
+      </div>`;
+            }
+        }
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            eventIndex = (eventIndex + 1) % eventsData.length;
+            renderEvents();
+        });
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            eventIndex = (eventIndex - 1 + eventsData.length) % eventsData.length;
+            renderEvents();
+        });
+        renderEvents();
+        window.addEventListener('resize', renderEvents);
+
+        // ===== DONATE OPTIONS =====
+        function selectDonate(el, type) {
+            document.querySelectorAll('.donate-opt').forEach(o => o.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        // ===== FORM VALIDATION: HELP =====
+        function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+        document.getElementById('helpForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let valid = true;
+            const email = document.getElementById('helpEmail').value.trim();
+            const msg = document.getElementById('helpMsg').value.trim();
+            const contact = document.getElementById('helpContact').value;
+            document.getElementById('helpEmailError').style.display = 'none';
+            document.getElementById('helpMsgError').style.display = 'none';
+            if (contact === 'Email' && email && !isEmail(email)) {
+                document.getElementById('helpEmailError').style.display = 'block';
+                valid = false;
+            }
+            if (!msg) {
+                document.getElementById('helpMsgError').style.display = 'block';
+                valid = false;
+            }
+            if (valid) {
+                this.reset();
+                document.getElementById('helpSuccess').style.display = 'block';
+                setTimeout(() => document.getElementById('helpSuccess').style.display = 'none', 5000);
+            }
+        });
+
+        // ===== FORM VALIDATION: CONTACT =====
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let valid = true;
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const msg = document.getElementById('contactMsg').value.trim();
+            ['contactNameError', 'contactEmailError', 'contactMsgError'].forEach(id => document.getElementById(id).style.display = 'none');
+            if (!name) { document.getElementById('contactNameError').style.display = 'block'; valid = false; }
+            if (!isEmail(email)) { document.getElementById('contactEmailError').style.display = 'block'; valid = false; }
+            if (!msg) { document.getElementById('contactMsgError').style.display = 'block'; valid = false; }
+            if (valid) {
+                this.reset();
+                document.getElementById('contactSuccess').style.display = 'block';
+                setTimeout(() => document.getElementById('contactSuccess').style.display = 'none', 5000);
+            }
+        });
+
+        // ===== ACTIVE NAV LINK =====
+        const sections = document.querySelectorAll('section[id]');
+        const navAs = document.querySelectorAll('.nav-links a[href^="#"]');
+        const navObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navAs.forEach(a => {
+                        a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+                    });
+                }
+            });
+        }, { threshold: 0.4 });
+        sections.forEach(s => navObserver.observe(s));
+
+        // ===== CARD ENTRY ANIMATIONS =====
+        const fadeEls = document.querySelectorAll('.service-card, .join-card, .resource-card, .event-card, .past-item');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transition = `opacity .5s ease ${i * 0.08}s, transform .5s ease ${i * 0.08}s`;
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        fadeEls.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            fadeObserver.observe(el);
+        });
+    </script>
+</body>
+
+</html>
