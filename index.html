@@ -44,6 +44,7 @@
         }
 
         /* ===================== ANIMATIONS ===================== */
+        
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -81,6 +82,33 @@
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-5px); }
+        }
+        @keyframes continuousBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes bounceDown {
+            0% { transform: translateY(-20px); opacity: 1; }
+            100% { transform: translateY(10px); opacity: 0; }
+        }
+        @keyframes sectionFold {
+            from { opacity: 0; transform: rotateX(90deg); transform-origin: top; }
+            to { opacity: 1; transform: rotateX(0deg); transform-origin: top; }
+        }
+        @keyframes colorShift {
+            0% { background: var(--blue); color: #fff; }
+            25% { background: var(--purple); color: #fff; }
+            50% { background: var(--teal); color: #fff; }
+            75% { background: var(--coral); color: #fff; }
+            100% { background: var(--blue); color: #fff; }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 140, 0, 0.3), inset 0 0 10px rgba(255, 140, 0, 0.1); }
+            50% { box-shadow: 0 0 30px rgba(255, 140, 0, 0.6), inset 0 0 20px rgba(255, 140, 0, 0.2); }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         /* ===================== RESET & BASE ===================== */
@@ -305,20 +333,16 @@
             flex-shrink: 0;
         }
 
-        .nav-logo-mark {
-            width: 40px;
-            height: 40px;
-            background: var(--coral);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: #fff;
-            font-family: 'Poppins', sans-serif;
-            animation: float 2s ease-in-out infinite;
-        }
+        /* Replace .nav-logo-mark with this */
+.nav-logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: var(--coral); /* fallback if image has transparency */
+    animation: float 2s ease-in-out infinite;
+}
+        
 
         .nav-logo-text {
             font-family: 'Poppins', sans-serif;
@@ -470,6 +494,7 @@
             max-width: 520px;
             margin-bottom: 2.25rem;
             line-height: 1.7;
+            animation: slideUp 0.8s ease-out 0.3s both;
         }
 
         .hero-actions {
@@ -490,11 +515,29 @@
             padding: 1.5rem;
             box-shadow: var(--shadow-md);
             transition: var(--transition);
+            border-left: 4px solid var(--coral);
+            animation: continuousBounce 3s ease-in-out infinite;
+        }
+
+        .hero-card:nth-child(2) {
+            border-left-color: var(--blue);
+            animation-delay: 0.2s;
+        }
+
+        .hero-card:nth-child(3) {
+            border-left-color: var(--purple);
+            animation-delay: 0.4s;
+        }
+
+        .hero-card:nth-child(4) {
+            border-left-color: var(--green);
+            animation-delay: 0.6s;
         }
 
         .hero-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
+            border-left-width: 6px;
         }
 
         .hero-card-icon {
@@ -575,13 +618,30 @@
         .stat-card {
             text-align: center;
             padding: 2rem 1rem;
+            animation: sectionFold 0.8s ease-out;
+            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08), rgba(0, 76, 255, 0.08));
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--coral);
+        }
+
+        .stat-card:nth-child(2) {
+            border-left-color: var(--blue);
+            animation-delay: 0.2s;
+        }
+
+        .stat-card:nth-child(3) {
+            border-left-color: var(--purple);
+            animation-delay: 0.4s;
         }
 
         .stat-number {
             font-family: 'Poppins', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
-            color: var(--teal);
+            background: linear-gradient(135deg, var(--coral), var(--teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: block;
             line-height: 1;
         }
@@ -601,6 +661,7 @@
             font-size: 2rem;
             margin-bottom: .75rem;
             display: block;
+            animation: continuousBounce 2.5s ease-in-out infinite;
         }
 
         /* ===================== ABOUT ===================== */
@@ -744,6 +805,15 @@
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .service-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .service-card:nth-child(3) {
+            animation-delay: 0.2s;
         }
 
         .service-card::before {
@@ -776,6 +846,7 @@
             font-size: 1.5rem;
             color: #fff;
             margin-bottom: 1.5rem;
+            animation: glow 2s ease-in-out infinite;
         }
 
         .service-card h3 {
@@ -951,6 +1022,11 @@
             overflow: hidden;
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .event-card:nth-child(2) {
+            animation-delay: 0.1s;
         }
 
         .event-card:hover {
@@ -974,6 +1050,7 @@
             text-align: center;
             min-width: 55px;
             flex-shrink: 0;
+            animation: glow 2s ease-in-out infinite;
         }
 
         .event-date-badge .day {
@@ -1056,6 +1133,15 @@
             border-radius: var(--radius);
             overflow: hidden;
             position: relative;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .past-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .past-item:nth-child(3) {
+            animation-delay: 0.2s;
         }
 
         .past-img {
@@ -1066,6 +1152,7 @@
             justify-content: center;
             font-size: 3rem;
             color: rgba(255, 255, 255, 0.3);
+            animation: continuousBounce 2s ease-in-out infinite;
         }
 
         .past-caption {
@@ -1289,6 +1376,15 @@
             border: 1.5px solid var(--gray-200);
             transition: var(--transition);
             text-align: center;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .join-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .join-card:nth-child(3) {
+            animation-delay: 0.2s;
         }
 
         .join-card:hover {
@@ -1301,12 +1397,13 @@
             width: 64px;
             height: 64px;
             border-radius: 50%;
-            background: var(--mint);
+            background: linear-gradient(135deg, var(--mint), var(--green));
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.75rem;
             margin: 0 auto 1.25rem;
+            animation: continuousBounce 2s ease-in-out infinite;
         }
 
         .join-card h3 {
@@ -1435,6 +1532,15 @@
             overflow: hidden;
             border: 1.5px solid var(--gray-200);
             transition: var(--transition);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .resource-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .resource-card:nth-child(3) {
+            animation-delay: 0.2s;
         }
 
         .resource-card:hover {
@@ -1449,6 +1555,7 @@
             align-items: center;
             justify-content: center;
             font-size: 3.5rem;
+            animation: continuousBounce 2.5s ease-in-out infinite;
         }
 
         .resource-body {
@@ -1814,11 +1921,17 @@
                 height: 2px;
             }
             .stats-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: space-around;
+                align-items: stretch;
             }
             .stat-card {
-                padding: 1.5rem .75rem;
+                padding: 1.25rem;
+                flex: 1;
+                min-width: 100px;
+                max-width: 150px;
             }
             .stat-number {
                 font-size: clamp(2rem, 5vw, 3rem);
@@ -2144,6 +2257,7 @@
             .hero-sub {
                 font-size: clamp(.85rem, 2vw, .95rem);
                 margin-bottom: 1.5rem;
+                display: none;
             }
             .hero-actions {
                 gap: .75rem;
@@ -2545,95 +2659,97 @@
     </a>
 
     <!-- ===================== NAVIGATION ===================== -->
-    <nav class="nav" role="navigation" aria-label="Main navigation">
-        <div class="container nav-inner">
-            <a href="#home" class="nav-logo" aria-label="HRI Rwanda home">
-                <div class="nav-logo-mark">HRI</div>
-                <div class="nav-logo-text">
-                    Health &amp; Rights Rwanda organisation
-                    <span>Dignity · Equality · Freedom</span>
-                </div>
-            </a>
-            <div class="nav-links" id="navLinks">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#what-we-do">What We Do</a>
-                <a href="#impact">Impact</a>
-                <a href="#events">Events</a>
-                <a href="#get-help">Get Help</a>
-                <a href="#join">Join</a>
-                <a href="#partners">Partners</a>
-                <a href="#resources">Resources</a>
-                <a href="#contact">Contact</a>
-                <a href="#get-help" class="nav-cta">🔒 Confidential Help</a>
+<nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+        <a href="#home" class="nav-logo" aria-label="HRI Rwanda home">
+            <!-- Replace src with your actual logo path -->
+            <img src="images/logo.jpeg" alt="HRI Rwanda Logo" class="nav-logo-img">
+            <div class="nav-logo-text">
+                Health &amp; Rights Rwanda
+                <span>Dignity · Equality · Freedom</span>
             </div>
-            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"
-                aria-controls="navLinks">
-                <span></span><span></span><span></span>
-            </button>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#what-we-do">What We Do</a>
+            <a href="#impact">Impact</a>
+            <a href="#events">Events</a>
+            <a href="#get-help">Get Help</a>
+            <a href="#join">Join</a>
+            <a href="#partners">Partners</a>
+            <a href="#resources">Resources</a>
+            <a href="#contact">Contact</a>
+            <a href="#get-help" class="nav-cta">🔒 Confidential Help</a>
         </div>
-    </nav>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"
+            aria-controls="navLinks">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
 
-    <!-- ===================== MAIN ===================== -->
-    <main id="main">
-
-        <!-- 1. HERO -->
-        <section id="home">
-            <svg class="hero-wave" viewBox="0 0 1440 600" fill="none" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true">
-                <circle cx="200" cy="100" r="300" fill="#0A4C5C" />
-                <circle cx="1300" cy="500" r="250" fill="#F16A4B" />
-                <circle cx="800" cy="300" r="200" fill="#0A4C5C" />
-            </svg>
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <span class="hero-badge"><i class="fas fa-map-marker-alt"></i> Based in Kigali, Rwanda</span>
-                    <h1 class="hero-h1">Stand for <em>Rights, Dignity,</em> and Equality for All</h1>
-                    <p class="hero-sub">Health and Rights Rwanda – empowering adults to understand and claim their
-                        rights, free from stigma and discrimination. We stand with every community member facing human
-                        rights violations.</p>
-                    <div class="hero-actions">
-                        <a href="#get-help" class="btn btn-primary"><i class="fas fa-hands-helping"></i> Get Support</a>
-                        <a href="#join" class="btn btn-outline">Join Our Community</a>
-                    </div>
-                    <div class="hero-trust">
-                        <div class="hero-trust-avatars">
-                            <div class="avatar-circle" aria-hidden="true">🧑</div>
-                            <div class="avatar-circle" aria-hidden="true">👩</div>
-                            <div class="avatar-circle" aria-hidden="true">🧒</div>
-                            <div class="avatar-circle" aria-hidden="true">👨</div>
-                        </div>
-                        <div class="hero-trust-text">
-                            <strong>500+ community members</strong>
-                            supported across Rwanda
-                        </div>
-                    </div>
+<!-- 1. HERO -->
+<section id="home">
+    <svg class="hero-wave" viewBox="0 0 1440 600" fill="none" xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true">
+        <circle cx="200" cy="100" r="300" fill="#0A4C5C" />
+        <circle cx="1300" cy="500" r="250" fill="#F16A4B" />
+        <circle cx="800" cy="300" r="200" fill="#0A4C5C" />
+    </svg>
+    <div class="container hero-content">
+        <div class="hero-text">
+            <span class="hero-badge"><i class="fas fa-map-marker-alt"></i> Based in Kigali, Rwanda</span>
+            <h1 class="hero-h1 bounce">Stand for <em>Rights, Dignity,</em> and Equality for All</h1>
+            <!-- This paragraph is visible on desktop only -->
+            <p class="hero-sub hero-sub-desktop">Health and Rights Rwanda – empowering adults to understand and claim their
+                rights, free from stigma and discrimination. We stand with every community member facing human
+                rights violations.</p>
+            <div class="hero-actions">
+                <a href="#get-help" class="btn btn-primary"><i class="fas fa-hands-helping"></i> Get Support</a>
+                <a href="#join" class="btn btn-outline">Join Our Community</a>
+            </div>
+            <div class="hero-trust">
+                <div class="hero-trust-avatars">
+                    <div class="avatar-circle" aria-hidden="true">🧑</div>
+                    <div class="avatar-circle" aria-hidden="true">👩</div>
+                    <div class="avatar-circle" aria-hidden="true">🧒</div>
+                    <div class="avatar-circle" aria-hidden="true">👨</div>
                 </div>
-                <div class="hero-visual" aria-hidden="true">
-                    <div class="hero-card">
-                        <div class="hero-card-icon">⚖️</div>
-                        <h3>Rights Awareness</h3>
-                        <p>Legal literacy workshops for adults across Rwanda's communities</p>
-                    </div>
-                    <div class="hero-card">
-                        <div class="hero-card-icon">🛡️</div>
-                        <h3>Safe &amp; Confidential</h3>
-                        <p>Your privacy is our priority — stigma-free support always</p>
-                    </div>
-                    <div class="hero-card">
-                        <div class="hero-card-icon">🤝</div>
-                        <h3>Community-Led</h3>
-                        <p>Advocacy driven by and for the people we serve</p>
-                    </div>
-                    <div class="hero-card">
-                        <div class="hero-card-icon">🌍</div>
-                        <h3>Policy Impact</h3>
-                        <p>Engaging local authorities to create lasting change</p>
-                    </div>
+                <div class="hero-trust-text">
+                    <strong>500+ community members</strong>
+                    supported across Rwanda
                 </div>
             </div>
-        </section>
-
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+            <div class="hero-card">
+                <div class="hero-card-icon">⚖️</div>
+                <h3>Rights Awareness</h3>
+                <p>Legal literacy workshops for adults across Rwanda's communities</p>
+            </div>
+            <div class="hero-card">
+                <div class="hero-card-icon">🛡️</div>
+                <h3>Safe &amp; Confidential</h3>
+                <p>Your privacy is our priority — stigma-free support always</p>
+            </div>
+            <div class="hero-card">
+                <div class="hero-card-icon">🤝</div>
+                <h3>Community-Led</h3>
+                <p>Advocacy driven by and for the people we serve</p>
+            </div>
+            <div class="hero-card">
+                <div class="hero-card-icon">🌍</div>
+                <h3>Policy Impact</h3>
+                <p>Engaging local authorities to create lasting change</p>
+            </div>
+        </div>
+        <!-- This paragraph is visible on mobile only, placed after the cards -->
+        <p class="hero-sub hero-sub-mobile">Health and Rights Rwanda – empowering adults to understand and claim their
+            rights, free from stigma and discrimination. We stand with every community member facing human
+            rights violations.</p>
+    </div>
+</section>
         <!-- 2. IMPACT SNAPSHOT -->
         <section id="impact-snap" aria-label="Impact statistics">
             <div class="container">
@@ -2887,14 +3003,14 @@
                             <div class="helpline-icon"><i class="fas fa-phone-alt"></i></div>
                             <div>
                                 <h4>Helpline (Call / WhatsApp)</h4>
-                                <p><strong style="color:#fff;font-size:1.1rem">+250 788 123 456</strong></p>
+                                <p><strong style="color:#fff;font-size:1.1rem">+250 784 082 845</strong></p>
                             </div>
                         </div>
                         <div class="helpline-badge">
                             <div class="helpline-icon"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <h4>Email Us</h4>
-                                <p>help@hrirwanda.org</p>
+                                <p>hrirwanda@gmail.com</p>
                             </div>
                         </div>
                         <div class="privacy-note">
