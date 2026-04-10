@@ -1481,6 +1481,19 @@
         .partners-strip-wrap {
             overflow: hidden;
             margin-top: 2.5rem;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media(max-width:768px) {
+            .partners-strip-wrap {
+                margin-top: 2rem;
+            }
+        }
+
+        @media(max-width:480px) {
+            .partners-strip-wrap {
+                margin-top: 1.5rem;
+            }
         }
 
         .partners-strip {
@@ -1488,6 +1501,34 @@
             gap: 2rem;
             animation: scroll-logos 22s linear infinite;
             width: max-content;
+        }
+
+        @media(max-width:1024px) {
+            .partners-strip {
+                gap: 1.5rem;
+                animation: scroll-logos 18s linear infinite;
+            }
+        }
+
+        @media(max-width:768px) {
+            .partners-strip {
+                gap: 1.2rem;
+                animation: scroll-logos 16s linear infinite;
+            }
+        }
+
+        @media(max-width:640px) {
+            .partners-strip {
+                gap: 0.8rem;
+                animation: scroll-logos 14s linear infinite;
+            }
+        }
+
+        @media(max-width:480px) {
+            .partners-strip {
+                gap: 0.6rem;
+                animation: scroll-logos 12s linear infinite;
+            }
         }
 
         .partners-strip:hover {
@@ -1510,6 +1551,7 @@
             text-align: center;
             flex-shrink: 0;
             overflow: hidden;
+            transition: var(--transition);
         }
 
         .partner-logo img {
@@ -1517,6 +1559,79 @@
             height: 100%;
             object-fit: contain;
             padding: 8px;
+            transition: var(--transition);
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        @media(max-width:1024px) {
+            .partner-logo {
+                min-width: 130px;
+                height: 65px;
+                padding: 0.85rem;
+                font-size: 0.75rem;
+            }
+
+            .partner-logo img {
+                padding: 6px;
+            }
+        }
+
+        @media(max-width:768px) {
+            .partner-logo {
+                min-width: 110px;
+                height: 55px;
+                padding: 0.75rem;
+                font-size: 0.7rem;
+                border: 1px solid var(--gray-200);
+            }
+
+            .partner-logo img {
+                padding: 5px;
+            }
+        }
+
+        @media(max-width:640px) {
+            .partner-logo {
+                min-width: 90px;
+                height: 50px;
+                padding: 0.6rem;
+                font-size: 0.65rem;
+            }
+
+            .partner-logo img {
+                padding: 4px;
+            }
+        }
+
+        @media(max-width:480px) {
+            .partner-logo {
+                min-width: 80px;
+                height: 45px;
+                padding: 0.5rem;
+                font-size: 0.6rem;
+                border: 0.75px solid var(--gray-200);
+            }
+
+            .partner-logo img {
+                padding: 3px;
+            }
+        }
+
+        @media(max-width:360px) {
+            .partner-logo {
+                min-width: 70px;
+                height: 40px;
+                padding: 0.4rem;
+                font-size: 0.55rem;
+            }
+
+            .partner-logo img {
+                padding: 2px;
+            }
         }
 
         @keyframes scroll-logos {
@@ -1547,6 +1662,21 @@
             margin-top: 2rem;
             font-size: .9rem;
             color: var(--gray-600);
+        }
+
+        @media(max-width:768px) {
+            .partners-note {
+                margin-top: 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media(max-width:480px) {
+            .partners-note {
+                margin-top: 1.25rem;
+                font-size: 0.8rem;
+                padding: 0 0.5rem;
+            }
         }
 
         /* ===================== RESOURCES ===================== */
@@ -2294,15 +2424,6 @@
                 font-size: .7rem;
                 padding: .25rem .6rem;
             }
-            .partner-logo {
-                min-width: 120px;
-                height: 60px;
-                font-size: .7rem;
-                padding: .75rem;
-            }
-            .partners-note {
-                font-size: .85rem;
-            }
         }
 
         @media(max-width:480px) {
@@ -2671,20 +2792,6 @@
             }
             .story-meta {
                 font-size: .7rem;
-            }
-            .partner-logo {
-                min-width: 100px;
-                height: 55px;
-                font-size: .65rem;
-                padding: 0.5rem;
-            }
-
-            .partner-logo img {
-                padding: 4px;
-            }
-            .partners-note {
-                font-size: .8rem;
-                margin-top: 1.5rem;
             }
             .privacy-note {
                 font-size: .75rem;
