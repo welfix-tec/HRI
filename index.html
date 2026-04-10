@@ -8,36 +8,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&family=DM+Serif+Display:ital@0;1&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         /* ===================== CSS VARIABLES ===================== */
         :root {
-            --red: #E40303;
-            --orange: #FF8C00;
-            --yellow: #FFED00;
-            --green: #008026;
-            --blue: #004CFF;
-            --purple: #750787;
-            --teal: var(--blue);
-            --teal-dark: #0033A0;
-            --teal-mid: #3366CC;
-            --coral: var(--orange);
-            --coral-dark: #CC6600;
-            --sand: #FFF8DC;
-            --mint: var(--green);
-            --mint-dark: #006600;
-            --body: #1E1E2A;
-            --bg: #FFFFFF;
+            --red: #8B3A3A;
+            --orange: #D4A574;
+            --yellow: #F4D4A8;
+            --green: #7B9E89;
+            --blue: #1A3A52;
+            --purple: #4A3A5C;
+            --teal: #1A3A52;
+            --teal-dark: #0F2233;
+            --teal-mid: #2D5A7B;
+            --coral: #D4A574;
+            --coral-dark: #B8845C;
+            --sand: #F5F1E8;
+            --mint: #7B9E89;
+            --mint-dark: #5A7A6A;
+            --body: #2D3E4E;
+            --bg: #FAFAF8;
             --white: #ffffff;
-            --gray-100: #f5f5f5;
-            --gray-200: #e8e8e8;
-            --gray-400: #a0a0a0;
-            --gray-600: #6b6b7b;
-            --shadow-sm: 0 2px 8px rgba(0, 76, 255, 0.08);
-            --shadow-md: 0 8px 32px rgba(0, 76, 255, 0.12);
-            --shadow-lg: 0 20px 60px rgba(0, 76, 255, 0.18);
+            --gray-100: #F0EBE5;
+            --gray-200: #E5DED5;
+            --gray-400: #B0A399;
+            --gray-600: #8B8173;
+            --shadow-sm: 0 2px 8px rgba(26, 58, 82, 0.08);
+            --shadow-md: 0 8px 32px rgba(26, 58, 82, 0.12);
+            --shadow-lg: 0 20px 60px rgba(26, 58, 82, 0.18);
             --radius: 16px;
             --radius-sm: 8px;
             --transition: all 0.25s ease;
@@ -128,7 +128,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Lato', sans-serif;
             color: var(--body);
             background: var(--bg);
             line-height: 1.6;
@@ -162,7 +162,7 @@
         h2,
         h3,
         h4 {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Playfair Display', serif;
             line-height: 1.2;
             font-weight: 700;
         }
@@ -186,7 +186,7 @@
 
         /* ===================== TYPOGRAPHY ===================== */
         .section-label {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: .75rem;
             font-weight: 600;
             letter-spacing: .15em;
@@ -230,7 +230,7 @@
             gap: .5rem;
             padding: .85rem 1.75rem;
             border-radius: 50px;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-weight: 600;
             font-size: clamp(.85rem, 2vw, .95rem);
             min-height: 48px;
@@ -335,17 +335,19 @@
 
         /* Replace .nav-logo-mark with this */
 .nav-logo-img {
-    width: 40px;
-    height: 40px;
+    width: 75px;
+    height: 75px;
     object-fit: contain;
     border-radius: 8px;
-    background: var(--coral); /* fallback if image has transparency */
-    animation: float 2s ease-in-out infinite;
+    background: var(--coral);
+    animation: logoZoom 0.6s ease-out, float 3s ease-in-out 0.6s infinite;
+    image-rendering: crisp-edges;
+    flex-shrink: 0;
 }
         
 
         .nav-logo-text {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
             color: #fff;
             font-size: 1.1rem;
@@ -430,13 +432,14 @@
             position: relative;
             overflow: hidden;
             padding: 0;
-            animation: fadeInUp 1s ease-out;
+            animation: fadeInUp 1s ease-out, heroBobble 4s ease-in-out infinite 1s;
         }
 
         .hero-wave {
             position: absolute;
             inset: 0;
             pointer-events: none;
+            animation: heroBobble 4s ease-in-out infinite;
         }
 
         .hero-wave svg {
@@ -510,7 +513,7 @@
         }
 
         .hero-card {
-            background: #fff;
+            background: linear-gradient(135deg, #FAFAF8 0%, #F5F1E8 100%);
             border-radius: var(--radius);
             padding: 1.5rem;
             box-shadow: var(--shadow-md);
@@ -635,7 +638,7 @@
         }
 
         .stat-number {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
             background: linear-gradient(135deg, var(--coral), var(--teal));
@@ -853,6 +856,7 @@
             font-size: 1.15rem;
             color: #fff;
             margin-bottom: .75rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .service-card p {
@@ -979,6 +983,7 @@
             font-weight: 600;
             font-size: .9rem;
             color: var(--teal);
+            font-family: 'Playfair Display', serif;
         }
 
         .story-meta {
@@ -1017,12 +1022,13 @@
         }
 
         .event-card {
-            background: #fff;
+            background: linear-gradient(135deg, #FAFAF8 0%, #F5F1E8 100%);
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
             animation: slideUp 0.6s ease-out;
+            border: 2px solid var(--coral);
         }
 
         .event-card:nth-child(2) {
@@ -1031,7 +1037,8 @@
 
         .event-card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--teal);
         }
 
         .event-header {
@@ -1054,7 +1061,7 @@
         }
 
         .event-date-badge .day {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             font-weight: 800;
             line-height: 1;
@@ -1241,6 +1248,7 @@
             color: #fff;
             font-size: 1rem;
             margin-bottom: .2rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .helpline-badge p {
@@ -1313,7 +1321,7 @@
             padding: .75rem 1rem;
             border: 1.5px solid var(--gray-200);
             border-radius: var(--radius-sm);
-            font-family: 'Inter', sans-serif;
+            font-family: 'Lato', sans-serif;
             font-size: 1rem;
             color: var(--body);
             transition: var(--transition);
@@ -1370,10 +1378,10 @@
         }
 
         .join-card {
-            background: #fff;
+            background: linear-gradient(135deg, #FAFAF8 0%, #F5F1E8 100%);
             border-radius: var(--radius);
             padding: 2rem;
-            border: 1.5px solid var(--gray-200);
+            border: 2px solid var(--coral);
             transition: var(--transition);
             text-align: center;
             animation: slideUp 0.6s ease-out;
@@ -1388,9 +1396,10 @@
         }
 
         .join-card:hover {
-            border-color: var(--coral);
+            border-color: var(--teal);
             transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, #F0EBE5 0%, #E5DED5 100%);
         }
 
         .join-icon {
@@ -1410,6 +1419,7 @@
             font-size: 1.1rem;
             color: var(--teal);
             margin-bottom: .6rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .join-card p {
@@ -1499,11 +1509,37 @@
             color: var(--gray-400);
             text-align: center;
             flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .partner-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
         }
 
         @keyframes scroll-logos {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+        }
+
+        @keyframes imageZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
+        }
+
+        @keyframes logoZoom {
+            0% { transform: scale(1.2) translateY(-10px); opacity: 0; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        @keyframes heroBobble {
+            0%, 100% { transform: translateY(0px); }
+            25% { transform: translateY(-8px); }
+            50% { transform: translateY(0px); }
+            75% { transform: translateY(-5px); }
         }
 
         .partners-note {
@@ -1527,10 +1563,10 @@
         }
 
         .resource-card {
-            background: #fff;
+            background: linear-gradient(135deg, #FAFAF8 0%, #F5F1E8 100%);
             border-radius: var(--radius);
             overflow: hidden;
-            border: 1.5px solid var(--gray-200);
+            border: 2px solid var(--coral);
             transition: var(--transition);
             animation: slideUp 0.6s ease-out;
         }
@@ -1544,18 +1580,43 @@
         }
 
         .resource-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
             border-color: var(--teal);
         }
 
+        .resource-card:hover .resource-img {
+            animation: imageZoom 0.4s ease-out forwards !important;
+        }
+
         .resource-img {
-            height: 180px;
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3.5rem;
             animation: continuousBounce 2.5s ease-in-out infinite;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            position: relative;
+            cursor: zoom-in;
+        }
+
+        .resource-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 58, 82, 0.15);
+            transition: opacity 0.3s ease;
+        }
+
+        .resource-card:hover .resource-img::after {
+            opacity: 0;
         }
 
         .resource-body {
@@ -1580,6 +1641,7 @@
             color: var(--teal);
             margin-bottom: .5rem;
             font-weight: 600;
+            font-family: 'Playfair Display', serif;
         }
 
         .resource-body p {
@@ -1648,6 +1710,7 @@
             font-size: .9rem;
             font-weight: 600;
             margin-bottom: .2rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .contact-item p,
@@ -1713,6 +1776,7 @@
             font-size: 1.15rem;
             color: var(--teal);
             margin-bottom: 1.5rem;
+            font-family: 'Playfair Display', serif;
         }
 
         /* ===================== FOOTER ===================== */
@@ -1741,6 +1805,7 @@
             font-size: .9rem;
             font-weight: 600;
             margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .footer-links {
@@ -1770,7 +1835,7 @@
             padding: .65rem 1rem;
             border-radius: var(--radius-sm);
             border: none;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Lato', sans-serif;
             font-size: .85rem;
         }
 
@@ -1874,8 +1939,12 @@
                 padding: clamp(2rem, 8vw, 3.5rem) 0;
             }
             .nav-inner {
-                height: 60px;
+                height: 65px;
                 gap: .5rem;
+            }
+            .nav-logo-img {
+                width: 50px;
+                height: 50px;
             }
             .nav-logo-text {
                 font-size: .9rem;
@@ -1883,6 +1952,7 @@
             .nav-logo-text span {
                 font-size: .55rem;
             }
+
             .nav-logo-mark {
                 width: 36px;
                 height: 36px;
@@ -1985,10 +2055,18 @@
             }
             .resource-card {
                 border-radius: var(--radius-sm);
+                margin-bottom: 1rem;
             }
             .resource-img {
-                height: 150px;
-                font-size: 3rem;
+                height: 160px;
+                font-size: 2.8rem;
+            }
+            .resource-body h3 {
+                font-size: 0.95rem;
+                margin-bottom: 0.5rem;
+            }
+            .resource-body p {
+                font-size: 0.85rem;
             }
             .footer-grid {
                 grid-template-columns: 1fr;
@@ -2228,17 +2306,23 @@
         }
 
         @media(max-width:480px) {
+            #home {
+                animation: fadeInUp 1s ease-out, heroBobble 3.5s ease-in-out infinite 0.8s;
+            }
+
+            .hero-wave {
+                animation: heroBobble 3.5s ease-in-out infinite;
+            }
+
             .container {
                 padding: 0 .875rem;
             }
             section {
                 padding: 1.5rem 0;
             }
-            .past-gallery {
-                grid-template-columns: 1fr;
-            }
-            .floating-help span.hide-sm {
-                display: none;
+            .nav-logo-img {
+                width: 45px;
+                height: 45px;
             }
             .nav-logo-text {
                 display: none;
@@ -2408,19 +2492,30 @@
                 font-size: .8rem;
             }
             .resource-img {
-                height: 120px;
-                font-size: 2.5rem;
+                height: 130px;
+                font-size: 2.2rem;
             }
             .resource-body {
-                padding: 1.25rem;
+                padding: 1rem;
             }
             .resource-tag {
                 font-size: .65rem;
                 padding: .2rem .5rem;
+                margin-bottom: .5rem;
             }
             .resource-body h3 {
-                font-size: .95rem;
-                margin-bottom: .4rem;
+                font-size: .9rem;
+                margin-bottom: .35rem;
+                line-height: 1.3;
+            }
+            .resource-body p {
+                font-size: .8rem;
+                line-height: 1.4;
+                margin-bottom: .75rem;
+            }
+            .resource-link {
+                font-size: .8rem;
+            }
             }
             .resource-body p {
                 font-size: .8rem;
@@ -2581,6 +2676,11 @@
                 min-width: 100px;
                 height: 55px;
                 font-size: .65rem;
+                padding: 0.5rem;
+            }
+
+            .partner-logo img {
+                padding: 4px;
             }
             .partners-note {
                 font-size: .8rem;
@@ -3124,23 +3224,23 @@
                 </div>
                 <div class="partners-strip-wrap" aria-label="Partners and sponsors logo strip">
                     <div class="partners-strip" id="partnersStrip">
-                        <div class="partner-logo">🌍 Global Rights Fund</div>
-                        <div class="partner-logo">🏛️ Rwanda Civil Society Platform</div>
-                        <div class="partner-logo">🤝 East Africa Rights Network</div>
-                        <div class="partner-logo">💼 International Dignity Fund</div>
-                        <div class="partner-logo">🎗️ Equality Alliance</div>
-                        <div class="partner-logo">🌱 Community Health Partners</div>
-                        <div class="partner-logo">📋 Policy Justice Rwanda</div>
-                        <div class="partner-logo">🔬 Research for Rights</div>
+                        <div class="partner-logo"><img src="images/HDI logo.png" alt="Global Rights Fund" title="HDI"></div>
+                        <div class="partner-logo"><img src="images/giz logo.jpg" alt="Rwanda Civil Society Platform" title="Wiceceka"></div>
+                        <div class="partner-logo"><img src="images/global logo.png" alt="East Africa Rights Network" title="GIZ"></div>
+                        <div class="partner-logo"><img src="images/Amahoro logo.png" alt="International Dignity Fund" title="Dream village"></div>
+                        <div class="partner-logo"><img src="images/dream village logo.png" alt="Equality Alliance" title="Equality Alliance"></div>
+                        <div class="partner-logo"><img src="images/partner6.png" alt="Community Health Partners" title="spectra Rwanda"></div>
+                        <div class="partner-logo"><img src="images/partner7.png" alt="Policy Justice Rwanda" title="Global fund Women"></div>
+                        <div class="partner-logo"><img src="images/partner8.png" alt="Research for Rights" title="Research for Rights"></div>
                         <!-- duplicated for seamless loop -->
-                        <div class="partner-logo">🌍 Global Rights Fund</div>
-                        <div class="partner-logo">🏛️ Rwanda Civil Society Platform</div>
-                        <div class="partner-logo">🤝 East Africa Rights Network</div>
-                        <div class="partner-logo">💼 International Dignity Fund</div>
-                        <div class="partner-logo">🎗️ Equality Alliance</div>
-                        <div class="partner-logo">🌱 Community Health Partners</div>
-                        <div class="partner-logo">📋 Policy Justice Rwanda</div>
-                        <div class="partner-logo">🔬 Research for Rights</div>
+                        <div class="partner-logo"><img src="images/HDI logo.png" alt="Global Rights Fund" title="Global Rights Fund"></div>
+                        <div class="partner-logo"><img src="images/giz logo.jpg" alt="Rwanda Civil Society Platform" title="Rwanda Civil Society Platform"></div>
+                        <div class="partner-logo"><img src="images/global logo.png" alt="East Africa Rights Network" title="East Africa Rights Network"></div>
+                        <div class="partner-logo"><img src="images/Amahoro logo.png" alt="International Dignity Fund" title="International Dignity Fund"></div>
+                        <div class="partner-logo"><img src="images/dream village logo.png" alt="Equality Alliance" title="Equality Alliance"></div>
+                        <div class="partner-logo"><img src="images/partner6.png" alt="Community Health Partners" title="Community Health Partners"></div>
+                        <div class="partner-logo"><img src="images/partner7.png" alt="Policy Justice Rwanda" title="Policy Justice Rwanda"></div>
+                        <div class="partner-logo"><img src="images/partner8.png" alt="Research for Rights" title="Research for Rights"></div>
                     </div>
                 </div>
                 <p class="partners-note">Supported by local CSOs, international funders, and government allies. <a
@@ -3155,35 +3255,29 @@
                 <h2 class="section-title">Learn &amp; Advocate</h2>
                 <div class="resources-grid">
                     <div class="resource-card">
-                        <div class="resource-img" style="background:var(--mint)" role="img"
-                            aria-label="Legal rights article">⚖️</div>
+                        <div class="resource-img" style="background-image: url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop'); background-size: cover; background-position: center;" role="img" aria-label="Legal rights article">⚖️</div>
                         <div class="resource-body">
                             <span class="resource-tag">Legal Rights</span>
                             <h3>Understanding Your Rights in Rwanda</h3>
-                            <p>A clear guide to Rwanda's legal framework and what protections exist for all citizens,
-                                including those facing discrimination based on sexual orientation.</p>
+                            <p>A clear guide to Rwanda's legal framework and what protections exist for all citizens, including those facing discrimination based on sexual orientation.</p>
                             <a href="#" class="resource-link">Read more <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="resource-card">
-                        <div class="resource-img" style="background:var(--sand)" role="img" aria-label="Stigma article">
-                            💚</div>
+                        <div class="resource-img" style="background-image: url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop'); background-size: cover; background-position: center;" role="img" aria-label="Stigma article">💚</div>
                         <div class="resource-body">
                             <span class="resource-tag">Mental Health</span>
                             <h3>Overcoming Stigma: A Community Guide</h3>
-                            <p>Practical advice and community wisdom for those dealing with stigma in Rwanda — from
-                                mental health tips to connecting with peer support networks.</p>
+                            <p>Practical advice and community wisdom for those dealing with stigma in Rwanda — from mental health tips to connecting with peer support networks.</p>
                             <a href="#" class="resource-link">Read more <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <div class="resource-card">
-                        <div class="resource-img" style="background:#f0e8f8" role="img"
-                            aria-label="Law and identity article">🏳️‍🌈</div>
+                        <div class="resource-img" style="background-image: url('https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=600&h=600&fit=crop'); background-size: cover; background-position: center;" role="img" aria-label="Law and identity article">🏳️‍🌈</div>
                         <div class="resource-body">
                             <span class="resource-tag">Policy</span>
                             <h3>Sexual Orientation &amp; the Law</h3>
-                            <p>An analysis of how current law affects LGBTQ+ individuals in Rwanda, and what HRI is
-                                doing to advocate for greater recognition and protection.</p>
+                            <p>An analysis of how current law affects LGBTQ+ individuals in Rwanda, and what HRI is doing to advocate for greater recognition and protection.</p>
                             <a href="#" class="resource-link">Read more <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
