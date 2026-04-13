@@ -607,24 +607,48 @@
 
         /* ===================== STATS / COUNTER ===================== */
         #impact-snap {
-            background: var(--mint);
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-mid) 100%);
             padding: 4rem 0;
             animation: slideInLeft 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #impact-snap::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+        }
+
+        #impact-snap .section-label {
+            color: var(--coral);
+        }
+
+        #impact-snap .section-title {
+            color: #fff;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
+            position: relative;
+            z-index: 2;
         }
 
         .stat-card {
             text-align: center;
             padding: 2rem 1rem;
             animation: sectionFold 0.8s ease-out;
-            background: linear-gradient(135deg, rgba(255, 140, 0, 0.08), rgba(0, 76, 255, 0.08));
+            background: rgba(255, 255, 255, 0.08);
             border-radius: var(--radius-sm);
-            border-left: 4px solid var(--coral);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
         }
 
         .stat-card:nth-child(2) {
@@ -641,7 +665,7 @@
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
-            background: linear-gradient(135deg, var(--coral), var(--teal));
+            background: linear-gradient(135deg, var(--coral), rgba(255, 255, 255, 0.9));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -655,7 +679,7 @@
 
         .stat-label {
             font-size: .9rem;
-            color: var(--gray-600);
+            color: rgba(255, 255, 255, 0.85);
             margin-top: .5rem;
             font-weight: 500;
         }
@@ -665,6 +689,7 @@
             margin-bottom: .75rem;
             display: block;
             animation: continuousBounce 2.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
         }
 
         /* ===================== ABOUT ===================== */
@@ -763,7 +788,7 @@
 
         /* ===================== WHAT WE DO ===================== */
         #what-we-do {
-            background: var(--teal);
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-mid) 100%);
             overflow: hidden;
             position: relative;
             animation: zoomIn 1s ease-out;
@@ -776,20 +801,27 @@
             right: -10%;
             width: 500px;
             height: 500px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.06);
             border-radius: 50%;
+            pointer-events: none;
         }
 
         #what-we-do .section-title {
             color: #fff;
+            position: relative;
+            z-index: 2;
         }
 
         #what-we-do .section-label {
-            color: var(--mint);
+            color: var(--coral);
+            position: relative;
+            z-index: 2;
         }
 
         #what-we-do .section-subtitle {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.85);
+            position: relative;
+            z-index: 2;
         }
 
         .services-grid {
@@ -797,18 +829,22 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
             margin-top: 2.5rem;
+            position: relative;
+            z-index: 2;
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.16);
             border-radius: var(--radius);
             padding: 2rem;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
             animation: slideUp 0.6s ease-out;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
         }
 
         .service-card:nth-child(2) {
@@ -829,13 +865,18 @@
         }
 
         .service-card:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-4px);
-            border-color: rgba(255, 140, 0, 0.4);
+            background: rgba(255, 255, 255, 0.14);
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
         }
 
         .service-card:hover::before {
             opacity: 1;
+        }
+
+        .service-card:active {
+            transform: translateY(-3px);
         }
 
         .service-icon {
@@ -850,6 +891,7 @@
             color: #fff;
             margin-bottom: 1.5rem;
             animation: glow 2s ease-in-out infinite;
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.3);
         }
 
         .service-card h3 {
@@ -857,11 +899,12 @@
             color: #fff;
             margin-bottom: .75rem;
             font-family: 'Playfair Display', serif;
+            font-weight: 700;
         }
 
         .service-card p {
             font-size: .9rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.85);
             line-height: 1.6;
         }
 
@@ -869,15 +912,30 @@
             display: inline-flex;
             align-items: center;
             gap: .4rem;
-            color: var(--coral);
+            color: #fff;
+            background: var(--coral);
             font-size: .85rem;
             font-weight: 600;
             margin-top: 1rem;
             transition: var(--transition);
+            padding: .65rem 1.25rem;
+            border-radius: 6px;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            user-select: none;
         }
 
         .service-link:hover {
             gap: .75rem;
+            background: #FFD699;
+            color: var(--teal);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.3);
+        }
+
+        .service-link:active {
+            transform: translateY(0);
         }
 
         /* ===================== IMPACT & STORIES ===================== */
@@ -1141,6 +1199,10 @@
             overflow: hidden;
             position: relative;
             animation: slideUp 0.6s ease-out;
+            cursor: pointer;
+            transition: var(--transition);
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .past-item:nth-child(2) {
@@ -1151,32 +1213,415 @@
             animation-delay: 0.2s;
         }
 
-        .past-img {
-            height: 200px;
+        .past-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .past-img-wrapper {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
             background: linear-gradient(135deg, var(--teal-dark), var(--teal-mid));
+        }
+
+        .past-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .past-item:hover .past-img {
+            transform: scale(1.08);
+        }
+
+        .past-overlay {
+            position: absolute;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.3);
-            animation: continuousBounce 2s ease-in-out infinite;
+            background: rgba(26, 58, 82, 0.85);
+            opacity: 0;
+            transition: var(--transition);
+            backdrop-filter: blur(2px);
+        }
+
+        .past-item:hover .past-overlay {
+            opacity: 1;
+        }
+
+        .gallery-btn {
+            background: var(--coral);
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .gallery-btn:hover {
+            background: #FFD699;
+            color: var(--teal);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 165, 116, 0.5);
         }
 
         .past-caption {
             background: #fff;
-            padding: .85rem 1rem;
+            padding: 1rem 1.25rem;
+            border-top: 3px solid var(--coral);
         }
 
         .past-caption p {
             font-size: .8rem;
             color: var(--gray-600);
+            margin: 0.5rem 0 0 0;
         }
 
         .past-caption strong {
             display: block;
-            font-size: .875rem;
+            font-size: .95rem;
             color: var(--teal);
-            margin-bottom: .2rem;
+            margin-bottom: .4rem;
+            font-weight: 700;
+        }
+
+        .gallery-trigger {
+            position: relative;
+        }
+
+        .gallery-trigger::after {
+            content: '';
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: linear-gradient(135deg, var(--coral) 0%, #FFD699 100%);
+            color: #fff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-trigger:hover::after {
+            opacity: 1;
+        }
+
+        /* ===================== GALLERY LIGHTBOX ===================== */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-out;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .gallery-modal.open {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .gallery-container {
+            background: #fff;
+            border-radius: var(--radius);
+            max-width: 900px;
+            width: 100%;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            animation: slideUp 0.3s ease-out;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gallery-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        .gallery-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .gallery-header {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-mid) 100%);
+            color: #fff;
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .gallery-header h3 {
+            margin: 0;
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .gallery-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 2rem;
+            gap: 1.5rem;
+        }
+
+        .gallery-main {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            border-radius: 8px;
+            min-height: 400px;
+            overflow: hidden;
+        }
+
+        .gallery-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            animation: zoomIn 0.3s ease-out;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            pointer-events: none;
+        }
+
+        .gallery-nav-btn {
+            background: rgba(212, 165, 116, 0.9);
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            pointer-events: all;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-nav-btn:hover {
+            background: var(--coral);
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(212, 165, 116, 0.4);
+        }
+
+        .gallery-nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        .gallery-thumbs {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumb:hover {
+            opacity: 0.85;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .thumb.active {
+            opacity: 1;
+            border-color: var(--coral);
+            box-shadow: 0 4px 16px rgba(212, 165, 116, 0.4);
+            transform: scale(1.05);
+        }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-footer {
+            background: linear-gradient(135deg, var(--sand) 0%, rgba(245, 241, 232, 0.8) 100%);
+            padding: 2rem;
+            border-top: 2px solid var(--coral);
+            text-align: center;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .gallery-counter {
+            font-weight: 700;
+            color: var(--coral);
+            margin: 0 0 1rem 0;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .gallery-description {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        .gallery-description strong {
+            color: var(--teal);
+            font-weight: 700;
+        }
+
+        @media(max-width:768px) {
+            .gallery-modal.open {
+                padding: 0;
+                align-items: flex-end;
+            }
+
+            .gallery-container {
+                border-radius: var(--radius) var(--radius) 0 0;
+                max-height: 95vh;
+            }
+
+            .gallery-close {
+                top: 1rem;
+                right: 1rem;
+                width: 44px;
+                height: 44px;
+                font-size: 1.5rem;
+            }
+
+            .gallery-header {
+                padding: 1rem 1.5rem;
+            }
+
+            .gallery-header h3 {
+                font-size: 1.2rem;
+            }
+
+            .gallery-content {
+                padding: 1.5rem;
+                gap: 1rem;
+            }
+
+            .gallery-main {
+                min-height: 300px;
+            }
+
+            .gallery-nav-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 1.2rem;
+            }
+
+            .thumb {
+                width: 70px;
+                height: 70px;
+            }
+
+            .gallery-footer {
+                padding: 1rem 1.5rem;
+            }
+
+            .gallery-counter {
+                font-size: 0.85rem;
+            }
+
+            .gallery-description {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media(max-width:480px) {
+            .gallery-container {
+                max-height: 95vh;
+            }
+
+            .gallery-content {
+                padding: 1rem;
+                gap: 0.75rem;
+            }
+
+            .gallery-main {
+                min-height: 250px;
+            }
+
+            .gallery-nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .thumb {
+                width: 60px;
+                height: 60px;
+            }
+
+            .gallery-thumbs {
+                gap: 0.5rem;
+            }
+
+            .gallery-footer {
+                padding: 0.75rem 1rem;
+            }
+
+            .gallery-counter {
+                font-size: 0.8rem;
+            }
+
+            .gallery-description {
+                font-size: 0.85rem;
+            }
         }
 
         /* ===================== GET HELP ===================== */
@@ -1473,15 +1918,42 @@
 
         /* ===================== PARTNERS ===================== */
         #partners {
-            background: var(--mint);
+            background: linear-gradient(135deg, var(--green) 0%, var(--mint) 100%);
             overflow: hidden;
             animation: slideInLeft 1s ease-out;
+            position: relative;
+        }
+
+        #partners::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        #partners .section-label {
+            color: var(--coral);
+        }
+
+        #partners .section-title {
+            color: #fff;
+        }
+
+        #partners .section-subtitle {
+            color: rgba(255, 255, 255, 0.85);
         }
 
         .partners-strip-wrap {
             overflow: hidden;
             margin-top: 2.5rem;
             -webkit-overflow-scrolling: touch;
+            position: relative;
+            z-index: 2;
         }
 
         @media(max-width:768px) {
@@ -1543,7 +2015,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1.5px solid var(--gray-200);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
             padding: 1rem;
             font-size: .8rem;
             font-weight: 600;
@@ -1552,6 +2024,7 @@
             flex-shrink: 0;
             overflow: hidden;
             transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .partner-logo img {
@@ -1564,7 +2037,8 @@
 
         .partner-logo:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
         @media(max-width:1024px) {
@@ -1661,7 +2135,263 @@
             text-align: center;
             margin-top: 2rem;
             font-size: .9rem;
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===================== MODAL ===================== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-out;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .modal.open {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 2rem;
+        }
+
+        .modal-content {
+            background: #fff;
+            border-radius: var(--radius);
+            max-width: 700px;
+            width: 100%;
+            box-shadow: var(--shadow-lg);
+            animation: slideUp 0.3s ease-out;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-mid) 100%);
+            color: #fff;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: var(--radius) var(--radius) 0 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .modal-header h2 {
+            font-size: clamp(1.2rem, 4vw, 1.75rem);
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+        }
+
+        .modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+            color: var(--body);
+            line-height: 1.8;
+        }
+
+        .modal-body h3 {
+            color: var(--teal);
+            font-size: 1.35rem;
+            margin: 1.5rem 0 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .modal-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .modal-body p {
+            margin-bottom: 1rem;
             color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        .modal-body ul {
+            margin: 1rem 0 1rem 1.5rem;
+            color: var(--gray-600);
+        }
+
+        .modal-body li {
+            margin-bottom: 0.75rem;
+            list-style: disc;
+        }
+
+        .modal-body strong {
+            color: var(--teal);
+            font-weight: 600;
+        }
+
+        .modal-footer {
+            padding: 1.5rem 2rem;
+            background: var(--sand);
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            gap: 1rem;
+            border-radius: 0 0 var(--radius) var(--radius);
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media(max-width:768px) {
+            .modal.open {
+                padding: 0;
+                padding-top: 1rem;
+            }
+
+            .modal-header {
+                padding: 1.5rem;
+            }
+
+            .modal-header h2 {
+                font-size: clamp(1rem, 4vw, 1.5rem);
+            }
+
+            .modal-close {
+                width: 40px;
+                height: 40px;
+                font-size: 1.25rem;
+            }
+
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .modal-body h3 {
+                font-size: 1.15rem;
+                margin: 1.25rem 0 0.75rem;
+            }
+
+            .modal-body p {
+                font-size: 0.9rem;
+            }
+
+            .modal-footer {
+                padding: 1rem 1.5rem;
+                gap: 0.75rem;
+                flex-wrap: wrap;
+            }
+
+            .modal-content {
+                max-height: 90vh;
+                border-radius: var(--radius-sm);
+            }
+        }
+
+        @media(max-width:480px) {
+            .modal.open {
+                padding: 0;
+                align-items: flex-end;
+            }
+
+            .modal-content {
+                max-height: 95vh;
+                border-radius: var(--radius) var(--radius) 0 0;
+                width: 100%;
+            }
+
+            .modal-header {
+                padding: 1.25rem;
+                border-radius: var(--radius) var(--radius) 0 0;
+            }
+
+            .modal-header h2 {
+                font-size: clamp(0.95rem, 4vw, 1.3rem);
+            }
+
+            .modal-close {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
+
+            .modal-body {
+                padding: 1.25rem;
+            }
+
+            .modal-body h3 {
+                font-size: 1rem;
+                margin: 1rem 0 0.6rem;
+            }
+
+            .modal-body p {
+                font-size: 0.85rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .modal-body ul {
+                margin: 0.75rem 0 0.75rem 1.25rem;
+            }
+
+            .modal-body li {
+                margin-bottom: 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .modal-footer {
+                padding: 0.85rem 1.25rem;
+                gap: 0.5rem;
+            }
+
+            .btn-primary,
+            .btn-outline {
+                font-size: 0.8rem;
+                padding: 0.65rem 1rem;
+            }
+        }
+
+        @media(max-width:360px) {
+            .modal-header {
+                padding: 1rem;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+
+            .modal-footer {
+                padding: 0.75rem 1rem;
+                flex-direction: column;
+            }
+
+            .modal-footer .btn {
+                width: 100%;
+            }
         }
 
         @media(max-width:768px) {
@@ -2824,7 +3554,7 @@
                 font-size: .8rem;
                 margin-top: .6rem;
             }
-        }
+        
 
         @media(max-width:360px) {
             .btn {
@@ -2988,8 +3718,9 @@
         <section id="about">
             <div class="container">
                 <div class="about-grid">
-                    <div class="about-visual" aria-hidden="true">
-                        <div class="about-img-main">🌿</div>
+                    <div class="about-visual">
+                        <div class="about-img-main" style="background-image: url('images/logo.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat;" role="img" aria-label="HRI Rwanda Logo">
+                        </div>
                         <div class="about-badge-float">
                             <div class="num">2019</div>
                             <p>Founded in Rwanda</p>
@@ -3045,7 +3776,7 @@
                         <p>We conduct workshops and legal literacy sessions for adults across Rwanda — helping people
                             understand their rights, know the law, and speak up against violations. Special focus is
                             given to communities facing stigma based on sexual orientation.</p>
-                        <a href="#" class="service-link" aria-label="Learn more about Rights Awareness">Learn more <i
+                        <a href="#" class="service-link modal-trigger" data-modal="rights-awareness" aria-label="Learn more about Rights Awareness">Learn more <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="service-card">
@@ -3054,7 +3785,7 @@
                         <p>Our support team offers counselling, safe spaces, and referral pathways for individuals who
                             have experienced human rights violations, discrimination, or stigma. All services are
                             confidential and stigma-free.</p>
-                        <a href="#get-help" class="service-link" aria-label="Learn more about Support Services">Get
+                        <a href="#" class="service-link modal-trigger" data-modal="support-services" aria-label="Learn more about Support Services">Get
                             support <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="service-card">
@@ -3063,12 +3794,129 @@
                         <p>We run anti-stigma campaigns and engage directly with local authorities and policymakers to
                             advance protections for all community members. Through evidence-based dialogue, we push for
                             systemic change in Rwanda.</p>
-                        <a href="#" class="service-link" aria-label="Learn more about Advocacy and Policy">Learn more <i
+                        <a href="#" class="service-link modal-trigger" data-modal="advocacy-policy" aria-label="Learn more about Advocacy and Policy">Learn more <i
                                 class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- MODALS FOR WHAT WE DO SECTION -->
+        <!-- Modal 1: Rights Awareness -->
+        <div id="rights-awareness-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Rights Awareness</h2>
+                    <button class="modal-close" onclick="closeModal('rights-awareness')" aria-label="Close modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h3>Legal Literacy Workshops for Everyone</h3>
+                    <p>HRI conducts comprehensive legal literacy workshops designed to empower adults across Rwanda with knowledge of their fundamental rights and the laws that protect them.</p>
+                    
+                    <h3>What We Teach</h3>
+                    <ul>
+                        <li><strong>Rights Fundamentals:</strong> Understanding your constitutional and human rights</li>
+                        <li><strong>Anti-Discrimination Laws:</strong> Protections against discrimination based on various grounds</li>
+                        <li><strong>Reporting Mechanisms:</strong> How to report violations to appropriate authorities</li>
+                        <li><strong>Legal Resources:</strong> Access to legal aid and support services</li>
+                        <li><strong>Advocacy Skills:</strong> How to speak up and claim your rights</li>
+                    </ul>
+
+                    <h3>Our Approach</h3>
+                    <p>We focus on interactive, community-based learning using local languages (Kinyarwanda, French, English). Our workshops are designed to be accessible to all education levels and are FREE for participants.</p>
+
+                    <h3>Special Focus</h3>
+                    <p>We prioritize reaching communities facing stigma and discrimination, including those based on sexual orientation and gender identity. Every participant is guaranteed a safe, stigma-free learning environment.</p>
+
+                    <h3>Recent Impact</h3>
+                    <p>In 2024, we reached over 300 adults across Rwanda through our rights awareness initiatives, with 84% reporting increased confidence in claiming their rights after participation.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#get-help" class="btn btn-primary" onclick="closeModal('rights-awareness')"><i class="fas fa-phone-alt"></i> Get Support</a>
+                    <button class="btn btn-outline" onclick="closeModal('rights-awareness')">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal 2: Support Services -->
+        <div id="support-services-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Support Services</h2>
+                    <button class="modal-close" onclick="closeModal('support-services')" aria-label="Close modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h3>Confidential &amp; Stigma-Free Support</h3>
+                    <p>HRI provides comprehensive support services for individuals who have experienced human rights violations, discrimination, or stigma. All services are strictly confidential and delivered without judgment.</p>
+                    
+                    <h3>Services We Offer</h3>
+                    <ul>
+                        <li><strong>Counselling:</strong> One-on-one emotional support from trained counsellors</li>
+                        <li><strong>Safe Spaces:</strong> Group support sessions in confidential settings</li>
+                        <li><strong>Legal Referrals:</strong> Connection to legal professionals and advocacy networks</li>
+                        <li><strong>Medical Referrals:</strong> Support in accessing healthcare services</li>
+                        <li><strong>Crisis Support:</strong> Immediate assistance for those in acute distress</li>
+                        <li><strong>Follow-up Support:</strong> Long-term accompaniment through recovery</li>
+                    </ul>
+
+                    <h3>How We Work</h3>
+                    <p>Our support team includes trained volunteers and professional counsellors. We use a person-centered approach, respecting your autonomy and cultural background. You decide the pace and nature of support you receive.</p>
+
+                    <h3>Confidentiality Guarantee</h3>
+                    <p><strong>Your privacy is sacred to us.</strong> All information shared is protected. We will never share your details, experiences, or identity without your explicit written consent. The only exception is if there is immediate danger to life.</p>
+
+                    <h3>Access Support</h3>
+                    <p><strong>Phone/WhatsApp:</strong> +250 784 082 845 | <strong>Email:</strong> hrirwanda@gmail.com | <strong>In-person:</strong> By appointment at our Kigali office</p>
+
+                    <p><strong>No fees.</strong> All support services are provided free of charge. You do not need to prove anything — just reach out.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#get-help" class="btn btn-primary" onclick="closeModal('support-services')"><i class="fas fa-hands-helping"></i> Reach Out Now</a>
+                    <button class="btn btn-outline" onclick="closeModal('support-services')">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal 3: Advocacy & Policy -->
+        <div id="advocacy-policy-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Advocacy &amp; Policy</h2>
+                    <button class="modal-close" onclick="closeModal('advocacy-policy')" aria-label="Close modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <h3>Driving Systemic Change in Rwanda</h3>
+                    <p>HRI campaigns for policy changes and engages directly with government and community leaders to create lasting protections for all, especially those facing discrimination based on sexual orientation.</p>
+                    
+                    <h3>Our Advocacy Focus</h3>
+                    <ul>
+                        <li><strong>Anti-Stigma Campaigns:</strong> Community awareness initiatives to reduce discrimination</li>
+                        <li><strong>Policy Dialogue:</strong> Structured engagement with government officials and lawmakers</li>
+                        <li><strong>Evidence-Based Advocacy:</strong> Using research and data to support our recommendations</li>
+                        <li><strong>Community Leadership:</strong> Amplifying the voices of those directly affected</li>
+                        <li><strong>Capacity Building:</strong> Training community advocates to champion change</li>
+                    </ul>
+
+                    <h3>Recent Advocacy Wins</h3>
+                    <ul>
+                        <li>150+ policy dialogues held with local authorities (2023-2024)</li>
+                        <li>Anti-stigma campaigns reaching over 5,000 community members</li>
+                        <li>Engagement with district officials on inclusive local governance</li>
+                        <li>Training of 200+ community advocates</li>
+                    </ul>
+
+                    <h3>Our Strategy</h3>
+                    <p>We believe change happens when communities lead. Our advocacy is informed by lived experience of those facing violations. We work collaboratively with allies across civil society, government, and international partners.</p>
+
+                    <h3>How You Can Join</h3>
+                    <p>We invite individuals and organizations to partner with us in advancing human rights in Rwanda. Whether through volunteering, advocacy participation, or collaboration — your contribution matters.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#join" class="btn btn-primary" onclick="closeModal('advocacy-policy')"><i class="fas fa-handshake"></i> Join Our Work</a>
+                    <button class="btn btn-outline" onclick="closeModal('advocacy-policy')">Close</button>
+                </div>
+            </div>
+        </div>
 
         <!-- 5. IMPACT & STORIES -->
         <section id="impact">
@@ -3167,25 +4015,41 @@
                 <h3 class="past-events-title"><i class="fas fa-images"
                         style="color:var(--coral);margin-right:.5rem"></i> Past Events Gallery</h3>
                 <div class="past-gallery">
-                    <div class="past-item">
-                        <div class="past-img" role="img" aria-label="March for Equality event photo placeholder">🏳️‍🌈
+                    <!-- Event 1: March for Equality -->
+                    <div class="past-item gallery-trigger" data-gallery="equality" onclick="openGallery('equality')">
+                        <div class="past-img-wrapper">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.19.00 (2).jpeg" alt="March for Equality event" class="past-img">
+                            <div class="past-overlay">
+                                <button class="gallery-btn" title="View gallery"><i class="fas fa-images"></i> View Gallery</button>
+                            </div>
                         </div>
                         <div class="past-caption">
                             <strong>March for Equality</strong>
-                            <p>Kigali, Rwanda — March 2025. Over 200 participants marched for human rights and dignity.
-                            </p>
+                            <p>Kigali, Rwanda — March 2025. Over 200 participants marched for human rights and dignity.</p>
                         </div>
                     </div>
-                    <div class="past-item">
-                        <div class="past-img" role="img" aria-label="Policy Dialogue event photo placeholder">🏛️</div>
+
+                    <!-- Event 2: Policy Dialogue -->
+                    <div class="past-item gallery-trigger" data-gallery="policy" onclick="openGallery('policy')">
+                        <div class="past-img-wrapper">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.19.02 (1).jpeg" alt="Policy Dialogue event" class="past-img">
+                            <div class="past-overlay">
+                                <button class="gallery-btn" title="View gallery"><i class="fas fa-images"></i> View Gallery</button>
+                            </div>
+                        </div>
                         <div class="past-caption">
                             <strong>Policy Dialogue with Local Authorities</strong>
-                            <p>Kigali, Rwanda — November 2024. HRI engaged government officials on anti-stigma policy.
-                            </p>
+                            <p>Kigali, Rwanda — November 2024. HRI engaged government officials on anti-stigma policy.</p>
                         </div>
                     </div>
-                    <div class="past-item">
-                        <div class="past-img" role="img" aria-label="Community Rights Workshop photo placeholder">📚
+
+                    <!-- Event 3: Rights Workshop -->
+                    <div class="past-item gallery-trigger" data-gallery="workshop" onclick="openGallery('workshop')">
+                        <div class="past-img-wrapper">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.57.jpeg" alt="Community Rights Workshop" class="past-img">
+                            <div class="past-overlay">
+                                <button class="gallery-btn" title="View gallery"><i class="fas fa-images"></i> View Gallery</button>
+                            </div>
                         </div>
                         <div class="past-caption">
                             <strong>Community Rights Workshop</strong>
@@ -3196,7 +4060,140 @@
             </div>
         </section>
 
-        <!-- 7. GET HELP -->
+        <!-- GALLERY LIGHTBOX MODALS -->
+        <!-- Gallery 1: March for Equality -->
+        <div id="equality-gallery" class="gallery-modal">
+            <div class="gallery-container">
+                <button class="gallery-close" onclick="closeGallery('equality')" aria-label="Close gallery">&times;</button>
+                <div class="gallery-header">
+                    <h3>March for Equality — Event Gallery</h3>
+                </div>
+                <div class="gallery-content">
+                    <div class="gallery-main">
+                        <img id="equality-main" src="images/2025/WhatsApp Image 2026-04-07 at 19.18.57.jpeg" alt="March for Equality event image" class="gallery-image">
+                        <div class="gallery-nav">
+                            <button class="gallery-nav-btn prev" onclick="prevImage('equality')" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                            <button class="gallery-nav-btn next" onclick="nextImage('equality')" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="gallery-thumbs">
+                        <div class="thumb active" onclick="selectImage('equality', 0)" data-index="0">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.54.jpeg" alt="Thumb 1">
+                        </div>
+                        <div class="thumb" onclick="selectImage('equality', 1)" data-index="1">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.55 (1).jpeg" alt="Thumb 2">
+                        </div>
+                        <div class="thumb" onclick="selectImage('equality', 2)" data-index="2">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.55 (2).jpeg" alt="Thumb 3">
+                        </div>
+                        <div class="thumb" onclick="selectImage('equality', 3)" data-index="3">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.55.jpeg" alt="Thumb 4">
+                        </div>
+                        <div class="thumb" onclick="selectImage('equality', 4)" data-index="4">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.56 (1).jpeg" alt="Thumb 5">
+                        </div>
+                        <div class="thumb" onclick="selectImage('equality', 5)" data-index="5">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.56.jpeg" alt="Thumb 6">
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-footer">
+                    <p class="gallery-counter"><span id="equality-counter">1</span> of <span id="equality-total">6</span></p>
+                    <p class="gallery-description"><strong>March for Equality 2025</strong> — A historic and vibrant march in Kigali, Rwanda, bringing together over 200 community members, rights defenders, and allies united in advocacy for human rights, dignity, and equality for all. Participants peacefully marched through the streets, carrying banners, chanting slogans, and raising awareness about LGBTQ+ rights, anti-stigma initiatives, and inclusive governance. This powerful event demonstrated collective solidarity and community strength in championing social change.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery 2: Policy Dialogue -->
+        <div id="policy-gallery" class="gallery-modal">
+            <div class="gallery-container">
+                <button class="gallery-close" onclick="closeGallery('policy')" aria-label="Close gallery">&times;</button>
+                <div class="gallery-header">
+                    <h3>Policy Dialogue with Local Authorities — Event Gallery</h3>
+                </div>
+                <div class="gallery-content">
+                    <div class="gallery-main">
+                        <img id="policy-main" src="images/2025/WhatsApp Image 2026-04-07 at 19.18.57 (2).jpeg" alt="Policy Dialogue event image" class="gallery-image">
+                        <div class="gallery-nav">
+                            <button class="gallery-nav-btn prev" onclick="prevImage('policy')" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                            <button class="gallery-nav-btn next" onclick="nextImage('policy')" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="gallery-thumbs">
+                        <div class="thumb active" onclick="selectImage('policy', 0)" data-index="0">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.57 (1).jpeg" alt="Thumb 1">
+                        </div>
+                        <div class="thumb" onclick="selectImage('policy', 1)" data-index="1">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.57 (2).jpeg" alt="Thumb 2">
+                        </div>
+                        <div class="thumb" onclick="selectImage('policy', 2)" data-index="2">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.58 (1).jpeg" alt="Thumb 3">
+                        </div>
+                        <div class="thumb" onclick="selectImage('policy', 3)" data-index="3">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.58 (2).jpeg" alt="Thumb 4">
+                        </div>
+                        <div class="thumb" onclick="selectImage('policy', 4)" data-index="4">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.58.jpeg" alt="Thumb 5">
+                        </div>
+                        <div class="thumb" onclick="selectImage('policy', 5)" data-index="5">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.59 (1).jpeg" alt="Thumb 6">
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-footer">
+                    <p class="gallery-counter"><span id="policy-counter">1</span> of <span id="policy-total">6</span></p>
+                    <p class="gallery-description"><strong>Policy Dialogue with Local Authorities (Nov 2024)</strong> — HRI's strategic engagement with government officials, policymakers, and district leaders to advance anti-stigma policies and inclusive governance practices. These structured dialogues fostered meaningful conversations around human rights protections, non-discrimination frameworks, and community-centered policy development. Participants discussed evidence-based recommendations for institutional reform and local governance structures that prioritize dignity and equality.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery 3: Community Rights Workshop -->
+        <div id="workshop-gallery" class="gallery-modal">
+            <div class="gallery-container">
+                <button class="gallery-close" onclick="closeGallery('workshop')" aria-label="Close gallery">&times;</button>
+                <div class="gallery-header">
+                    <h3>Community Rights Workshop — Event Gallery</h3>
+                </div>
+                <div class="gallery-content">
+                    <div class="gallery-main">
+                        <img id="workshop-main" src="images/2025/WhatsApp Image 2026-04-07 at 19.19.02 (1).jpeg" alt="Workshop event image" class="gallery-image">
+                        <div class="gallery-nav">
+                            <button class="gallery-nav-btn prev" onclick="prevImage('workshop')" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                            <button class="gallery-nav-btn next" onclick="nextImage('workshop')" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="gallery-thumbs">
+                        <div class="thumb active" onclick="selectImage('workshop', 0)" data-index="0">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.18.59.jpeg" alt="Thumb 1">
+                        </div>
+                        <div class="thumb" onclick="selectImage('workshop', 1)" data-index="1">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.19.00 (1).jpeg" alt="Thumb 2">
+                        </div>
+                        <div class="thumb" onclick="selectImage('workshop', 2)" data-index="2">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.19.00.jpeg" alt="Thumb 3">
+                        </div>
+                        <div class="thumb" onclick="selectImage('workshop', 3)" data-index="3">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.19.01 (1).jpeg" alt="Thumb 4">
+                        </div>
+                        <div class="thumb" onclick="selectImage('workshop', 4)" data-index="4">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.19.01 (2).jpeg" alt="Thumb 5">
+                        </div>
+                        <div class="thumb" onclick="selectImage('workshop', 5)" data-index="5">
+                            <img src="images/2025/WhatsApp Image 2026-04-07 at 19.19.01.jpeg" alt="Thumb 6">
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-footer">
+                    <p class="gallery-counter"><span id="workshop-counter">1</span> of <span id="workshop-total">6</span></p>
+                    <p class="gallery-description"><strong>Community Rights Workshop — Legal Literacy Training (July 2024)</strong> — Interactive and empowering legal literacy training sessions held across the Eastern Province, reaching 80+ adults from rural and urban communities. Participants learned about constitutional rights, anti-discrimination laws, reporting mechanisms, and practical advocacy strategies. Facilitators used local languages (Kinyarwanda, French, English) and community-based methods to ensure accessibility. All participants received certificates and continued support resources.</p>
+                </div>
+            </div>
+        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="get-help">
             <div class="container">
                 <span class="section-label">Confidential Support</span>
@@ -3563,6 +4560,78 @@
             }
         });
 
+        // ===== MODAL INITIALIZATION =====
+        // Make service cards clickable to open modals
+        document.addEventListener('DOMContentLoaded', () => {
+            // Handle modal trigger buttons with data-modal attribute
+            document.querySelectorAll('.modal-trigger').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const modalId = btn.getAttribute('data-modal');
+                    if (modalId) {
+                        openModal(modalId);
+                        console.log('Modal trigger button clicked, opening modal:', modalId);
+                    }
+                });
+            });
+
+            // Make service cards clickable to open modals
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach((card, index) => {
+                let modalId = '';
+                
+                // Get modal ID from the button's data-modal attribute
+                const modalBtn = card.querySelector('.modal-trigger');
+                if (modalBtn) {
+                    modalId = modalBtn.getAttribute('data-modal');
+                }
+                
+                if (modalId) {
+                    // Make card visually indicate it's clickable
+                    card.style.cursor = 'pointer';
+                    
+                    // Click anywhere on the card to open modal
+                    card.addEventListener('click', (e) => {
+                        // Don't double-trigger if clicking the button
+                        if (!e.target.closest('.modal-trigger')) {
+                            e.preventDefault();
+                            openModal(modalId);
+                            console.log('Card clicked, opening modal:', modalId);
+                        }
+                    });
+                }
+            });
+
+            // Close buttons (X icons)
+            document.querySelectorAll('.modal-close').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const modal = btn.closest('.modal');
+                    if (modal) {
+                        const modalId = modal.id.replace('-modal', '');
+                        closeModal(modalId);
+                        console.log('Close button clicked');
+                    }
+                });
+            });
+
+            // Footer close buttons
+            document.querySelectorAll('.modal-footer .btn-outline').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const modal = btn.closest('.modal');
+                    if (modal) {
+                        const modalId = modal.id.replace('-modal', '');
+                        closeModal(modalId);
+                        console.log('Footer close button clicked');
+                    }
+                });
+            });
+        });
+
         // ===== COUNTER ANIMATION =====
         const counters = document.querySelectorAll('.stat-number');
         let counted = false;
@@ -3775,6 +4844,174 @@
         if (viewport && window.innerWidth <= 480) {
             viewport.setAttribute('content', viewport.getAttribute('content') + ', viewport-fit=cover');
         }
+
+        // ===== GALLERY FUNCTIONALITY =====
+        const galleries = {
+            equality: ['images/2025/WhatsApp Image 2026-04-07 at 19.18.54.jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.18.55 (1).jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.18.55 (2).jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.18.55.jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.18.56 (1).jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.18.56.jpeg'],
+            policy: ['images/2025/WhatsApp Image 2026-04-07 at 19.18.57 (1).jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.18.57 (2).jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.18.58 (1).jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.18.58 (2).jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.18.58.jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.18.59 (1).jpeg'],
+            workshop: ['images/2025/WhatsApp Image 2026-04-07 at 19.18.59.jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.19.00 (1).jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.19.00.jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.19.01 (1).jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.19.01 (2).jpeg', 'images/2025/WhatsApp Image 2026-04-07 at 19.19.01.jpeg']
+        };
+
+        let currentGalleryIndex = {};
+
+        function openGallery(galleryId) {
+            const gallery = document.getElementById(galleryId + '-gallery');
+            if (gallery) {
+                gallery.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                currentGalleryIndex[galleryId] = 0;
+                updateGalleryImage(galleryId);
+                console.log('Gallery opened:', galleryId);
+            }
+        }
+
+        function closeGallery(galleryId) {
+            const gallery = document.getElementById(galleryId + '-gallery');
+            if (gallery) {
+                gallery.classList.remove('open');
+                document.body.style.overflow = '';
+                console.log('Gallery closed:', galleryId);
+            }
+        }
+
+        function updateGalleryImage(galleryId) {
+            const images = galleries[galleryId] || [];
+            const index = currentGalleryIndex[galleryId] || 0;
+            const mainImg = document.getElementById(galleryId + '-main');
+            const counter = document.getElementById(galleryId + '-counter');
+            const total = document.getElementById(galleryId + '-total');
+
+            if (mainImg && images[index]) {
+                mainImg.src = images[index];
+                if (counter) counter.textContent = index + 1;
+                if (total) total.textContent = images.length;
+
+                // Update thumbnail active state
+                document.querySelectorAll('#' + galleryId + '-gallery .thumb').forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === index);
+                });
+            }
+        }
+
+        function nextImage(galleryId) {
+            const images = galleries[galleryId] || [];
+            if (!currentGalleryIndex[galleryId]) currentGalleryIndex[galleryId] = 0;
+            currentGalleryIndex[galleryId] = (currentGalleryIndex[galleryId] + 1) % images.length;
+            updateGalleryImage(galleryId);
+        }
+
+        function prevImage(galleryId) {
+            const images = galleries[galleryId] || [];
+            if (!currentGalleryIndex[galleryId]) currentGalleryIndex[galleryId] = 0;
+            currentGalleryIndex[galleryId] = (currentGalleryIndex[galleryId] - 1 + images.length) % images.length;
+            updateGalleryImage(galleryId);
+        }
+
+        function selectImage(galleryId, index) {
+            currentGalleryIndex[galleryId] = index;
+            updateGalleryImage(galleryId);
+        }
+
+        // Close gallery when clicking outside content
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('gallery-modal')) {
+                const gallery = e.target;
+                const galleryId = gallery.id.replace('-gallery', '');
+                closeGallery(galleryId);
+            }
+        });
+
+        // Close gallery on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const openGalleries = document.querySelectorAll('.gallery-modal.open');
+                openGalleries.forEach(gallery => {
+                    const galleryId = gallery.id.replace('-gallery', '');
+                    closeGallery(galleryId);
+                });
+            }
+        });
+
+        // Keyboard navigation for gallery
+        document.addEventListener('keydown', (e) => {
+            const openGalleries = document.querySelectorAll('.gallery-modal.open');
+            if (openGalleries.length > 0) {
+                const galleryId = openGalleries[0].id.replace('-gallery', '');
+                if (e.key === 'ArrowRight') {
+                    nextImage(galleryId);
+                } else if (e.key === 'ArrowLeft') {
+                    prevImage(galleryId);
+                }
+            }
+        });
+
+        // ===== MODAL FUNCTIONALITY =====
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId + '-modal');
+            if (modal) {
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                console.log('Modal opened:', modalId);
+            } else {
+                console.warn('Modal not found:', modalId + '-modal');
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId + '-modal');
+            if (modal) {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+                console.log('Modal closed:', modalId);
+            }
+        }
+
+        // Set up close button event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Close buttons (X icons)
+            document.querySelectorAll('.modal-close').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const modal = btn.closest('.modal');
+                    if (modal) {
+                        const modalId = modal.id.replace('-modal', '');
+                        closeModal(modalId);
+                    }
+                });
+            });
+
+            // Footer close buttons
+            document.querySelectorAll('.modal-footer .btn-outline').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const modal = btn.closest('.modal');
+                    if (modal) {
+                        const modalId = modal.id.replace('-modal', '');
+                        closeModal(modalId);
+                    }
+                });
+            });
+        });
+
+        // Close modal when clicking outside content
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                const modal = e.target;
+                const modalId = modal.id.replace('-modal', '');
+                closeModal(modalId);
+            }
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const openModals = document.querySelectorAll('.modal.open');
+                openModals.forEach(modal => {
+                    const modalId = modal.id.replace('-modal', '');
+                    closeModal(modalId);
+                });
+            }
+        });
     </script>
 </body>
 
