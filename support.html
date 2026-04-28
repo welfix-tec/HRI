@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Support – HRI Rwanda | Confidential Counselling & Safe Spaces</title>
+    <link rel="icon" type="image/svg+xml" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --red: #8B3A3A;
+            --orange: #D4A574;
+            --yellow: #F4D4A8;
+            --green: #7B9E89;
+            --blue: #1A3A52;
+            --purple: #4A3A5C;
+            --teal: #1A3A52;
+            --teal-dark: #0F2233;
+            --teal-mid: #2D5A7B;
+            --coral: #D4A574;
+            --coral-dark: #B8845C;
+            --sand: #F5F1E8;
+            --mint: #7B9E89;
+            --mint-dark: #5A7A6A;
+            --body: #2D3E4E;
+            --bg: #FAFAF8;
+            --white: #ffffff;
+            --gray-100: #F0EBE5;
+            --gray-200: #E5DED5;
+            --gray-400: #B0A399;
+            --gray-600: #8B8173;
+            --shadow-sm: 0 2px 8px rgba(26, 58, 82, 0.08);
+            --shadow-md: 0 8px 32px rgba(26, 58, 82, 0.12);
+            --shadow-lg: 0 20px 60px rgba(26, 58, 82, 0.18);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --transition: all 0.25s ease;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        @keyframes continuousBounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                box-shadow: 0 8px 30px rgba(212, 165, 116, 0.5);
+            }
+            50% {
+                box-shadow: 0 8px 50px rgba(212, 165, 116, 0.7);
+            }
+        }
+        @keyframes glow {
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(212, 165, 116, 0.3), inset 0 0 10px rgba(212, 165, 116, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(212, 165, 116, 0.6), inset 0 0 20px rgba(212, 165, 116, 0.2);
+            }
+        }
+        @keyframes logoZoom {
+            0% {
+                transform: scale(1.2) translateY(-10px);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes heartbeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            15% {
+                transform: scale(1.15);
+            }
+            30% {
+                transform: scale(1);
+            }
+            45% {
+                transform: scale(1.1);
+            }
+            60% {
+                transform: scale(1);
+            }
+        }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+            font-size: clamp(14px, 2.5vw, 16px);
+            -webkit-font-smoothing: antialiased;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--body);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+        }
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 5vw, 1.5rem);
+            width: 100%;
+        }
+        section {
+            padding: clamp(3rem, 10vw, 5rem) 0;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            padding: .85rem 1.75rem;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: clamp(.85rem, 2vw, .95rem);
+            min-height: 48px;
+            min-width: 48px;
+            transition: var(--transition);
+            text-align: center;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+        .btn-primary {
+            background: var(--coral);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.35);
+        }
+        .btn-primary:hover {
+            background: var(--coral-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--teal);
+            border: 2px solid var(--teal);
+        }
+        .btn-outline:hover {
+            background: var(--teal);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .btn-outline-white {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+        }
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff;
+        }
+        .btn-emergency {
+            background: #e53e3e;
+            color: #fff;
+            animation: pulse 2s infinite;
+            box-shadow: 0 8px 30px rgba(229, 62, 62, 0.5);
+        }
+        .btn-emergency:hover {
+            background: #c53030;
+            animation: none;
+            transform: translateY(-2px);
+        }
+        .section-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--coral);
+            margin-bottom: .75rem;
+            display: block;
+        }
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            background: var(--teal);
+            box-shadow: var(--shadow-md);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            gap: 1rem;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            flex-shrink: 0;
+        }
+        .nav-logo-img {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: var(--coral);
+            animation: logoZoom 0.6s ease-out, float 3s ease-in-out 0.6s infinite;
+            flex-shrink: 0;
+        }
+        .nav-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.1rem;
+            line-height: 1.1;
+        }
+        .nav-logo-text span {
+            display: block;
+            font-size: .65rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: .05em;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: .1rem;
+            flex-wrap: nowrap;
+        }
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: .8rem;
+            font-weight: 500;
+            padding: .4rem .55rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .nav-dropdown {
+            position: relative;
+        }
+        .nav-parent {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+        }
+        .nav-submenu {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            min-width: 220px;
+            padding: .45rem;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 14px 26px rgba(0, 0, 0, 0.16);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: var(--transition);
+            z-index: 10;
+        }
+        .nav-dropdown:hover .nav-submenu,
+        .nav-dropdown:focus-within .nav-submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-submenu a {
+            display: block;
+            color: var(--teal-dark);
+            font-size: .82rem;
+            padding: .5rem .6rem;
+            border-radius: 8px;
+        }
+        .nav-submenu a:hover {
+            background: rgba(11, 94, 124, 0.1);
+            color: var(--teal);
+        }
+        .nav-cta {
+            background: var(--coral);
+            color: #fff !important;
+            padding: .45rem .9rem !important;
+            border-radius: 50px !important;
+            font-weight: 600 !important;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: .5rem;
+            cursor: pointer;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2.5px;
+            background: #fff;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        .page-hero {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-mid) 100%);
+            padding: clamp(3rem, 8vw, 5rem) 0;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -15%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .page-hero .section-label {
+            color: var(--coral);
+        }
+        .page-hero .section-title {
+            color: #fff;
+        }
+        .page-hero .section-subtitle {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .breadcrumb {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+            font-size: .8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.85);
+            transition: var(--transition);
+        }
+        .breadcrumb a:hover {
+            color: #fff;
+        }
+        .breadcrumb i {
+            font-size: .6rem;
+            color: var(--coral);
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .sidebar-card {
+            background: var(--sand);
+            border-radius: var(--radius);
+            padding: 2rem;
+            border-left: 4px solid var(--coral);
+            position: sticky;
+            top: 90px;
+        }
+        .sidebar-card h3 {
+            color: var(--teal);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .sidebar-card ul li {
+            padding: .6rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: .9rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+        .sidebar-card ul li i {
+            color: var(--coral);
+            font-size: .75rem;
+        }
+        .sidebar-card ul li:last-child {
+            border-bottom: none;
+        }
+        .info-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+            animation: slideUp 0.6s ease-out;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+        }
+        .info-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .info-card h3 {
+            color: var(--teal);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+        .info-card h3 i {
+            color: var(--coral);
+            font-size: 1.5rem;
+        }
+        .info-card p {
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .info-card ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+        }
+        .info-card ul li {
+            margin-bottom: .5rem;
+        }
+        .helpline-badge {
+            background: #fff;
+            border: 2px solid var(--coral);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+        .helpline-badge .phone-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: var(--teal);
+            display: block;
+            margin: .75rem 0;
+        }
+        .helpline-badge .phone-number i {
+            color: var(--coral);
+            margin-right: .5rem;
+        }
+        .privacy-shield {
+            background: var(--mint);
+            color: var(--teal);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            gap: .75rem;
+            margin: 1.5rem 0;
+            font-size: .9rem;
+            font-weight: 500;
+        }
+        .privacy-shield i {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .service-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .service-item {
+            background: var(--sand);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            border-left: 3px solid var(--coral);
+            transition: var(--transition);
+        }
+        .service-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        .service-item h4 {
+            color: var(--teal);
+            font-size: .95rem;
+            margin-bottom: .35rem;
+        }
+        .service-item p {
+            font-size: .8rem;
+            color: var(--gray-600);
+            margin: 0;
+        }
+        footer {
+            background: var(--teal-dark);
+            padding: 3.5rem 0 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .footer-brand p {
+            font-size: .875rem;
+            margin-top: .75rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .footer-col h4 {
+            color: #fff;
+            font-size: .9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+        .footer-links a {
+            font-size: .85rem;
+            color: rgba(255, 255, 255, 0.6);
+            transition: var(--transition);
+        }
+        .footer-links a:hover {
+            color: #fff;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: .5rem;
+            margin-top: .75rem;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: .65rem 1rem;
+            border-radius: var(--radius-sm);
+            border: none;
+            font-family: 'Lato', sans-serif;
+            font-size: .85rem;
+        }
+        .newsletter-form button {
+            background: var(--coral);
+            color: #fff;
+            padding: .65rem 1rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: .85rem;
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+        .newsletter-form button:hover {
+            background: var(--coral-dark);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: .75rem;
+            font-size: .8rem;
+        }
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .social-links {
+            display: flex;
+            gap: .75rem;
+            margin-top: 1rem;
+        }
+        .social-link {
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        .social-link:hover {
+            background: var(--coral);
+            transform: translateY(-2px);
+        }
+        @media(max-width:1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-card {
+                position: static;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .service-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media(max-width:768px) {
+            .nav-inner {
+                height: 65px;
+            }
+            .nav-logo-img {
+                width: 50px;
+                height: 50px;
+            }
+            .nav-logo-text {
+                font-size: .9rem;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--teal);
+                flex-direction: column;
+                padding: 1rem 1.5rem;
+                gap: .25rem;
+                box-shadow: var(--shadow-md);
+                z-index: 999;
+                max-height: calc(100vh - 60px);
+                overflow-y: auto;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .nav-links a {
+                padding: .7rem .8rem;
+                font-size: .875rem;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-dropdown {
+                width: 100%;
+            }
+            .nav-parent {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .nav-submenu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                min-width: 0;
+                box-shadow: none;
+                background: transparent;
+                padding: .15rem 0 .4rem .7rem;
+            }
+            .nav-submenu a {
+                color: rgba(255, 255, 255, 0.85);
+                padding: .45rem .7rem;
+                font-size: .8rem;
+            }
+            .nav-submenu a:hover {
+                color: #fff;
+                background: rgba(255, 255, 255, 0.12);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .content-grid {
+                gap: 1.5rem;
+            }
+            .helpline-badge {
+                padding: 1.5rem;
+            }
+        }
+        @media(max-width:480px) {
+            .nav-logo-text {
+                display: none;
+            }
+            .nav-logo-img {
+                width: 45px;
+                height: 45px;
+            }
+            .section-title {
+                font-size: clamp(1.3rem, 5vw, 2rem);
+            }
+            .info-card {
+                padding: 1.25rem;
+            }
+            .sidebar-card {
+                padding: 1.25rem;
+            }
+            .service-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" style="position:absolute;top:-100%;left:1rem;background:var(--teal);color:#fff;padding:.5rem 1rem;border-radius:8px;z-index:9999;transition:top .2s;" onfocus="this.style.top='1rem'">Skip to main content</a>
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="container nav-inner">
+            <a href="index.html#home" class="nav-logo" aria-label="HRI Rwanda home">
+                <img src="logo.png" alt="HRI Rwanda Logo" class="nav-logo-img">
+                <div class="nav-logo-text">Health &amp; Rights Rwanda<span>Dignity · Equality · Freedom</span></div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#about">About</a>
+                <div class="nav-dropdown">
+                    <a href="index.html#what-we-do" class="nav-parent active">What We Do <i class="fas fa-chevron-down" style="font-size:.65rem;"></i></a>
+                    <div class="nav-submenu">
+                        <a href="right.html">Rights Awareness</a>
+                        <a href="support.html">Support Services</a>
+                        <a href="policy.html">Advocacy &amp; Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#impact">Impact</a>
+                <a href="index.html#events">Events</a>
+                <a href="index.html#get-help" class="nav-cta">🔒 Confidential Help</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <main id="main">
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumb"><a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <a href="index.html#what-we-do">What We Do</a> <i class="fas fa-chevron-right"></i> <span>Get Support</span></div>
+                <span class="section-label">What We Do</span>
+                <h1 class="section-title">Get Support</h1>
+                <p class="section-subtitle">Confidential, stigma-free counselling, safe spaces, and referral pathways for individuals facing discrimination, human rights violations, or mental health challenges in Rwanda.</p>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="content-grid">
+                    <aside class="sidebar-card">
+                        <h3>📋 On This Page</h3>
+                        <ul>
+                            <li><i class="fas fa-circle"></i> Our Support Services</li>
+                            <li><i class="fas fa-circle"></i> Counselling & Safe Spaces</li>
+                            <li><i class="fas fa-circle"></i> Crisis Support</li>
+                            <li><i class="fas fa-circle"></i> Referral Pathways</li>
+                            <li><i class="fas fa-circle"></i> Confidentiality Guarantee</li>
+                            <li><i class="fas fa-circle"></i> Contact Us Now</li>
+                        </ul>
+                        <div style="margin-top:1.5rem;">
+                            <a href="index.html#get-help" class="btn btn-emergency" style="width:100%;justify-content:center;"><i class="fas fa-heart"></i> Get Help Now</a>
+                        </div>
+                    </aside>
+                    <div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-hands-holding-heart"></i> Our Support Services</h3>
+                            <p>HRI Rwanda provides <strong>comprehensive, person-centered support</strong> for individuals who have experienced human rights violations, discrimination, stigma, or mental health challenges. All services are delivered with the utmost respect for your autonomy, privacy, and dignity.</p>
+                            <p>We understand that reaching out for help can be difficult — especially when facing stigma. That's why our team meets you where you are, with no judgment and no requirements. You do not need to prove anything to access our services.</p>
+                            <p><strong>All services are FREE of charge.</strong></p>
+                        </div>
+                        <div class="service-list">
+                            <div class="service-item">
+                                <h4>🧠 One-on-One Counselling</h4>
+                                <p>Confidential emotional support from trained counsellors who understand the unique challenges faced by marginalized communities in Rwanda.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>🏠 Safe Spaces</h4>
+                                <p>Group support sessions held in secure, private settings where you can connect with others who share similar experiences.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>⚖️ Legal Referrals</h4>
+                                <p>Connection to trusted legal professionals and advocacy networks for those pursuing justice or protection.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>🏥 Medical Referrals</h4>
+                                <p>Support in accessing healthcare services, including mental health care, in a stigma-free manner.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>🆘 Crisis Support</h4>
+                                <p>Immediate assistance for individuals in acute distress or facing urgent safety concerns.</p>
+                            </div>
+                            <div class="service-item">
+                                <h4>🤝 Follow-up Support</h4>
+                                <p>Long-term accompaniment through your recovery journey with regular check-ins and ongoing care.</p>
+                            </div>
+                        </div>
+                        <div class="helpline-badge">
+                            <i class="fas fa-heart" style="color:#e53e3e;font-size:2rem;display:block;margin-bottom:.5rem;"></i>
+                            <strong style="color:var(--teal);font-size:1.1rem;">Call or WhatsApp Our Helpline</strong>
+                            <span class="phone-number"><i class="fas fa-phone-alt"></i> +250 784 082 845</span>
+                            <p style="color:var(--gray-600);font-size:.9rem;">Available Monday–Friday, 8am–6pm (Kigali time). For urgent matters outside these hours, leave a message and we will respond as soon as possible.</p>
+                            <p style="color:var(--gray-600);font-size:.9rem;">📧 <strong>Email:</strong> hrirwanda@gmail.com</p>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-shield-alt"></i> Crisis Support</h3>
+                            <p>If you are in immediate danger or facing an urgent safety threat, please reach out through any of the following channels:</p>
+                            <ul>
+                                <li><strong>Call/WhatsApp:</strong> +250 784 082 845 — our team will respond as quickly as possible</li>
+                                <li><strong>In-person:</strong> Visit our Kigali office by appointment for immediate assistance</li>
+                                <li><strong>Email:</strong> hrirwanda@gmail.com with "URGENT" in the subject line</li>
+                            </ul>
+                            <p>We prioritize crisis cases and will make every effort to connect you with the appropriate support within hours — not days.</p>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-link"></i> Referral Pathways</h3>
+                            <p>HRI maintains a robust network of trusted partners across Rwanda to ensure you receive holistic support. Depending on your needs, we may connect you with:</p>
+                            <ul>
+                                <li><strong>Legal Aid Providers:</strong> For those pursuing legal remedies or protection orders</li>
+                                <li><strong>Healthcare Facilities:</strong> Stigma-free medical and mental health services</li>
+                                <li><strong>Shelter & Safe Housing:</strong> Emergency accommodation for those in unsafe living situations</li>
+                                <li><strong>Peer Support Networks:</strong> Community-based groups offering mutual support and solidarity</li>
+                                <li><strong>Government Services:</strong> Where appropriate and with your consent, referral to relevant authorities</li>
+                            </ul>
+                            <p>Every referral is made with your <strong>informed consent</strong>. You are always in control of your own journey.</p>
+                        </div>
+                        <div class="privacy-shield">
+                            <i class="fas fa-lock"></i>
+                            <div><strong>Your Privacy Is Sacred.</strong> All information you share with HRI is strictly confidential. We will never share your details, experiences, or identity without your explicit written consent. The only exception is if there is an immediate, credible threat to life — and even then, we will inform you first whenever possible.</div>
+                        </div>
+                        <div style="text-align:center;margin-top:2rem;">
+                            <a href="index.html#get-help" class="btn btn-primary" style="font-size:1rem;padding:1rem 2rem;"><i class="fas fa-paper-plane"></i> Send a Confidential Message</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo" style="margin-bottom:.75rem">
+                        <img src="logo.png" alt="HRI Logo" class="nav-logo-img" style="width:50px;height:50px;">
+                        <div class="nav-logo-text">Health &amp; Rights Rwanda<span>Dignity · Equality · Freedom</span></div>
+                    </div>
+                    <p>A Rwandan civil society organisation advocating for human rights, sexual orientation equality, and stigma reduction — empowering communities across Rwanda.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html#home">Home</a>
+                        <a href="index.html#about">About Us</a>
+                        <a href="index.html#what-we-do">What We Do</a>
+                        <a href="right.html">Rights Awareness</a>
+                        <a href="support.html">Get Support</a>
+                        <a href="policy.html">Advocacy & Policy</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <div class="footer-links">
+                        <a href="index.html#get-help">Get Help (Confidential)</a>
+                        <a href="index.html#join">Volunteer</a>
+                        <a href="index.html#join">Donate</a>
+                        <a href="index.html#partners">Partners</a>
+                        <a href="index.html#contact">Contact</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Stay Connected</h4>
+                    <p style="font-size:.85rem;margin-bottom:.5rem">Get updates on events and advocacy from HRI Rwanda.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="your@email.com" aria-label="Email address for newsletter">
+                        <button type="button">Subscribe</button>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Health and Rights Rwanda (HRI). All rights reserved.</p>
+                <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Safeguarding Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        function toggleMenu(open) {
+            const isOpen = open !== undefined ? open : !navLinks.classList.contains('open');
+            navLinks.classList.toggle('open', isOpen);
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+        hamburger.addEventListener('click', () => toggleMenu());
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => toggleMenu(false));
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('open')) toggleMenu(false);
+        });
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav') && navLinks.classList.contains('open')) toggleMenu(false);
+        });
+    </script>
+</body>
+</html>

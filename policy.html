@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advocacy & Policy – HRI Rwanda | Systemic Change & Government Engagement</title>
+    <link rel="icon" type="image/svg+xml" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --red: #8B3A3A;
+            --orange: #D4A574;
+            --yellow: #F4D4A8;
+            --green: #7B9E89;
+            --blue: #1A3A52;
+            --purple: #4A3A5C;
+            --teal: #1A3A52;
+            --teal-dark: #0F2233;
+            --teal-mid: #2D5A7B;
+            --coral: #D4A574;
+            --coral-dark: #B8845C;
+            --sand: #F5F1E8;
+            --mint: #7B9E89;
+            --mint-dark: #5A7A6A;
+            --body: #2D3E4E;
+            --bg: #FAFAF8;
+            --white: #ffffff;
+            --gray-100: #F0EBE5;
+            --gray-200: #E5DED5;
+            --gray-400: #B0A399;
+            --gray-600: #8B8173;
+            --shadow-sm: 0 2px 8px rgba(26, 58, 82, 0.08);
+            --shadow-md: 0 8px 32px rgba(26, 58, 82, 0.12);
+            --shadow-lg: 0 20px 60px rgba(26, 58, 82, 0.18);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --transition: all 0.25s ease;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        @keyframes continuousBounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                box-shadow: 0 8px 30px rgba(212, 165, 116, 0.5);
+            }
+            50% {
+                box-shadow: 0 8px 50px rgba(212, 165, 116, 0.7);
+            }
+        }
+        @keyframes glow {
+            0%,
+            100% {
+                box-shadow: 0 0 10px rgba(212, 165, 116, 0.3), inset 0 0 10px rgba(212, 165, 116, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(212, 165, 116, 0.6), inset 0 0 20px rgba(212, 165, 116, 0.2);
+            }
+        }
+        @keyframes logoZoom {
+            0% {
+                transform: scale(1.2) translateY(-10px);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+            font-size: clamp(14px, 2.5vw, 16px);
+            -webkit-font-smoothing: antialiased;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--body);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+        button {
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: inherit;
+        }
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 5vw, 1.5rem);
+            width: 100%;
+        }
+        section {
+            padding: clamp(3rem, 10vw, 5rem) 0;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+            padding: .85rem 1.75rem;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: clamp(.85rem, 2vw, .95rem);
+            min-height: 48px;
+            min-width: 48px;
+            transition: var(--transition);
+            text-align: center;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+        .btn-primary {
+            background: var(--coral);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.35);
+        }
+        .btn-primary:hover {
+            background: var(--coral-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--teal);
+            border: 2px solid var(--teal);
+        }
+        .btn-outline:hover {
+            background: var(--teal);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .btn-outline-white {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+        }
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #fff;
+        }
+        .section-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--coral);
+            margin-bottom: .75rem;
+            display: block;
+        }
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            background: var(--teal);
+            box-shadow: var(--shadow-md);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+            gap: 1rem;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            flex-shrink: 0;
+        }
+        .nav-logo-img {
+            width: 75px;
+            height: 75px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: var(--coral);
+            animation: logoZoom 0.6s ease-out, float 3s ease-in-out 0.6s infinite;
+            flex-shrink: 0;
+        }
+        .nav-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.1rem;
+            line-height: 1.1;
+        }
+        .nav-logo-text span {
+            display: block;
+            font-size: .65rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: .05em;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: .1rem;
+            flex-wrap: nowrap;
+        }
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: .8rem;
+            font-weight: 500;
+            padding: .4rem .55rem;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .nav-dropdown {
+            position: relative;
+        }
+        .nav-parent {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+        }
+        .nav-submenu {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            min-width: 220px;
+            padding: .45rem;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 14px 26px rgba(0, 0, 0, 0.16);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: var(--transition);
+            z-index: 10;
+        }
+        .nav-dropdown:hover .nav-submenu,
+        .nav-dropdown:focus-within .nav-submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .nav-submenu a {
+            display: block;
+            color: var(--teal-dark);
+            font-size: .82rem;
+            padding: .5rem .6rem;
+            border-radius: 8px;
+        }
+        .nav-submenu a:hover {
+            background: rgba(11, 94, 124, 0.1);
+            color: var(--teal);
+        }
+        .nav-cta {
+            background: var(--coral);
+            color: #fff !important;
+            padding: .45rem .9rem !important;
+            border-radius: 50px !important;
+            font-weight: 600 !important;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: .5rem;
+            cursor: pointer;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2.5px;
+            background: #fff;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        .page-hero {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-mid) 100%);
+            padding: clamp(3rem, 8vw, 5rem) 0;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -15%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .page-hero .section-label {
+            color: var(--coral);
+        }
+        .page-hero .section-title {
+            color: #fff;
+        }
+        .page-hero .section-subtitle {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .breadcrumb {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+            font-size: .8rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.85);
+            transition: var(--transition);
+        }
+        .breadcrumb a:hover {
+            color: #fff;
+        }
+        .breadcrumb i {
+            font-size: .6rem;
+            color: var(--coral);
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .sidebar-card {
+            background: var(--sand);
+            border-radius: var(--radius);
+            padding: 2rem;
+            border-left: 4px solid var(--coral);
+            position: sticky;
+            top: 90px;
+        }
+        .sidebar-card h3 {
+            color: var(--teal);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .sidebar-card ul li {
+            padding: .6rem 0;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: .9rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+        .sidebar-card ul li i {
+            color: var(--coral);
+            font-size: .75rem;
+        }
+        .sidebar-card ul li:last-child {
+            border-bottom: none;
+        }
+        .info-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+            animation: slideUp 0.6s ease-out;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition);
+        }
+        .info-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .info-card h3 {
+            color: var(--teal);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+        .info-card h3 i {
+            color: var(--coral);
+            font-size: 1.5rem;
+        }
+        .info-card p {
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .info-card ul {
+            list-style: disc;
+            margin-left: 1.5rem;
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+        }
+        .info-card ul li {
+            margin-bottom: .5rem;
+        }
+        .highlight-banner {
+            background: linear-gradient(135deg, var(--coral) 0%, var(--coral-dark) 100%);
+            border-radius: var(--radius);
+            padding: 2rem;
+            color: #fff;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .highlight-banner h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .highlight-banner p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+        }
+        .stat-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .stat-mini {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(212, 165, 116, 0.05) 100%);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+        }
+        .stat-mini .num {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--coral);
+            display: block;
+            margin-bottom: .5rem;
+        }
+        .stat-mini p {
+            font-size: .85rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+        footer {
+            background: var(--teal);
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-brand p {
+            font-size: .9rem;
+            line-height: 1.6;
+            margin-top: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: .75rem;
+        }
+        .footer-links a {
+            font-size: .9rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+        .footer-links a:hover {
+            color: #fff;
+        }
+        .newsletter-form {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: .6rem 1rem;
+            border-radius: 50px 0 0 50px;
+            border: none;
+            font-size: .85rem;
+        }
+        .newsletter-form input:focus {
+            outline: 2px solid var(--coral);
+        }
+        .newsletter-form button {
+            padding: .6rem 1.5rem;
+            background: var(--coral);
+            color: #fff;
+            border-radius: 0 50px 50px 0;
+            font-weight: 600;
+            font-size: .85rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .newsletter-form button:hover {
+            background: var(--coral-dark);
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 50%;
+            color: #fff;
+            transition: var(--transition);
+        }
+        .social-link:hover {
+            background: var(--coral);
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: .85rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+        .footer-bottom a:hover {
+            color: #fff;
+        }
+        @media(max-width:768px) {
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--teal-dark);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                padding: 0;
+                gap: 0;
+            }
+            .nav-links.open {
+                max-height: 400px;
+                overflow-y: auto;
+                padding: 1rem 0;
+            }
+            .nav-links a {
+                padding: .75rem 1.5rem;
+                border-radius: 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-dropdown {
+                width: 100%;
+            }
+            .nav-parent {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .nav-submenu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                min-width: 0;
+                box-shadow: none;
+                background: transparent;
+                padding: .15rem 0 .4rem .7rem;
+            }
+            .nav-submenu a {
+                color: rgba(255, 255, 255, 0.85);
+                padding: .45rem .7rem;
+                font-size: .8rem;
+            }
+            .nav-submenu a:hover {
+                color: #fff;
+                background: rgba(255, 255, 255, 0.12);
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-card {
+                position: relative;
+                top: auto;
+            }
+            .stat-mini-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-logo-text {
+                display: none;
+            }
+            .nav-logo-img {
+                width: 45px;
+                height: 45px;
+            }
+            .section-title {
+                font-size: clamp(1.3rem, 5vw, 2rem);
+            }
+            .info-card {
+                padding: 1.25rem;
+            }
+            .sidebar-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" style="position:absolute;top:-100%;left:1rem;background:var(--teal);color:#fff;padding:.5rem 1rem;border-radius:8px;z-index:9999;transition:top .2s;" onfocus="this.style.top='1rem'">Skip to main content</a>
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="container nav-inner">
+            <a href="index.html#home" class="nav-logo" aria-label="HRI Rwanda home">
+                <img src="logo.png" alt="HRI Rwanda Logo" class="nav-logo-img">
+                <div class="nav-logo-text">Health &amp; Rights Rwanda<span>Dignity · Equality · Freedom</span></div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#about">About</a>
+                <div class="nav-dropdown">
+                    <a href="index.html#what-we-do" class="nav-parent active">What We Do <i class="fas fa-chevron-down" style="font-size:.65rem;"></i></a>
+                    <div class="nav-submenu">
+                        <a href="right.html">Rights Awareness</a>
+                        <a href="support.html">Support Services</a>
+                        <a href="policy.html">Advocacy &amp; Policy</a>
+                    </div>
+                </div>
+                <a href="index.html#impact">Impact</a>
+                <a href="index.html#events">Events</a>
+                <a href="index.html#get-help" class="nav-cta">🔒 Confidential Help</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <main id="main">
+        <section class="page-hero">
+            <div class="container">
+                <div class="breadcrumb"><a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <a href="index.html#what-we-do">What We Do</a> <i class="fas fa-chevron-right"></i> <span>Advocacy & Policy</span></div>
+                <span class="section-label">What We Do</span>
+                <h1 class="section-title">Advocacy & Policy</h1>
+                <p class="section-subtitle">Driving systemic change in Rwanda through evidence-based dialogue with policymakers, anti-stigma campaigns, and community-led advocacy for human rights and equality.</p>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="content-grid">
+                    <aside class="sidebar-card">
+                        <h3>📋 On This Page</h3>
+                        <ul>
+                            <li><i class="fas fa-circle"></i> Our Advocacy Focus</li>
+                            <li><i class="fas fa-circle"></i> Policy Engagement</li>
+                            <li><i class="fas fa-circle"></i> Anti-Stigma Campaigns</li>
+                            <li><i class="fas fa-circle"></i> Community Leadership</li>
+                            <li><i class="fas fa-circle"></i> Recent Wins</li>
+                            <li><i class="fas fa-circle"></i> Get Involved</li>
+                        </ul>
+                        <div style="margin-top:1.5rem;">
+                            <a href="index.html#get-help" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fas fa-handshake"></i> Partner With Us</a>
+                        </div>
+                    </aside>
+                    <div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-bullhorn"></i> Our Advocacy Focus</h3>
+                            <p>At HRI Rwanda, we believe <strong>policy change creates systemic protection</strong>. Advocacy isn't just about raising awareness — it's about engaging directly with government officials, local authorities, and community leaders to embed human rights protections into institutional practice.</p>
+                            <p>Our advocacy strategy is rooted in <strong>evidence, community leadership, and constructive dialogue</strong>. We don't operate from the outside looking in; we bring the lived experiences of those facing violations directly to the table with decision-makers. Through data, stories, and collaborative problem-solving, we demonstrate why inclusive policies benefit all Rwandans.</p>
+                            <p><strong>Our core advocacy areas:</strong></p>
+                            <ul>
+                                <li><strong>Anti-discrimination frameworks:</strong> Legal protections based on sexual orientation and gender identity</li>
+                                <li><strong>Healthcare access:</strong> Stigma-free, affirming health services for LGBTQ+ individuals</li>
+                                <li><strong>Safety & security:</strong> Police training and protocols preventing harassment</li>
+                                <li><strong>Education:</strong> Inclusive, affirming curricula and school safety policies</li>
+                                <li><strong>Workplace rights:</strong> Non-discrimination in hiring, promotion, and retention</li>
+                            </ul>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-handshake"></i> Policy Engagement & Dialogue</h3>
+                            <p>HRI runs structured <strong>policy dialogue forums</strong> bringing together government officials, civil society, and community members to discuss evidence-based policy recommendations. These aren't confrontational — they're collaborative spaces where we solve problems together.</p>
+                            <p><strong>Our engagement approach includes:</strong></p>
+                            <ul>
+                                <li><strong>Policy Briefings:</strong> Evidence-based documents presenting the case for specific reforms</li>
+                                <li><strong>Stakeholder Roundtables:</strong> Facilitated dialogues between officials, service providers, and communities</li>
+                                <li><strong>District-Level Engagement:</strong> Localized advocacy with district administrators and local leaders</li>
+                                <li><strong>Research Partnerships:</strong> Collaborating with academic institutions to generate policy-relevant data</li>
+                                <li><strong>Capacity Building:</strong> Training government partners on human rights and inclusive governance</li>
+                            </ul>
+                            <p>Since 2023, we have facilitated <strong>over 150 policy dialogues</strong> involving government officials at national and district levels. These conversations have led to concrete commitments on anti-stigma training, inclusion in local governance, and partnerships on health service provision.</p>
+                        </div>
+                        <div class="stat-mini-grid">
+                            <div class="stat-mini"><div class="num">150+</div><p>Policy Dialogues Held</p></div>
+                            <div class="stat-mini"><div class="num">12</div><p>Districts Engaged</p></div>
+                            <div class="stat-mini"><div class="num">5,000+</div><p>Community Members Reached</p></div>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-megaphone"></i> Anti-Stigma Campaigns</h3>
+                            <p>Stigma is a root cause of discrimination. HRI runs sustained anti-stigma campaigns in communities across Rwanda — using social media, community events, testimonies, and media engagement to shift attitudes and create a culture of respect.</p>
+                            <p><strong>Our campaign themes include:</strong></p>
+                            <ul>
+                                <li><strong>"One of Us":</strong> Humanizing LGBTQ+ lives through personal stories and testimonies</li>
+                                <li><strong>"Rights Are For Everyone":</strong> Messaging that links human rights protections to universal dignity</li>
+                                <li><strong>"Health Without Judgment":</strong> Campaigns promoting affirming healthcare access</li>
+                                <li><strong>"Safe Workplaces":</strong> Messages highlighting economic benefits of inclusive employers</li>
+                                <li><strong>Ally Building:</strong> Content designed to activate support from families, religious leaders, and community figures</li>
+                            </ul>
+                            <p>Our campaigns are culturally relevant, locally produced, and multilingual. They've reached over 5,000 community members through events, radio, social media, and print materials — generating visible support and shifting public dialogue.</p>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-users-cog"></i> Community Leadership in Advocacy</h3>
+                            <p>True advocacy is <strong>community-led</strong>. HRI invests in training community members to become advocates themselves — not as spokespersons for the organization, but as authentic voices sharing their own experiences and demands.</p>
+                            <p>We run a <strong>Community Advocate Development Programme</strong> that equips individuals to:</p>
+                            <ul>
+                                <li>Speak publicly about their experiences and rights demands</li>
+                                <li>Engage with local leaders and government officials</li>
+                                <li>Facilitate community events and awareness sessions</li>
+                                <li>Document violations and contribute to advocacy campaigns</li>
+                                <li>Build networks for mutual support and collective action</li>
+                            </ul>
+                            <p>Over 200 community advocates have graduated from our training, many now leading local chapters, facilitating workshops, and representing their communities in policy dialogues. These are the voices driving change from within.</p>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-star"></i> Recent Advocacy Wins</h3>
+                            <p><strong>What we've achieved through sustained advocacy:</strong></p>
+                            <ul>
+                                <li>150+ policy dialogues with government officials at national and district levels (2023-2024)</li>
+                                <li>Anti-stigma campaigns reaching 5,000+ community members across provinces</li>
+                                <li>200+ community advocates trained and activated in advocacy work</li>
+                                <li>Commitments from 12 districts to include LGBTQ+ inclusion in local governance plans</li>
+                                <li>Partnership with Rwanda Health Ministry on stigma reduction training for healthcare providers</li>
+                                <li>Media coverage shifting public narrative on LGBTQ+ rights in Rwanda</li>
+                            </ul>
+                            <p>These aren't one-time gains — they're the foundation for sustained systemic change. Each dialogue, campaign, and trained advocate strengthens the ecosystem for human rights protection in Rwanda.</p>
+                        </div>
+                        <div class="highlight-banner">
+                            <h3>🤝 Change Happens Through Partnership</h3>
+                            <p>Systemic change requires collaboration. We're looking for partners — whether civil society organizations, government allies, or international supporters — to join us in advancing human rights in Rwanda.</p>
+                            <a href="index.html#join" class="btn btn-outline-white">Join Our Advocacy Movement</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo" style="margin-bottom:.75rem">
+                        <img src="logo.png" alt="HRI Logo" class="nav-logo-img" style="width:50px;height:50px;">
+                        <div class="nav-logo-text">Health &amp; Rights Rwanda<span>Dignity · Equality · Freedom</span></div>
+                    </div>
+                    <p>A Rwandan civil society organisation advocating for human rights, sexual orientation equality, and stigma reduction — empowering communities across Rwanda.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html#home">Home</a>
+                        <a href="index.html#about">About Us</a>
+                        <a href="index.html#what-we-do">What We Do</a>
+                        <a href="right.html">Rights Awareness</a>
+                        <a href="support.html">Get Support</a>
+                        <a href="policy.html">Advocacy & Policy</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <div class="footer-links">
+                        <a href="index.html#get-help">Get Help (Confidential)</a>
+                        <a href="index.html#join">Volunteer</a>
+                        <a href="index.html#join">Donate</a>
+                        <a href="index.html#partners">Partners</a>
+                        <a href="index.html#contact">Contact</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Stay Connected</h4>
+                    <p style="font-size:.85rem;margin-bottom:.5rem">Get updates on events and advocacy from HRI Rwanda.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="your@email.com" aria-label="Email address for newsletter">
+                        <button type="button">Subscribe</button>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Health and Rights Rwanda (HRI). All rights reserved.</p>
+                <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Safeguarding Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        function toggleMenu(open) {
+            const isOpen = open !== undefined ? open : !navLinks.classList.contains('open');
+            navLinks.classList.toggle('open', isOpen);
+            hamburger.classList.toggle('open', isOpen);
+            hamburger.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        }
+        hamburger.addEventListener('click', () => toggleMenu());
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => toggleMenu(false));
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('open')) toggleMenu(false);
+        });
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav') && navLinks.classList.contains('open')) toggleMenu(false);
+        });
+    </script>
+</body>
+</html>
