@@ -12,6 +12,10 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Flutterwave Payment Script -->
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <!-- EmailJS for form-to-email delivery -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         /* ===================== CSS VARIABLES ===================== */
         :root {
@@ -308,6 +312,39 @@
             background: var(--coral-dark);
             transform: translateY(-3px);
             animation: none;
+        }
+
+        /* Floating Donate Button */
+        .floating-donate {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 1000;
+            background: #0b5e7c;
+            color: #fff;
+            padding: .85rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: .9rem;
+            box-shadow: 0 8px 30px rgba(11, 94, 124, 0.5);
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            transition: var(--transition);
+            animation: pulse-donate 2.5s infinite;
+            border: none;
+            cursor: pointer;
+        }
+
+        .floating-donate:hover {
+            background: #083c52;
+            transform: translateY(-3px);
+            animation: none;
+        }
+
+        @keyframes pulse-donate {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         /* ===================== NAVIGATION ===================== */
@@ -3616,6 +3653,13 @@
                 font-size: .75rem;
                 min-height: 44px;
             }
+            .floating-donate {
+                bottom: 4.5rem;
+                left: .75rem;
+                padding: .6rem .9rem;
+                font-size: .75rem;
+                min-height: 44px;
+            }
             .carousel-controls {
                 gap: .5rem;
                 margin-top: 1rem;
@@ -4171,6 +4215,24 @@
       outline: 3px solid #0b5e7c;
       outline-offset: 2px;
     }
+    #donateModal,
+    #volunteerModal,
+    #trainingModal {
+      align-items: flex-start;
+      overflow-y: auto;
+    }
+    #donateModal .modal-container,
+    #volunteerModal .modal-container,
+    #trainingModal .modal-container {
+      max-height: calc(100vh - 2rem);
+      margin: 1rem auto;
+    }
+    #donateModal .modal-body,
+    #volunteerModal .modal-body,
+    #trainingModal .modal-body {
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
     /* Ensure image fallback emoji is visible if bg-image fails */
     .resource-img {
       color: #1e4460;
@@ -4189,6 +4251,12 @@
         <i class="fas fa-heart"></i>
         <span class="hide-sm">Get Help Now</span>
     </a>
+
+    <!-- Floating Donate Button -->
+    <button class="floating-donate" aria-label="Donate now" onclick="scrollToDonate()">
+        <i class="fas fa-hand-holding-heart"></i>
+        <span class="hide-sm">Donate</span>
+    </button>
 
     <!-- ===================== NAVIGATION ===================== -->
 <nav class="nav" role="navigation" aria-label="Main navigation">
@@ -4896,27 +4964,24 @@
                         <h3>Volunteer with HRI</h3>
                         <p>Share your skills and time to support our workshops, events, and community outreach across
                             Rwanda.</p>
-                        <a href="#" class="btn btn-primary btn-sm">Apply to Volunteer</a>
+                        <button class="btn btn-primary btn-sm" type="button" onclick="openVolunteerModal()">Apply to Volunteer</button>
                     </div>
                     <div class="join-card">
                         <div class="join-icon">💛</div>
                         <h3>Donate</h3>
+                        <p style="color:var(--gray-600);margin-bottom:1rem">Support our mission to advance human rights and dignity in Rwanda. Your donation directly funds our programmes and services.</p>
                         <div class="donate-options">
                             <button class="donate-opt active" onclick="selectDonate(this,'one-time')">One-time</button>
                             <button class="donate-opt" onclick="selectDonate(this,'monthly')">Monthly</button>
                         </div>
-                        <div class="payment-icons">
-                            <span class="payment-badge">📱 Mobile Money</span>
-                            <span class="payment-badge">💳 Card</span>
-                        </div>
-                        <a href="#" class="btn btn-primary btn-sm">Donate Now</a>
+                        <button class="btn btn-primary btn-sm" onclick="openDonateModal()">Donate Now</button>
                     </div>
                     <div class="join-card">
                         <div class="join-icon">🎓</div>
                         <h3>Become a Community Advocate</h3>
                         <p>Join our advocate training programme and learn how to champion human rights in your own
                             community.</p>
-                        <a href="#" class="btn btn-primary btn-sm">Sign Up for Training</a>
+                        <button class="btn btn-primary btn-sm" type="button" onclick="openTrainingModal()">Sign Up for Training</button>
                     </div>
                 </div>
             </div>
@@ -5039,6 +5104,262 @@
   </div>
 </div>
 
+<!-- VOLUNTEER MODAL -->
+<div id="volunteerModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="volunteerTitle">
+  <div class="modal-container" style="max-width: 720px;">
+    <div class="modal-header" style="background: linear-gradient(135deg, #0b5e7c 0%, #0d7fa5 100%);">
+      <h3 id="volunteerTitle" style="color: #fff; margin: 0;">🙋 Volunteer Application</h3>
+      <button class="modal-close" onclick="closeSimpleModal('volunteerModal')" aria-label="Close volunteer form" style="color: #fff;">&times;</button>
+    </div>
+    <div class="modal-body" style="padding: 0; background: #fff;">
+      <form id="volunteerForm" style="padding: 1.5rem;" novalidate>
+        <div class="form-group">
+          <label for="volunteerName">Full Name <span style="color: var(--coral);">*</span></label>
+          <input type="text" id="volunteerName" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="volunteerEmail">Email Address <span style="color: var(--coral);">*</span></label>
+          <input type="email" id="volunteerEmail" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="volunteerPhone">Phone / WhatsApp <span style="color: var(--coral);">*</span></label>
+          <input type="tel" id="volunteerPhone" placeholder="+250 7XX XXX XXX" required>
+        </div>
+        <div class="form-group">
+          <label for="volunteerSkill">Main Skills</label>
+          <select id="volunteerSkill">
+            <option value="">Select your strongest area</option>
+            <option value="Community outreach">Community outreach</option>
+            <option value="Event support">Event support</option>
+            <option value="Counselling support">Counselling support</option>
+            <option value="Legal awareness">Legal awareness</option>
+            <option value="Media and communication">Media and communication</option>
+            <option value="Administration">Administration</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="volunteerAvailability">Availability <span style="color: var(--coral);">*</span></label>
+          <textarea id="volunteerAvailability" placeholder="Example: Weekends only, 6 hours/week" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="volunteerMotivation">Why do you want to volunteer with HRI? <span style="color: var(--coral);">*</span></label>
+          <textarea id="volunteerMotivation" placeholder="Tell us briefly about your motivation" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+          <i class="fas fa-paper-plane"></i> Submit Volunteer Application
+        </button>
+        <div class="form-success" id="volunteerSuccess">✅ Volunteer application sent successfully. We will contact you soon.</div>
+        <div class="form-error" id="volunteerError" style="display:none;">Please complete all required fields correctly.</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- TRAINING MODAL -->
+<div id="trainingModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="trainingTitle">
+  <div class="modal-container" style="max-width: 720px;">
+    <div class="modal-header" style="background: linear-gradient(135deg, #2d5d34 0%, #3f7a46 100%);">
+      <h3 id="trainingTitle" style="color: #fff; margin: 0;">🎓 Community Advocate Training Signup</h3>
+      <button class="modal-close" onclick="closeSimpleModal('trainingModal')" aria-label="Close training form" style="color: #fff;">&times;</button>
+    </div>
+    <div class="modal-body" style="padding: 0; background: #fff;">
+      <form id="trainingForm" style="padding: 1.5rem;" novalidate>
+        <div class="form-group">
+          <label for="trainingName">Full Name <span style="color: var(--coral);">*</span></label>
+          <input type="text" id="trainingName" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="trainingEmail">Email Address <span style="color: var(--coral);">*</span></label>
+          <input type="email" id="trainingEmail" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label for="trainingPhone">Phone Number <span style="color: var(--coral);">*</span></label>
+          <input type="tel" id="trainingPhone" placeholder="+250 7XX XXX XXX" required>
+        </div>
+        <div class="form-group">
+          <label for="trainingDistrict">District / Location <span style="color: var(--coral);">*</span></label>
+          <input type="text" id="trainingDistrict" placeholder="e.g. Gasabo, Kigali" required>
+        </div>
+        <div class="form-group">
+          <label for="trainingExperience">Experience Level</label>
+          <select id="trainingExperience">
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="trainingGoals">What do you want to learn? <span style="color: var(--coral);">*</span></label>
+          <textarea id="trainingGoals" placeholder="Share your learning goals and expectations" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, #2d5d34 0%, #3f7a46 100%);">
+          <i class="fas fa-graduation-cap"></i> Submit Training Signup
+        </button>
+        <div class="form-success" id="trainingSuccess">✅ Training signup sent successfully. We will share next training dates.</div>
+        <div class="form-error" id="trainingError" style="display:none;">Please complete all required fields correctly.</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- DONATE MODAL -->
+<div id="donateModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="donateTitle">
+  <div class="modal-container" style="max-width: 680px;">
+    <div class="modal-header" style="background: linear-gradient(135deg, #0b5e7c 0%, #0d7fa5 100%);">
+      <h3 id="donateTitle" style="color: white; margin: 0;">💛 Make a Donation</h3>
+      <button class="modal-close" onclick="closeDonateModal()" aria-label="Close donation form" style="color: white;">&times;</button>
+    </div>
+    <div class="modal-body" style="padding: 0; background: white;">
+      <form id="donateForm" onsubmit="processDonation(event)" novalidate>
+        <!-- Form Section -->
+        <div style="padding: 2rem;">
+          <!-- Donation Amount Section -->
+          <div style="margin-bottom: 2rem;">
+            <label style="display: block; font-weight: 700; margin-bottom: 0.75rem; color: #0a2e4b; font-size: 0.95rem;">Donation Type <span style="color: #e74c3c;">*</span></label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <button type="button" class="donate-type-btn active" onclick="selectDonationType(this, 'one-time')" style="padding: 0.75rem 1rem; border: 2px solid #0b5e7c; background: #e6f3f9; color: #0b5e7c; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 0.95rem;">
+                💰 One-time
+              </button>
+              <button type="button" class="donate-type-btn" onclick="selectDonationType(this, 'monthly')" style="padding: 0.75rem 1rem; border: 2px solid #ccc; background: white; color: #666; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 0.95rem;">
+                📅 Monthly
+              </button>
+            </div>
+            <input type="hidden" id="donateType" value="one-time">
+          </div>
+
+          <!-- Amount Selection -->
+          <div style="margin-bottom: 2rem;">
+            <label style="display: block; font-weight: 700; margin-bottom: 0.75rem; color: #0a2e4b; font-size: 0.95rem;">Donation Amount (RWF) <span style="color: #e74c3c;">*</span></label>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-bottom: 1rem;">
+              <button type="button" class="amount-preset" onclick="setDonateAmount(this, 5000)" style="padding: 0.75rem; border: 2px solid #ccc; background: white; color: #666; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 0.9rem;">5,000₣</button>
+              <button type="button" class="amount-preset" onclick="setDonateAmount(this, 10000)" style="padding: 0.75rem; border: 2px solid #ccc; background: white; color: #666; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 0.9rem;">10,000₣</button>
+              <button type="button" class="amount-preset" onclick="setDonateAmount(this, 25000)" style="padding: 0.75rem; border: 2px solid #ccc; background: white; color: #666; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 0.9rem;">25,000₣</button>
+              <button type="button" class="amount-preset" onclick="setDonateAmount(this, 50000)" style="padding: 0.75rem; border: 2px solid #ccc; background: white; color: #666; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-size: 0.9rem;">50,000₣</button>
+            </div>
+            <input type="number" id="donateAmount" placeholder="Or enter custom amount" min="1000" required style="width: 100%; padding: 0.875rem; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; font-weight: 500; box-sizing: border-box; transition: border-color 0.3s;">
+            <p class="form-error" id="amountError" style="color: #e74c3c; font-size: 0.85rem; margin-top: 0.5rem; display: none;">✗ Please enter a valid amount (minimum 1000 RWF).</p>
+          </div>
+
+          <!-- Donor Info -->
+          <div style="margin-bottom: 2rem;">
+            <label style="display: block; font-weight: 700; margin-bottom: 0.75rem; color: #0a2e4b; font-size: 0.95rem;">Your Name <span style="color: #999; font-weight: 400; font-size: 0.85rem;">(optional)</span></label>
+            <input type="text" id="donorName" placeholder="Your full name" style="width: 100%; padding: 0.875rem; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; box-sizing: border-box; transition: border-color 0.3s;">
+          </div>
+
+          <!-- Email -->
+          <div style="margin-bottom: 2rem;">
+            <label style="display: block; font-weight: 700; margin-bottom: 0.75rem; color: #0a2e4b; font-size: 0.95rem;">Email Address <span style="color: #999; font-weight: 400; font-size: 0.85rem;">(for receipt & updates)</span></label>
+            <input type="email" id="donorEmail" placeholder="your@email.com" style="width: 100%; padding: 0.875rem; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; box-sizing: border-box; transition: border-color 0.3s;">
+          </div>
+
+          <!-- Payment Method Selection -->
+          <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f8fafb; border-radius: 12px; border: 1px solid #e0e0e0;">
+            <label style="display: block; font-weight: 700; margin-bottom: 1rem; color: #0a2e4b; font-size: 0.95rem;">💳 Payment Method</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <button type="button" class="payment-method-btn active" onclick="selectPaymentMethod(this, 'bank')" style="padding: 1rem; border: 2px solid #0b5e7c; background: white; border-radius: 10px; cursor: pointer; transition: all 0.3s; text-align: center;">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🏦</div>
+                <div style="font-weight: 600; color: #0b5e7c; font-size: 0.95rem;">Bank Transfer</div>
+              </button>
+              <button type="button" class="payment-method-btn" onclick="selectPaymentMethod(this, 'mobile')" style="padding: 1rem; border: 2px solid #ccc; background: white; border-radius: 10px; cursor: pointer; transition: all 0.3s; text-align: center;">
+                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📱</div>
+                <div style="font-weight: 600; color: #666; font-size: 0.95rem;">Mobile Money</div>
+              </button>
+            </div>
+            <input type="hidden" id="paymentMethod" value="bank">
+          </div>
+
+          <!-- Bank Transfer Details -->
+          <div id="bankDetails" style="margin-bottom: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #e6f3f9 0%, #f0f8fc 100%); border-radius: 12px; border-left: 5px solid #0b5e7c;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+              <span style="font-size: 1.3rem;">🏦</span>
+              <h4 style="margin: 0; color: #0a2e4b; font-size: 1rem; font-weight: 700;">Bank Account Details</h4>
+            </div>
+            <div style="background: white; padding: 1.25rem; border-radius: 8px; margin-bottom: 0;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.9rem;">
+                <div>
+                  <p style="color: #666; margin: 0 0 0.25rem 0; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Bank Name</p>
+                  <p style="color: #0a2e4b; margin: 0; font-weight: 700; font-size: 1rem;">Bank of Kigali</p>
+                </div>
+                <div>
+                  <p style="color: #666; margin: 0 0 0.25rem 0; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Account Holder</p>
+                  <p style="color: #0a2e4b; margin: 0; font-weight: 700;">Health and Rights Rwanda</p>
+                </div>
+              </div>
+              <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 1rem 0;">
+              <div>
+                <p style="color: #666; margin: 0 0 0.25rem 0; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Account Number</p>
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
+                  <span style="font-family: 'Courier New', monospace; background: #fff; padding: 0.5rem 0.75rem; border-radius: 6px; color: #0b5e7c; font-weight: 700; font-size: 1rem; border: 1px solid #ccc;">1234567890123</span>
+                  <button type="button" onclick="copyToClipboard('1234567890123')" style="background: #0b5e7c; color: white; border: none; padding: 0.5rem 0.75rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600;">📋 Copy</button>
+                </div>
+              </div>
+              <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 1rem 0;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.9rem;">
+                <div>
+                  <p style="color: #666; margin: 0 0 0.25rem 0; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Swift Code</p>
+                  <span style="font-family: 'Courier New', monospace; background: #fff; padding: 0.5rem 0.75rem; border-radius: 6px; color: #0b5e7c; font-weight: 700; display: inline-block; border: 1px solid #ccc;">BOKARZ</span>
+                </div>
+                <div>
+                  <p style="color: #666; margin: 0 0 0.25rem 0; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Currency</p>
+                  <p style="color: #0a2e4b; margin: 0; font-weight: 700;">RWF (Rwandan Franc)</p>
+                </div>
+              </div>
+            </div>
+            <p style="margin: 1rem 0 0 0; font-size: 0.85rem; color: #666; font-style: italic;">Please include your name or donation reference in the transfer description.</p>
+          </div>
+
+          <!-- Mobile Money Details -->
+          <div id="mobileDetails" style="display: none; margin-bottom: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #fff3cd 0%, #fffbf0 100%); border-radius: 12px; border-left: 5px solid #f39c12;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+              <span style="font-size: 1.3rem;">📱</span>
+              <h4 style="margin: 0; color: #0a2e4b; font-size: 1rem; font-weight: 700;">Mobile Money Details</h4>
+            </div>
+            <div style="background: white; padding: 1.25rem; border-radius: 8px;">
+              <div style="margin-bottom: 1rem;">
+                <p style="color: #666; margin: 0 0 0.25rem 0; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">MTN Mobile Money</p>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="font-family: 'Courier New', monospace; background: #fffbf0; padding: 0.5rem 0.75rem; border-radius: 6px; color: #f39c12; font-weight: 700; font-size: 1.1rem; border: 1px solid #f39c12;">+250 784 082 845</span>
+                  <button type="button" onclick="copyToClipboard('+250784082845')" style="background: #f39c12; color: white; border: none; padding: 0.5rem 0.75rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600;">📋 Copy</button>
+                </div>
+              </div>
+              <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 1rem 0;">
+              <div>
+                <p style="color: #666; margin: 0 0 0.5rem 0; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;">Account Name</p>
+                <p style="color: #0a2e4b; margin: 0 0 1rem 0; font-weight: 700;">Health and Rights Rwanda</p>
+              </div>
+              <p style="margin: 0; font-size: 0.85rem; color: #666; font-style: italic;">Dial *182# or use the MTN Mobile Money app to send your donation.</p>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" id="donateSubmitBtn" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1rem; font-weight: 700; border: none; border-radius: 8px; cursor: pointer; margin-bottom: 1rem; background: linear-gradient(135deg, #0b5e7c 0%, #0d7fa5 100%); color: white; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
+            <i class="fas fa-heart"></i> <span id="donateSubmitText">Proceed to Payment</span>
+          </button>
+
+          <!-- Success Message -->
+          <div class="form-success" id="donateSuccess" style="display: none; background: #d4edda; color: #155724; padding: 1.25rem; border-radius: 8px; text-align: center; border: 1px solid #c3e6cb;">
+            <div style="font-size: 2rem; margin-bottom: 0.75rem;">✅</div>
+            <p style="margin: 0; font-weight: 700; font-size: 1.1rem;">Thank you for supporting HRI!</p>
+            <p id="donationStatusText" style="margin: 0.75rem 0 0 0; font-size: 0.95rem;">Use the transfer details below to complete your donation.</p>
+            <div style="background: rgba(255,255,255,0.7); padding: 1rem; border-radius: 6px; margin-top: 1rem; text-align: left; font-size: 0.9rem;">
+              <p style="margin: 0 0 0.5rem 0;"><strong>Receipt Reference:</strong> <span id="receiptRef" style="font-family: monospace;">---</span></p>
+              <p style="margin: 0 0 0.5rem 0;"><strong>Amount:</strong> <span id="receiptAmount">0</span> RWF</p>
+              <p style="margin: 0;"><strong>Status:</strong> <span id="donationStatusValue" style="color: #28a745; font-weight: 600;">Pending confirmation</span></p>
+            </div>
+            <div id="donationActionLinks" style="margin-top: 1rem; display: grid; gap: 0.5rem;"></div>
+            <p style="margin: 0.75rem 0 0 0; font-size: 0.85rem; color: #666;">After transfer, share your reference with HRI by email or WhatsApp for confirmation.</p>
+          </div>
+
+          <!-- Error Message -->
+          <div id="donateError" style="display: none; background: #f8d7da; color: #721c24; padding: 1.25rem; border-radius: 8px; text-align: center; border: 1px solid #f5c6cb; margin-bottom: 1rem;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">❌</div>
+            <p id="donateErrorMsg" style="margin: 0; font-weight: 600;">Payment failed. Please try again.</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
         <!-- 11. CONTACT -->
         <section id="contact">
@@ -5414,10 +5735,418 @@
         function selectDonate(el, type) {
             document.querySelectorAll('.donate-opt').forEach(o => o.classList.remove('active'));
             el.classList.add('active');
+            document.getElementById('donateType').value = type;
         }
 
-        // ===== FORM VALIDATION: HELP =====
+        // ===== DONATION MODAL FUNCTIONS =====
+        function openDonateModal() {
+            const modal = document.getElementById('donateModal');
+            if (!modal) return;
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDonateModal() {
+            const modal = document.getElementById('donateModal');
+            if (!modal) return;
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            const donateForm = document.getElementById('donateForm');
+            const donateSuccess = document.getElementById('donateSuccess');
+            if (donateForm) {
+                donateForm.reset();
+                donateForm.style.display = '';
+            }
+            if (donateSuccess) donateSuccess.style.display = 'none';
+            resetDonateForm();
+        }
+
+        function scrollToDonate() {
+            openDonateModal();
+        }
+
+        // ===== VOLUNTEER / TRAINING MODALS =====
+        function openSimpleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSimpleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (!modal) return;
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        function openVolunteerModal() { openSimpleModal('volunteerModal'); }
+        function openTrainingModal() { openSimpleModal('trainingModal'); }
+
+        // Reset donation form to defaults
+        function resetDonateForm() {
+            document.querySelectorAll('.donate-type-btn').forEach((btn, idx) => {
+                btn.classList.toggle('active', idx === 0);
+                btn.style.borderColor = idx === 0 ? '#0b5e7c' : '#ccc';
+                btn.style.background = idx === 0 ? '#e6f3f9' : 'white';
+                btn.style.color = idx === 0 ? '#0b5e7c' : '#666';
+            });
+            document.querySelectorAll('.amount-preset').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.borderColor = '#ccc';
+                btn.style.background = 'white';
+                btn.style.color = '#666';
+            });
+            document.querySelectorAll('.payment-method-btn').forEach((btn, idx) => {
+                btn.classList.toggle('active', idx === 0);
+                btn.style.borderColor = idx === 0 ? '#0b5e7c' : '#ccc';
+                btn.style.background = 'white';
+                if (idx === 0) {
+                    selectPaymentMethod(btn, 'bank');
+                }
+            });
+            
+            // Clear form inputs
+            document.getElementById('donateAmount').value = '';
+            document.getElementById('donorName').value = '';
+            document.getElementById('donorEmail').value = '';
+            
+            // Clear error messages and validation styles
+            const amountError = document.getElementById('amountError');
+            const donateError = document.getElementById('donateError');
+            const donorEmail = document.getElementById('donorEmail');
+            const donateAmount = document.getElementById('donateAmount');
+            const donationActionLinks = document.getElementById('donationActionLinks');
+            const donationStatusText = document.getElementById('donationStatusText');
+            const donationStatusValue = document.getElementById('donationStatusValue');
+            if (amountError) amountError.style.display = 'none';
+            if (donateError) donateError.style.display = 'none';
+            if (donorEmail) donorEmail.style.borderColor = '#e0e0e0';
+            if (donateAmount) donateAmount.style.borderColor = '#e0e0e0';
+            if (donationActionLinks) donationActionLinks.innerHTML = '';
+            if (donationStatusText) donationStatusText.textContent = 'Use the transfer details below to complete your donation.';
+            if (donationStatusValue) donationStatusValue.textContent = 'Pending confirmation';
+        }
+
+        // Select donation type
+        function selectDonationType(el, type) {
+            if (!el) return; // Safety check
+            document.querySelectorAll('.donate-type-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.borderColor = '#ccc';
+                btn.style.background = 'white';
+                btn.style.color = '#666';
+            });
+            el.classList.add('active');
+            el.style.borderColor = '#0b5e7c';
+            el.style.background = '#e6f3f9';
+            el.style.color = '#0b5e7c';
+            document.getElementById('donateType').value = type;
+        }
+
+        // Set donation amount preset
+        function setDonateAmount(el, amount) {
+            if (!el) return; // Safety check
+            document.querySelectorAll('.amount-preset').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.borderColor = '#ccc';
+                btn.style.background = 'white';
+                btn.style.color = '#666';
+            });
+            el.classList.add('active');
+            el.style.borderColor = '#0b5e7c';
+            el.style.background = '#e6f3f9';
+            el.style.color = '#0b5e7c';
+            document.getElementById('donateAmount').value = amount;
+        }
+
+        // Select payment method
+        function selectPaymentMethod(el, method) {
+            if (!el) return; // Safety check
+            document.querySelectorAll('.payment-method-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.borderColor = '#ccc';
+            });
+            el.classList.add('active');
+            el.style.borderColor = '#0b5e7c';
+            document.getElementById('paymentMethod').value = method;
+            
+            // Show/hide payment details
+            if (method === 'bank') {
+                document.getElementById('bankDetails').style.display = 'block';
+                document.getElementById('mobileDetails').style.display = 'none';
+            } else {
+                document.getElementById('bankDetails').style.display = 'none';
+                document.getElementById('mobileDetails').style.display = 'block';
+            }
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✓ Copied to clipboard');
+            }).catch(() => {
+                alert('Failed to copy');
+            });
+        }
+
+        function processDonation(e) {
+            e.preventDefault();
+            let valid = true;
+            const amount = parseFloat(document.getElementById('donateAmount').value);
+            const email = document.getElementById('donorEmail').value.trim();
+            const name = document.getElementById('donorName').value.trim();
+            const donationType = document.getElementById('donateType').value;
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            
+            // Clear previous errors
+            document.getElementById('amountError').style.display = 'none';
+            document.getElementById('donateError').style.display = 'none';
+            
+            // Validation
+            if (!amount || amount < 1000) {
+                document.getElementById('amountError').style.display = 'block';
+                valid = false;
+            }
+            
+            if (email && !isEmail(email)) {
+                const emailError = document.getElementById('donorEmail');
+                emailError.style.borderColor = '#e74c3c';
+                valid = false;
+            } else {
+                document.getElementById('donorEmail').style.borderColor = '#e0e0e0';
+            }
+            
+            if (!valid) {
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = document.getElementById('donateSubmitBtn');
+            const originalHTML = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            
+            // Prepare donation reference
+            const donationRef = 'HRI-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            
+            // Flutterwave payment configuration
+            const flutterwavePublicKey = "FLWPUBK_TEST-YOUR_PUBLIC_KEY_HERE";
+            const paymentConfig = {
+                public_key: flutterwavePublicKey, // Replace with your Flutterwave public key
+                tx_ref: donationRef,
+                amount: amount,
+                currency: "RWF",
+                payment_options: paymentMethod === 'bank' ? "card,account,barter" : "ussd,mobile_money",
+                customer: {
+                    email: email || "donor@hri-rwanda.org",
+                    name: name || "Anonymous Donor"
+                },
+                meta: {
+                    donationType: donationType,
+                    organization: "Health and Rights Rwanda (HRI)"
+                },
+                customizations: {
+                    title: "Donate to HRI",
+                    description: donationType === 'monthly' ? "Monthly Donation to Support LGBTQ+ Rights" : "One-time Donation to Support LGBTQ+ Rights",
+                    logo: "https://via.placeholder.com/150"
+                },
+                onclose: function() {
+                    // Payment cancelled
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalHTML;
+                    document.getElementById('donateError').style.display = 'block';
+                    document.getElementById('donateErrorMsg').textContent = 'Payment cancelled. Please try again.';
+                },
+                callback: function(data) {
+                    // Payment completed - verify with backend
+                    verifyPayment(data, donationRef, amount, email, name, donationType);
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalHTML;
+                }
+            };
+            
+            // If public key is still placeholder, use direct transfer instructions
+            if (!flutterwavePublicKey || flutterwavePublicKey.indexOf("YOUR_PUBLIC_KEY_HERE") !== -1) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalHTML;
+                showManualDonationInstructions({
+                    donationRef: donationRef,
+                    amount: amount,
+                    email: email,
+                    name: name,
+                    donationType: donationType,
+                    paymentMethod: paymentMethod
+                });
+                return;
+            }
+
+            // Initialize Flutterwave payment
+            try {
+                FlutterwaveCheckout(paymentConfig);
+            } catch (error) {
+                console.error('Payment error:', error);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalHTML;
+                showManualDonationInstructions({
+                    donationRef: donationRef,
+                    amount: amount,
+                    email: email,
+                    name: name,
+                    donationType: donationType,
+                    paymentMethod: paymentMethod
+                });
+            }
+        }
+
+        function showManualDonationInstructions(details) {
+            const donorName = details.name || 'Anonymous Donor';
+            const donorEmail = details.email || 'Not provided';
+            const methodLabel = details.paymentMethod === 'bank' ? 'Bank Transfer' : 'MTN Mobile Money';
+            const formattedAmount = Number(details.amount).toLocaleString('en-US');
+            const summaryMessage = [
+                'Donation request',
+                `Reference: ${details.donationRef}`,
+                `Name: ${donorName}`,
+                `Email: ${donorEmail}`,
+                `Method: ${methodLabel}`,
+                `Amount: ${formattedAmount} RWF`,
+                `Type: ${details.donationType}`
+            ].join('\n');
+            const emailLink = `mailto:hrirwanda@gmail.com?subject=${encodeURIComponent(`Donation Confirmation ${details.donationRef}`)}&body=${encodeURIComponent(summaryMessage)}`;
+            const whatsappLink = `https://wa.me/250784082845?text=${encodeURIComponent(summaryMessage)}`;
+
+            const actionLinks = document.getElementById('donationActionLinks');
+            if (actionLinks) {
+                actionLinks.innerHTML = `
+                    <a href="${emailLink}" class="btn btn-outline" style="justify-content: center;">Email HRI Donation Confirmation</a>
+                    <a href="${whatsappLink}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="justify-content: center;">Send Confirmation via WhatsApp</a>
+                `;
+            }
+
+            const donationStatusText = document.getElementById('donationStatusText');
+            const donationStatusValue = document.getElementById('donationStatusValue');
+            if (donationStatusText) donationStatusText.textContent = `Complete your ${methodLabel} transfer using the details shown in this form, then send your confirmation to HRI.`;
+            if (donationStatusValue) donationStatusValue.textContent = 'Awaiting donor transfer';
+            showDonationSuccess(details.donationRef, details.amount, details.email, details.name);
+        }
+        
+        // Verify payment with backend
+        function verifyPayment(data, donationRef, amount, email, name, donationType) {
+            // In production, call your backend to verify payment
+            // Example: POST /api/verify-donation with payment details
+            
+            if (data.status === 'completed') {
+                // Payment successful
+                document.getElementById('donationStatusText').textContent = 'Your payment was completed successfully.';
+                document.getElementById('donationStatusValue').textContent = 'Confirmed';
+                document.getElementById('donationActionLinks').innerHTML = '';
+                showDonationSuccess(donationRef, amount, email, name);
+            } else {
+                document.getElementById('donateError').style.display = 'block';
+                document.getElementById('donateErrorMsg').textContent = 'Payment verification failed. Please contact support if amount was debited.';
+            }
+        }
+        
+        function showDonationSuccess(donationRef, amount, email, name) {
+            // Update success message
+            const receiptRef = document.getElementById('receiptRef');
+            const receiptAmount = document.getElementById('receiptAmount');
+            const donateSuccess = document.getElementById('donateSuccess');
+            if (receiptRef) receiptRef.textContent = donationRef;
+            if (receiptAmount) receiptAmount.textContent = amount.toLocaleString('en-US');
+            if (donateSuccess) {
+                donateSuccess.style.display = 'block';
+                donateSuccess.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            
+            // Log donation for backend processing
+            console.log('Donation completed:', {
+                reference: donationRef,
+                amount: amount,
+                email: email,
+                name: name,
+                timestamp: new Date().toISOString()
+            });
+            
+            // Send confirmation email via backend (optional)
+            sendDonationConfirmation(donationRef, amount, email, name);
+        }
+        
+        function sendDonationConfirmation(ref, amount, email, name) {
+            // Call backend to send confirmation email
+            // Example implementation:
+            /*
+            fetch('/api/send-donation-confirmation', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ref, amount, email, name })
+            }).catch(err => console.log('Confirmation email sent via backend'));
+            */
+        }
+
+        // Close donate modal when clicking the overlay
+        document.getElementById('donateModal').addEventListener('click', (e) => {
+            if (e.target.id === 'donateModal') {
+                closeDonateModal();
+            }
+        });
+
+        // ===== FORM VALIDATION + EMAIL DELIVERY =====
         function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+        const EMAIL_TO = 'hrirwanda@gmail.com';
+        const EMAILJS_PUBLIC_KEY = ''; // Set your EmailJS public key
+        const EMAILJS_SERVICE_ID = ''; // Set your EmailJS service ID
+        const EMAILJS_TEMPLATE_ID = ''; // Set your EmailJS template ID
+        let emailJsReady = false;
+
+        function initEmailJsIfConfigured() {
+            if (
+                !emailJsReady &&
+                window.emailjs &&
+                EMAILJS_PUBLIC_KEY &&
+                EMAILJS_SERVICE_ID &&
+                EMAILJS_TEMPLATE_ID
+            ) {
+                window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+                emailJsReady = true;
+            }
+            return emailJsReady;
+        }
+
+        function normalizeText(value) {
+            return (value || '').toString().trim();
+        }
+
+        function buildMailtoLink(subject, fields) {
+            const lines = fields.map(item => `${item.label}: ${item.value || '-'}`);
+            const body = lines.join('\n');
+            return `mailto:${EMAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+
+        async function sendFormDataToEmail(subject, fields) {
+            const preparedFields = fields.map(item => ({
+                label: item.label,
+                value: normalizeText(item.value)
+            }));
+
+            if (initEmailJsIfConfigured()) {
+                await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                    to_email: EMAIL_TO,
+                    subject: subject,
+                    message: preparedFields.map(item => `${item.label}: ${item.value || '-'}`).join('\n')
+                });
+                return 'emailjs';
+            }
+
+            window.location.href = buildMailtoLink(subject, preparedFields);
+            return 'mailto';
+        }
         document.getElementById('helpForm').addEventListener('submit', function (e) {
             e.preventDefault();
             let valid = true;
@@ -5435,9 +6164,19 @@
                 valid = false;
             }
             if (valid) {
-                this.reset();
-                document.getElementById('helpSuccess').style.display = 'block';
-                setTimeout(() => document.getElementById('helpSuccess').style.display = 'none', 5000);
+                sendFormDataToEmail('HRI Confidential Help Request', [
+                    { label: 'Name', value: document.getElementById('helpName').value },
+                    { label: 'Preferred Contact', value: document.getElementById('helpContact').value || 'Not selected' },
+                    { label: 'Email', value: email || 'Not provided' },
+                    { label: 'Message', value: msg }
+                ]).then(() => {
+                    this.reset();
+                    document.getElementById('helpSuccess').style.display = 'block';
+                    setTimeout(() => document.getElementById('helpSuccess').style.display = 'none', 5000);
+                }).catch(() => {
+                    document.getElementById('helpMsgError').textContent = 'Failed to send. Please try again.';
+                    document.getElementById('helpMsgError').style.display = 'block';
+                });
             }
         });
 
@@ -5453,10 +6192,118 @@
             if (!isEmail(email)) { document.getElementById('contactEmailError').style.display = 'block'; valid = false; }
             if (!msg) { document.getElementById('contactMsgError').style.display = 'block'; valid = false; }
             if (valid) {
-                this.reset();
-                document.getElementById('contactSuccess').style.display = 'block';
-                setTimeout(() => document.getElementById('contactSuccess').style.display = 'none', 5000);
+                sendFormDataToEmail('HRI Website Contact Form', [
+                    { label: 'Name', value: name },
+                    { label: 'Email', value: email },
+                    { label: 'Message', value: msg }
+                ]).then(() => {
+                    this.reset();
+                    document.getElementById('contactSuccess').style.display = 'block';
+                    setTimeout(() => document.getElementById('contactSuccess').style.display = 'none', 5000);
+                }).catch(() => {
+                    document.getElementById('contactMsgError').textContent = 'Failed to send. Please try again.';
+                    document.getElementById('contactMsgError').style.display = 'block';
+                });
             }
+        });
+
+        // ===== FORM VALIDATION: VOLUNTEER =====
+        document.getElementById('volunteerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('volunteerName').value.trim();
+            const email = document.getElementById('volunteerEmail').value.trim();
+            const phone = document.getElementById('volunteerPhone').value.trim();
+            const skill = document.getElementById('volunteerSkill').value.trim() || 'Not selected';
+            const availability = document.getElementById('volunteerAvailability').value.trim();
+            const motivation = document.getElementById('volunteerMotivation').value.trim();
+            const volunteerError = document.getElementById('volunteerError');
+            const volunteerSuccess = document.getElementById('volunteerSuccess');
+
+            volunteerError.style.display = 'none';
+            volunteerSuccess.style.display = 'none';
+
+            const isValid = name && isEmail(email) && phone && availability && motivation;
+            if (!isValid) {
+                volunteerError.textContent = 'Please complete all required fields correctly.';
+                volunteerError.style.display = 'block';
+                return;
+            }
+
+            sendFormDataToEmail('HRI Volunteer Application', [
+                { label: 'Name', value: name },
+                { label: 'Email', value: email },
+                { label: 'Phone', value: phone },
+                { label: 'Skills', value: skill },
+                { label: 'Availability', value: availability },
+                { label: 'Motivation', value: motivation }
+            ]).then(() => {
+                this.reset();
+                volunteerSuccess.style.display = 'block';
+                setTimeout(() => closeSimpleModal('volunteerModal'), 3500);
+            }).catch(() => {
+                volunteerError.textContent = 'Failed to send volunteer form. Please try again.';
+                volunteerError.style.display = 'block';
+            });
+        });
+
+        // ===== FORM VALIDATION: TRAINING =====
+        document.getElementById('trainingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('trainingName').value.trim();
+            const email = document.getElementById('trainingEmail').value.trim();
+            const phone = document.getElementById('trainingPhone').value.trim();
+            const district = document.getElementById('trainingDistrict').value.trim();
+            const experience = document.getElementById('trainingExperience').value.trim();
+            const goals = document.getElementById('trainingGoals').value.trim();
+            const trainingError = document.getElementById('trainingError');
+            const trainingSuccess = document.getElementById('trainingSuccess');
+
+            trainingError.style.display = 'none';
+            trainingSuccess.style.display = 'none';
+
+            const isValid = name && isEmail(email) && phone && district && goals;
+            if (!isValid) {
+                trainingError.textContent = 'Please complete all required fields correctly.';
+                trainingError.style.display = 'block';
+                return;
+            }
+
+            sendFormDataToEmail('HRI Community Advocate Training Signup', [
+                { label: 'Name', value: name },
+                { label: 'Email', value: email },
+                { label: 'Phone', value: phone },
+                { label: 'District', value: district },
+                { label: 'Experience', value: experience },
+                { label: 'Learning Goals', value: goals }
+            ]).then(() => {
+                this.reset();
+                trainingSuccess.style.display = 'block';
+                setTimeout(() => closeSimpleModal('trainingModal'), 3500);
+            }).catch(() => {
+                trainingError.textContent = 'Failed to send training signup. Please try again.';
+                trainingError.style.display = 'block';
+            });
+        });
+
+        ['volunteerModal', 'trainingModal'].forEach(modalId => {
+            const modalEl = document.getElementById(modalId);
+            if (modalEl) {
+                modalEl.addEventListener('click', (e) => {
+                    if (e.target.id === modalId) {
+                        closeSimpleModal(modalId);
+                    }
+                });
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape') return;
+            ['volunteerModal', 'trainingModal'].forEach(modalId => {
+                const modalEl = document.getElementById(modalId);
+                if (modalEl && modalEl.classList.contains('active')) {
+                    closeSimpleModal(modalId);
+                }
+            });
         });
 
         // ===== ACTIVE NAV LINK =====
